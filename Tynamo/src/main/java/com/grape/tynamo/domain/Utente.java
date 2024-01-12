@@ -8,6 +8,7 @@ import javax.persistence.Id;
 /**
  * @author 19456
  */
+
 @Entity
 public class Utente {
 
