@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grape.tynamo.domain;
 
+import com.grape.tynamo.dao.DaoManager;
+import com.grape.tynamo.dao.DaoUtente;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -12,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author 19456
+ * @author 20550
  */
 public class Main {
 
@@ -22,19 +19,25 @@ public class Main {
     public static void main(String[] args) {
         EntityManager em = Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();
 
-        Utente utente1 = new Utente();
-        Utente utente2 = new Utente();
-        Utente utente3 = new Utente();
-        Utente utente4 = new Utente();
-        Utente utente5 = new Utente();
+        Utente utente1 = new Utente("PaoloGamer", "p154");
+        Utente utente2 = new Utente("Pier1689", "h2zbM");
+        Utente utente3 = new Utente("BadlandsLoner", "1234");
+        
+        DaoUtente daoUtente = DaoManager.getDaoUtente();
 
-        em.getTransaction().begin();
-        em.persist(utente1);
-        em.persist(utente2);
-        em.persist(utente3);
-        em.persist(utente4);
-        em.persist(utente5);
-        em.getTransaction().commit();
+        // Create
+        daoUtente.create(utente1);
+        daoUtente.create(utente2);
+        daoUtente.create(utente3);
+        
+        // Read
+        Utente utenteRisultato = daoUtente.getByUsername("Pier1689");
+	System.out.println("UTENTI");
+	System.out.println("ID\tUSERNAME\tPASSWORD");
+        System.out.println(utenteRisultato.getId()+"\t"+utenteRisultato.getUsername()+"\t"+utenteRisultato.getPassword());
+        
+        // Update
+        
         
         TypedQuery tq = null;
 	List <Utente> elenco = null;
