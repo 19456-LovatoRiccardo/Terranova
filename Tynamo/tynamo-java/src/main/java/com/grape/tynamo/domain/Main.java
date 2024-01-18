@@ -40,25 +40,18 @@ public class Main {
         utente1.setUsername("PaoloGamer64");
         daoUtente.update(utente1);
 
-        Utente utenteRisultato = daoUtente.getByUsername("PaoloGamer64");
+        utenteRisultato = daoUtente.getByUsername("PaoloGamer64");
         System.out.println("UTENTI");
         System.out.println("ID\tUSERNAME\tPASSWORD");
         System.out.println(utenteRisultato.getId()+"\t"+utenteRisultato.getUsername()+"\t"+utenteRisultato.getPassword());
 
         // Delete
-        daoUtente.remove(utente3)
+        daoUtente.remove(utente3);
         
-        TypedQuery tq = null;
-        List <Utente> elenco = null;
-            
-        em.getTransaction().begin();
-        tq = em.createQuery("SELECT u FROM Utente u", Utente.class);
-        elenco = tq.getResultList();
-        em.getTransaction().commit();
-        
+        List<Utente> elencoUtenti = daoUtente.getAll();
         System.out.println("UTENTI");
         System.out.println("ID\tUSERNAME\tPASSWORD");
-        for (Utente utente : elenco) {
+        for (Utente utente : elencoUtenti) {
             System.out.println(utente.getId()+"\t"+utente.getUsername()+"\t"+utente.getPassword());
         }
             
