@@ -9,13 +9,13 @@ import javax.persistence.TypedQuery;
  */
 public class DaoUtente {
     
-    public void create(Utente utente){
+    public void create(Utente utente) {
         DaoManager.getEM().getTransaction().begin();
         DaoManager.getEM().persist(utente);
         DaoManager.getEM().getTransaction().commit();
     }
      
-    public Utente getByUsername(String username){
+    public Utente getByUsername(String username) {
         Utente utente = null;
         TypedQuery<Utente> tq;
         DaoManager.getEM().getTransaction().begin();
@@ -26,5 +26,12 @@ public class DaoUtente {
         DaoManager.getEM().getTransaction().commit();
         return utente;
     }
-    
+
+    public void update(Utente utente) {
+        Query<Utente> query = DaoManager.getEM().createQuery("UPDATE Utente SET username=\':username\', password=\':password\' WHERE id=:id");
+        query.setParameter("id", utente.getId());
+        query.setParameter("username", utente.getUsername());
+        query.setParameter("password", utente.getPassword());
+        query.executeUpdate();
+    }
 }

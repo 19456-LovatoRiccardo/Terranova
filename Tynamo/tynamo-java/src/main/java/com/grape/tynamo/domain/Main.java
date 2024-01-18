@@ -32,28 +32,32 @@ public class Main {
         
         // Read
         Utente utenteRisultato = daoUtente.getByUsername("Pier1689");
-	System.out.println("UTENTI");
-	System.out.println("ID\tUSERNAME\tPASSWORD");
+        System.out.println("UTENTI");
+        System.out.println("ID\tUSERNAME\tPASSWORD");
         System.out.println(utenteRisultato.getId()+"\t"+utenteRisultato.getUsername()+"\t"+utenteRisultato.getPassword());
         
         // Update
+        utente1.setUsername("PaoloGamer64");
+        daoUtente.update(utente1);
+
+        // Delete
         
         
         TypedQuery tq = null;
-	List <Utente> elenco = null;
-		
-	em.getTransaction().begin();
-	tq = em.createQuery("SELECT u FROM Utente u", Utente.class);
-	elenco = tq.getResultList();
-	em.getTransaction().commit();
-	
-	System.out.println("UTENTI");
-	System.out.println("ID");
-	for (Utente utente : elenco) {
-		System.out.println(utente.getId());
-	}
+        List <Utente> elenco = null;
+            
+        em.getTransaction().begin();
+        tq = em.createQuery("SELECT u FROM Utente u", Utente.class);
+        elenco = tq.getResultList();
+        em.getTransaction().commit();
         
-        em.close();
+        System.out.println("UTENTI");
+        System.out.println("ID\tUSERNAME\tPASSWORD");
+        for (Utente utente : elenco) {
+            System.out.println(utente.getId()+"\t"+utente.getUsername()+"\t"+utente.getPassword());
+        }
+            
+        // em.close();
     }
     
 }
