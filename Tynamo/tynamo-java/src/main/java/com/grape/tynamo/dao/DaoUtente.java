@@ -11,7 +11,7 @@ import javax.persistence.Query;
  */
 public class DaoUtente {
     
-    public void create(Utente utente) {
+    public void insert(Utente utente) {
         DaoManager.getEM().getTransaction().begin();
         DaoManager.getEM().persist(utente);
         DaoManager.getEM().getTransaction().commit();

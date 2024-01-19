@@ -21,9 +21,9 @@ public class Main {
         DaoUtente daoUtente = DaoManager.getDaoUtente();
 
         // Create
-        daoUtente.create(utente1);
-        daoUtente.create(utente2);
-        daoUtente.create(utente3);
+        daoUtente.insert(utente1);
+        daoUtente.insert(utente2);
+        daoUtente.insert(utente3);
         
         // Read
         Utente utenteTestRead = daoUtente.getByUsername("Pier1689");
