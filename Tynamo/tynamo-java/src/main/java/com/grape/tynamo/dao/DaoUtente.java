@@ -2,8 +2,8 @@ package com.grape.tynamo.dao;
 
 import com.grape.tynamo.domain.Utente;
 import java.util.List;
-import javax.persistence.TypedQuery;
-import javax.persistence.Query;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
 
 /**
  *

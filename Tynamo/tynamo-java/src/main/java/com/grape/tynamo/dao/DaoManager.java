@@ -1,7 +1,7 @@
 package com.grape.tynamo.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 
 /**
  *
