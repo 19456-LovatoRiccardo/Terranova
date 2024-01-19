@@ -9,8 +9,8 @@ import javax.persistence.Persistence;
  */
 public class DaoManager {
     
-    private static EntityManager em;
-    private static DaoUtente daoUtente;
+    private final static EntityManager em;
+    private final static DaoUtente daoUtente;
 
     static {
         em =  Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();

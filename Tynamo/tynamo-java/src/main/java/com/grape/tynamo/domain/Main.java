@@ -3,9 +3,6 @@ package com.grape.tynamo.domain;
 import com.grape.tynamo.dao.DaoManager;
 import com.grape.tynamo.dao.DaoUtente;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -17,8 +14,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        EntityManager em = Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();
-
         Utente utente1 = new Utente("PaoloGamer", "p154");
         Utente utente2 = new Utente("Pier1689", "h2zbM");
         Utente utente3 = new Utente("BadlandsLoner", "1234");
@@ -31,31 +26,34 @@ public class Main {
         daoUtente.create(utente3);
         
         // Read
-        Utente utenteRisultato = daoUtente.getByUsername("Pier1689");
-        System.out.println("UTENTI");
-        System.out.println("ID\tUSERNAME\tPASSWORD");
-        System.out.println(utenteRisultato.getId()+"\t"+utenteRisultato.getUsername()+"\t"+utenteRisultato.getPassword());
+        Utente utenteTestRead = daoUtente.getByUsername("Pier1689");
         
         // Update
         utente1.setUsername("PaoloGamer64");
         daoUtente.update(utente1);
-
-        utenteRisultato = daoUtente.getByUsername("PaoloGamer64");
-        System.out.println("UTENTI");
-        System.out.println("ID\tUSERNAME\tPASSWORD");
-        System.out.println(utenteRisultato.getId()+"\t"+utenteRisultato.getUsername()+"\t"+utenteRisultato.getPassword());
+        Utente utenteTestUpdate = daoUtente.getByUsername("PaoloGamer64");
 
         // Delete
         daoUtente.remove(utente3);
-        
         List<Utente> elencoUtenti = daoUtente.getAll();
+        
+        // Print test results
+        System.out.println("\nTest Read");
+        System.out.println("UTENTI");
+        System.out.println("ID\tUSERNAME\tPASSWORD");
+        System.out.println(utenteTestRead.getId()+"\t"+utenteTestRead.getUsername()+"\t"+utenteTestRead.getPassword());
+        
+        System.out.println("\nTest Update");
+        System.out.println("UTENTI");
+        System.out.println("ID\tUSERNAME\tPASSWORD");
+        System.out.println(utenteTestUpdate.getId()+"\t"+utenteTestUpdate.getUsername()+"\t"+utenteTestUpdate.getPassword());
+        
+        System.out.println("\nTest Read All (after Remove)");
         System.out.println("UTENTI");
         System.out.println("ID\tUSERNAME\tPASSWORD");
         for (Utente utente : elencoUtenti) {
             System.out.println(utente.getId()+"\t"+utente.getUsername()+"\t"+utente.getPassword());
         }
-            
-        // em.close();
     }
     
 }
