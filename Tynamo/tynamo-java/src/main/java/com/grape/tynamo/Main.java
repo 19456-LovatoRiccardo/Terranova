@@ -1,7 +1,9 @@
-package com.grape.tynamo.domain;
+package com.grape.tynamo;
 
 import com.grape.tynamo.dao.DaoManager;
 import com.grape.tynamo.dao.DaoUtente;
+import com.grape.tynamo.domain.Utente;
+
 import java.util.List;
 
 /**
