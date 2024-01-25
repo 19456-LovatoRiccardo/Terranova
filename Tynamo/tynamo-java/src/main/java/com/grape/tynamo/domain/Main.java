@@ -3,9 +3,6 @@ package com.grape.tynamo.domain;
 import com.grape.tynamo.dao.DaoManager;
 import com.grape.tynamo.dao.DaoUtente;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -17,8 +14,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        EntityManager em = Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();
-
         Utente utente1 = new Utente("PaoloGamer", "p154");
         Utente utente2 = new Utente("Pier1689", "h2zbM");
         Utente utente3 = new Utente("BadlandsLoner", "1234");
