@@ -1,7 +1,7 @@
 package com.grape.tynamo.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 
 /**
  *
@@ -9,8 +9,8 @@ import javax.persistence.Persistence;
  */
 public class DaoManager {
     
-    private static EntityManager em;
-    private static DaoUtente daoUtente;
+    private final static EntityManager em;
+    private final static DaoUtente daoUtente;
 
     static {
         em =  Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();

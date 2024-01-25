@@ -2,8 +2,8 @@ package com.grape.tynamo.dao;
 
 import com.grape.tynamo.domain.Utente;
 import java.util.List;
-import javax.persistence.TypedQuery;
-import javax.persistence.Query;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
 
 /**
  *
@@ -11,7 +11,7 @@ import javax.persistence.Query;
  */
 public class DaoUtente {
     
-    public void create(Utente utente) {
+    public void insert(Utente utente) {
         DaoManager.getEM().getTransaction().begin();
         DaoManager.getEM().persist(utente);
         DaoManager.getEM().getTransaction().commit();
