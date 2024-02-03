@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tynamo - Ripristino Password</title>
+  <title>Tynamo - Ripristino Codice</title>
   <link rel="stylesheet" href="css/style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <div class="wrapper">
     <form action="">
-      <h1>Ripristino Password</h1>
-      <div class="input-box">
-        <input type="password" placeholder="Codice Univoco" id="codice" required>
-        <img src="img/hide-img.png" id="occhioIconaCodice">
-      </div>
+      <h1>Ripristino Codice Utente</h1>
       <div class="input-box">
         <input type="mail" placeholder="Email" required>
+        
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" id="password" required>
+        <img src="img/hide-img.png" id="occhioIconaPassword">
       </div>
       <div class="remember-forgot">
-        <a href="resetCodice.html">Codice utente dimenticato ?</a>
+        <a href="resetPw.html">Password dimenticata ?</a>
         <a href="login.html">Ritorna al Login</a>
       </div>
 
@@ -32,17 +33,17 @@
   </div>
 
   <script>
-    let occhioIconaCodice = document.getElementById("occhioIconaCodice");
+    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
     
-    let codice = document.getElementById("codice");
+    let password = document.getElementById("password");
 
-    occhioIconaCodice.onclick = function(){
-        if(codice.type == "password"){
-            codice.type = "text";
-            occhioIconaCodice.src = "img/show-img.png"
+    occhioIconaPassword.onclick = function(){
+        if(password.type == "password"){
+          password.type = "text";
+            occhioIconaPassword.src = "img/show-img.png"
         } else {
-            codice.type = "password";
-            occhioIconaCodice.src = "img/hide-img.png"
+          password.type = "password";
+            occhioIconaPassword.src = "img/hide-img.png"
         }
     }
 
