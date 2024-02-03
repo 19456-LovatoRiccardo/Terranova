@@ -13,22 +13,23 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up" id="registrazione">
-            <form>
+            <form action="#">
                 <h1>Registrazione</h1>
                 <p></p>
                 <input type="text" placeholder="Nome">
                 <input type="text" placeholder="Cognome">
                 <input type="email" placeholder="Email">
-                <button>Continua</button>
+                <button onclick="nascondi()">Continua</button>
             </form>
         </div>
 
 
-        <div class="form-container sign-up-continue">
+
+        <div class="form-container sign-up-continue" id="continua">
             <form>
                 <h1>Prova</h1>
                 <p></p>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="Nome">
                 <input type="text" placeholder="Cognome">
                 <input type="email" placeholder="Email">
                 <button>Prova</button>
@@ -54,7 +55,7 @@
                 <div class="toggle-panel toggle-left">
                     <h1>Benvenuto in Tynamo!</h1>
                     <p>Inizia la registrazione inserendo i dati qui affianco</p>
-                    <button class="hidden" id="login">Accesso</button>
+                    <button class="hidden" id="login" onclick="mostra()">Accesso</button>
                 </div>
 
 
@@ -62,7 +63,7 @@
                 <div class="toggle-panel toggle-right">
                     <h1>Bentornato in Tynamo</h1>
                     <p>Inserisci i dati per accedere, se è la prima volta, clicca il tasto qui sotto.</p>
-                    <button class="hidden" id="register" onclick="prova()">Registati</button>
+                    <button class="hidden" id="register" onclick="register()">Registrati</button>
                 </div>
             </div>
         </div>
