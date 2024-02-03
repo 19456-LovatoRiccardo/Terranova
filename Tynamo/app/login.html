@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tynamo - Accesso</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="wrapper">
+    <form action="">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="password" placeholder="Codice Univoco" id="codice" required>
+        <i class='bx bxs-lock-alt'></i>
+        <img src="img/hide-img.png" id="occhioIconaCodice">
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" id="password" required>
+        <i class='bx bx-key'> </i>
+        <img src="img/hide-img.png" id="occhioIconaPassword">
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox">Ricordami</label>
+        <a href="resetPw.html">Password dimenticata ?</a>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+
+      <div class="register-link">
+        <p>Dont have an account? <a href="#">Register</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let occhioIconaCodice = document.getElementById("occhioIconaCodice");
+    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
+    
+    let codice = document.getElementById("codice");
+    let password = document.getElementById("password");
+
+    occhioIconaCodice.onclick = function(){
+        if(codice.type == "password"){
+            codice.type = "text";
+            occhioIconaCodice.src = "img/show-img.png"
+        } else {
+            codice.type = "password";
+            occhioIconaCodice.src = "img/hide-img.png"
+        }
+    }
+
+
+    occhioIconaPassword.onclick = function(){
+        if(password.type == "password"){
+            password.type = "text";
+            occhioIconaPassword.src = "img/show-img.png"
+        } else {
+            password.type = "password";
+            occhioIconaPassword.src = "img/hide-img.png"
+        }
+    }
+</script>
+
+
+</body>
+</html>
