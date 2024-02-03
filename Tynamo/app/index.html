@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/tynamo.png">
     <title>Tynamo - Area Riservata</title>
 </head>
 
@@ -19,22 +20,24 @@
                 <input type="text" placeholder="Nome">
                 <input type="text" placeholder="Cognome">
                 <input type="email" placeholder="Email">
-                <button onclick="nascondi()">Continua</button>
+                <button onclick="nascondiRegistrazione() ; nascondiAccesso() ; mostraContinua()">Continua</button>
             </form>
         </div>
 
 
+        <div class="container" id="container">
+            <div class="form-container sign-up" id="continua">
+                <form action="#">
+                    <h1>Inserisci i dati</h1>
+                    <p></p>
+                    <input type="date" placeholder="Data di nascita">
+                    <input type="text" placeholder="Azienda o privato? (IN MAIUSCOLO)">
+                    <input type="text" placeholder="Codice Fiscale o P.IVA">
+                    <input type="email" placeholder="Email">
+                    <button>Continua</button>
+                </form>
+            </div>
 
-        <div class="form-container sign-up-continue" id="continua">
-            <form>
-                <h1>Prova</h1>
-                <p></p>
-                <input type="text" placeholder="Nome">
-                <input type="text" placeholder="Cognome">
-                <input type="email" placeholder="Email">
-                <button>Prova</button>
-            </form>
-        </div>
 
 
 
@@ -55,7 +58,7 @@
                 <div class="toggle-panel toggle-left">
                     <h1>Benvenuto in Tynamo!</h1>
                     <p>Inizia la registrazione inserendo i dati qui affianco</p>
-                    <button class="hidden" id="login" onclick="mostra()">Accesso</button>
+                    <button class="hidden" id="login" onclick="mostraAccesso()">Accesso</button>
                 </div>
 
 
@@ -63,7 +66,7 @@
                 <div class="toggle-panel toggle-right">
                     <h1>Bentornato in Tynamo</h1>
                     <p>Inserisci i dati per accedere, se è la prima volta, clicca il tasto qui sotto.</p>
-                    <button class="hidden" id="register" onclick="register()">Registrati</button>
+                    <button class="hidden" id="register" onclick="nascondiContinua()">Registrati</button>
                 </div>
             </div>
         </div>
