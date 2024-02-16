@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(/Tynamo/app/img/bg.jpg) no-repeat;
+  background: url(/Tynamo/app/img/bg.png) no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -18,8 +18,8 @@ body {
 .wrapper {
   width: 420px;
   background: transparent;
-  border: 2px solid var(--border-color, rgba(255, 255, 255, .2));
-  backdrop-filter: blur(9px);
+  border: 4px solid var(--border-color, rgba(0, 0, 0, 0.288));
+  backdrop-filter: blur(8px);
   color: #fff;
   border-radius: 12px;
   padding: 30px 40px;
