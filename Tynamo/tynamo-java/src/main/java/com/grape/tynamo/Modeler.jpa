@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<entity-mappings ptype="MONOLITH" ppkg="com.grape.tynamo" epkg="deleteThis" v="5.4.4" rws="_17050605879002" Pws="_17050605879002" cws="_17050605879002" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_17050605878991" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<entity-mappings ptype="MONOLITH" ppkg="com.grape.tynamo" epkg="domain" v="5.4.4" rws="_17050605879002" Pws="_17050605879002" cws="_17050605879002" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_17050605878991" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <entity compositePrimaryKeyClass="UtentePK" abs="false" class="Utente" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_17050606507423">
         <ath>19456</ath>
         <attributes>
