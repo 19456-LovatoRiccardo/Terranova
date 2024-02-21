@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author 20550
  */
-public class Main {
+public class _Main {
 
     /**
      * @param args the command line arguments
