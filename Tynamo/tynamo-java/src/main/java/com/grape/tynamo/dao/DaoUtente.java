@@ -26,6 +26,15 @@ public class DaoUtente {
         return listaUtenti;
     }
     
+    public Utente getById(Long id) {
+        DaoManager.getEM().getTransaction().begin();
+        TypedQuery<Utente> tq = DaoManager.getEM().createQuery("SELECT u FROM Utente u WHERE u.id=:id", Utente.class);
+        tq.setParameter("id", id);
+        Utente utente = tq.getSingleResult();
+        DaoManager.getEM().getTransaction().commit();
+        return utente;
+    }
+    
     public Utente getByUsername(String username) {
         DaoManager.getEM().getTransaction().begin();
         TypedQuery<Utente> tq = DaoManager.getEM().createQuery("SELECT u FROM Utente u WHERE u.username=:username", Utente.class);
