@@ -24,7 +24,6 @@ public class Controller {
     @Autowired DaoManager DAO;
     
     @GetMapping(path="/user")
-    //@ApiOperation(value = "Get author", notes = "Get author of this demo")
     @Operation(summary = "Get Patty user", description = "Get Patty")
     public Utente user(){
         Utente utente = new Utente("Patty", "12345");
