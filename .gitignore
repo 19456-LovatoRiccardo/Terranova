@@ -18,8 +18,6 @@ target/
 *.iml
 *.ipr
 
-mvnw
-
 ### NetBeans ###
 Tynamo/tynamo-java/nbproject/private/
 Tynamo/tynamo-java/nbbuild/
