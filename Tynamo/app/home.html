@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tynamo - Accesso</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="img/tynamo.png">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="password" placeholder="Codice Univoco" id="codice" required>
+        <img src="img/hide-img.png" id="occhioIconaCodice">
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" id="password" required>
+        <img src="img/hide-img.png" id="occhioIconaPassword">
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox">Ricordami</label>
+        <a href="resetPw.html">Password dimenticata ?</a>
+      </div>
+      
+      <button type="submit" class="btn">Login</button>
+
+      <div class="register-link">
+        <p>Non hai un contratto Tynamo? <a href="registerFirst.html"> Registrati subito.</a></p>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="cookie">
+    <header>
+      <i class='bx bxs-cookie' ></i>
+      <h2>Consenso Cookies</h2>
+    </header>
+    <div class="cookieData">
+      <p>Questo sito web utilizza i cookie per aiutarti a avere un'esperienza di navigazione superiore e più pertinente sul sito. </p>
+    </div>
+    <div class="cookieBtn">
+      <button class="button" id="acceptBtn">Accept</button>
+      <button class="button" id="declineBtn">Decline</button>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    let occhioIconaCodice = document.getElementById("occhioIconaCodice");
+    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
+    
+    let codice = document.getElementById("codice");
+    let password = document.getElementById("password");
+
+    occhioIconaCodice.onclick = function(){
+        if(codice.type == "password"){
+            codice.type = "text";
+            occhioIconaCodice.src = "img/show-img.png"
+        } else {
+            codice.type = "password";
+            occhioIconaCodice.src = "img/hide-img.png"
+        }
+    }
+
+
+    occhioIconaPassword.onclick = function(){
+        if(password.type == "password"){
+            password.type = "text";
+            occhioIconaPassword.src = "img/show-img.png"
+        } else {
+            password.type = "password";
+            occhioIconaPassword.src = "img/hide-img.png"
+        }
+    }
+
+
+
+//cookie
+
+const cookieBox = document.querySelector(".cookie"),
+  buttons = document.querySelectorAll(".cookieBtn");
+const executeCodes = () => {
+  //if cookie contains codinglab it will be returned and below of this code will not run
+  if (document.cookie.includes("codinglab")) return;
+  cookieBox.classList.add("show");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      cookieBox.classList.remove("show");
+      //if button has acceptBtn id
+      if (button.id == "acceptBtn") {
+        //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
+        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
+      }
+    });
+  });
+};
+//executeCodes function will be called on webpage load
+window.addEventListener("load", executeCodes);
+
+
+
+
+</script>
+
+
+</body>
+</html>
