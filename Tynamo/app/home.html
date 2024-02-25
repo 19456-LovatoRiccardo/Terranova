@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tynamo - HomePage</title>
+  <link rel="stylesheet" href="css/style2.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="img/tynamo.png">
+</head>
+<body>
+
+
+
+
+  <nav>
+    <ul>
+        <li><img src="../app/img/LOGO.png" alt="LOGO" class="logo"></li>
+        <li><a href="#">Chi siamo</a></li>
+        <li><a href="#">Offerte</a></li>
+        <li><a href="#">Contattaci</a></li>
+    </ul>
+  </nav>
+
+  <div class="cookie">
+    <header>
+      <i class='bx bxs-cookie' ></i>
+      <h2>Consenso Cookies</h2>
+    </header>
+    <div class="cookieData">
+      <p>Questo sito web utilizza i cookie per aiutarti a avere un'esperienza di navigazione superiore e più pertinente sul sito. </p>
+    </div>
+    <div class="cookieBtn">
+      <button class="button" id="acceptBtn">Accept</button>
+      <button class="button" id="declineBtn">Decline</button>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    let occhioIconaCodice = document.getElementById("occhioIconaCodice");
+    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
+    
+    let codice = document.getElementById("codice");
+    let password = document.getElementById("password");
+
+    occhioIconaCodice.onclick = function(){
+        if(codice.type == "password"){
+            codice.type = "text";
+            occhioIconaCodice.src = "img/show-img.png"
+        } else {
+            codice.type = "password";
+            occhioIconaCodice.src = "img/hide-img.png"
+        }
+    }
+
+
+    occhioIconaPassword.onclick = function(){
+        if(password.type == "password"){
+            password.type = "text";
+            occhioIconaPassword.src = "img/show-img.png"
+        } else {
+            password.type = "password";
+            occhioIconaPassword.src = "img/hide-img.png"
+        }
+    }
+
+const cookieBox = document.querySelector(".cookie"),
+  buttons = document.querySelectorAll(".cookieBtn");
+const executeCodes = () => {
+  if (document.cookie.includes("codinglab")) return;
+  cookieBox.classList.add("show");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      cookieBox.classList.remove("show");
+      if (button.id == "acceptBtn") {
+        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
+      }
+    });
+  });
+};
+window.addEventListener("load", executeCodes);
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
