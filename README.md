@@ -4,4 +4,9 @@ Progetto Terranova Gruppo2 (Lovato - Russo - De Felice - Cremasco) classe 5EI a.
 ## Installazione
 Richiesto: Netbeans con Jeddict già configurato completamente (con JDK 21)
 
-Aprire entrambi ``TynamoApp`` e ``TynamoBackend`` come progetti su Netbeans, creare un Sample Database (da rimpiazzare nelle versioni future) chiamato ``Terranova`` e startare Java DB.
+Creare un Sample Database (da rimpiazzare nelle versioni future) chiamato ``Terranova`` e startare Java DB.
+Aprire ``TynamoBackend`` come progetto su Netbeans e buildarlo.
+Aprire ``TynamoApp`` come progetto su Netbeans, risolvere i problemi del progetto (click destro sul progetto) e buildarlo.
+
+## Testing
+Semplicemente runnare ``TynamoApp`` e connettersi all'indirizzo ``http://localhost:9091``.
