@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tynamo - Ripristino Codice</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="img/tynamo.png">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="">
+      <h1>Ripristino Codice Utente</h1>
+      <div class="input-box">
+        <input type="mail" placeholder="Email" required>
+        
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" id="password" required>
+        <img src="img/hide-img.png" id="occhioIconaPassword">
+      </div>
+      <div class="remember-forgot">
+        <a href="resetPw.html">Password dimenticata ?</a>
+        <a href="login.html">Ritorna al Login</a>
+      </div>
+
+      <button type="submit" class="btn">Avanti</button>
+
+      <div class="register-link">
+        <p>Hai dimenticato password e codice utente ? &nbsp<a href="resetAll.html"> Clicca qui</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
+    
+    let password = document.getElementById("password");
+
+    occhioIconaPassword.onclick = function(){
+        if(password.type == "password"){
+          password.type = "text";
+            occhioIconaPassword.src = "img/show-img.png"
+        } else {
+          password.type = "password";
+            occhioIconaPassword.src = "img/hide-img.png"
+        }
+    }
+
+
+    
+</script>
+
+
+</body>
+</html>

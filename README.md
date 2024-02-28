@@ -2,6 +2,11 @@
 Progetto Terranova Gruppo2 (Lovato - Russo - De Felice - Cremasco) classe 5EI a.s. 2023/24
 
 ## Installazione
-Richiesto: Netbeans con Jeddict già configurato completamente
+Richiesto: Netbeans con Jeddict già configurato completamente (con JDK 21)
 
-Aprire la cartella ``tynamo-java`` come progetto su Netbeans con Jeddict, dal file ``Modeler.jpa`` fare click destro e generare il codice sorgente. Eliminare il package ``com.grape.tynamo.deleteThis`` appena creato. Fare click destro di nuovo e editare ``persistence.xml`` selezionando ``Drop and Create`` e aggiungendo ``eclipselink.logging.level`` settato a ``FINE`` alle proprietà, infine cliccare ``Source`` in alto a sinistra e rimpiazzare tutte le occorrenze di ``javax`` con ``jakarta``.
+Creare un Sample Database (da rimpiazzare nelle versioni future) chiamato ``Terranova`` e startare Java DB.
+Aprire ``TynamoBackend`` come progetto su Netbeans e buildarlo.
+Aprire ``TynamoApp`` come progetto su Netbeans, risolvere i problemi del progetto (click destro sul progetto) e buildarlo.
+
+## Testing
+Semplicemente runnare ``TynamoApp`` e connettersi all'indirizzo ``http://localhost:9091``.

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity-mappings ptype="MONOLITH" ppkg="com.grape.tynamo" epkg="domain" v="5.4.4" rws="_17050605879002" Pws="_17050605879002" cws="_17050605879002" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_17050605878991" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <entity compositePrimaryKeyClass="UtentePK" abs="false" class="Utente" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_17050606507423">
+        <ath>19456</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="username" id="_17050606873996">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="password" id="_17050606951437">
+                <xwm/>
+                <xm/>
+            </basic>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_17050606507694">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Utente.findAll">
+            <query>Select e from Utente e</query>
+        </nq>
+        <nq e="false" name="Utente.findByUsername">
+            <query>Select u from Utente u where u.username=:username</query>
+        </nq>
+        <nq e="false" name="Utente.findByPassword">
+            <query>Select u from Utente u where u.password=:password</query>
+        </nq>
+    </entity>
+    <wsl>
+        <ws n="Main" id="_17050605879002">
+            <i ref="_17050606507423" x="432" y="248"/>
+        </ws>
+    </wsl>
+</entity-mappings>
