@@ -7,27 +7,10 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbyclient</artifactId>
-            <version>10.11.1.1</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.3.3</version>
         </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
-        </dependency>
-        
-        <!--
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa</artifactId>
-            <version>2.7.7</version>
-        </dependency>
-        -->
-        <!-- 16/01/2024 sostituito con versione aggiornata... vedi sotto -->
-        
-        <!-- aggiunto il 16/01/2024 per tentare di risolvere problemi con persistenza e jdk21 -->
-        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
@@ -38,7 +21,6 @@
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.0.0</version>
         </dependency>
-        
     </dependencies>
     
     <properties>
