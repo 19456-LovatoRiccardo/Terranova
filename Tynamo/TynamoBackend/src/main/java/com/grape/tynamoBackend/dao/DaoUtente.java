@@ -47,6 +47,8 @@ public class DaoUtente {
     public void update(Utente utente) {
         DaoManager.getEM().getTransaction().begin();
         /*
+        // Questo non è possibile perchè solo le TypedQuery accettano parametri
+        // Ma questa qui stiamo usando una Query normale
         Query query = DaoManager.getEM().createQuery("UPDATE Utente SET username=\'?1\', password=\'?2\' WHERE id=?3");
         query.setParameter(1, utente.getUsername());
         query.setParameter(2, utente.getPassword());
