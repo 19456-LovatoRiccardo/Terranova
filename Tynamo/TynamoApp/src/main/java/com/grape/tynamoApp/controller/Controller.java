@@ -24,12 +24,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Controller {
     @Autowired DaoManager DAO;
     
+    /*
     @GetMapping(path="/user")
     @Operation(summary = "Get Patty user", description = "Get Patty")
     public Utente getUser(){
         Utente utente = new Utente("Patty", "12345");
         return utente;
     }
+    */
     
     @PostMapping(path="/user/create", consumes="application/json")
     @Operation(summary = "Create user", description = "")

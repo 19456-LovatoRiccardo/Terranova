@@ -1,11 +1,11 @@
 package com.grape.tynamoApp.auth;
 
 import com.grape.tynamoApp.config.JwtService;
-import it.marconivr.demoJWT.user.Role;
-import it.marconivr.demoJWT.user.User;
-import it.marconivr.demoJWT.user.UserRepository;
+import com.grape.tynamoBackend.dao.DaoManager;
+import com.grape.tynamoBackend.domain.Utente;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,21 +18,19 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    private final UserRepository repository;
+    @Autowired
+    private final DaoManager DAO;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     
     public AuthenticationResponse register(RegisterRequest request){
-        var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
+        var user = Utente.builder()
+                .username(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
                 .build();
         
-        repository.save(user);
+        DAO.getDaoUtente().insert(user);
         
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
@@ -48,8 +46,8 @@ public class AuthenticationService {
                 )
         );
         
-        var user = repository.findByEmail(request.getEmail())
-                .orElseThrow();
+        var user = DAO.getDaoUtente().getByUsername(request.getEmail());
+        //        .orElseThrow();
         
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
