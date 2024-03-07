@@ -41,8 +41,6 @@ public class RequestResponseLoggingFilter implements Filter {
 //          "Logging Response :{}", 
 //          res.getContentType());
     }
-
-    // other methods
 }
 
 

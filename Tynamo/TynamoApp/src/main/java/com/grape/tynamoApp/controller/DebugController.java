@@ -3,10 +3,9 @@ package com.grape.tynamoApp.controller;
 import com.grape.tynamoBackend.domain.Utente;
 import com.grape.tynamoBackend.dao.DaoManager;
 
-import io.swagger.v3.oas.annotations.Operation;
 import java.util.List;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("/api/debug")
 public class DebugController {
-    @Autowired DaoManager DAO;
+    @Autowired
+    private DaoManager DAO;
     
     @PostMapping(path="/user/create", consumes="application/json")
     @Operation(summary = "Create user", description = "")

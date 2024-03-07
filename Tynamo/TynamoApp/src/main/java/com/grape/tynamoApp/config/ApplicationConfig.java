@@ -11,7 +11,6 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
-// import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -28,7 +27,8 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> DAO.getDaoUtente().getByUsername(username);
-        //        .orElseThrow(()-> new UsernameNotFoundException("User not found"));
+// import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//                .orElseThrow(()-> new UsernameNotFoundException("User not found"));
     }
     
     @Bean

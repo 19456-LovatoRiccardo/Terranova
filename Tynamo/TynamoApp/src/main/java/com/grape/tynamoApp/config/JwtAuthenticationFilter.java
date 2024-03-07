@@ -21,8 +21,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 @Component
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter extends OncePerRequestFilter{
-
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
     
@@ -32,20 +31,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
             @NonNull HttpServletResponse response, 
             @NonNull FilterChain filterChain) throws ServletException, IOException {
         
-        final String authHeader = request.getHeader("Authorization"); //Authorization è il JWT token o il bearer token
+        final String authHeader = request.getHeader("Authorization"); // Authorization è il JWT token
         final String jwt;
         final String userEmail;
         
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) { //se non c'è il token...
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             System.out.println("QUI in JwtAuthenticationFilter...");
             filterChain.doFilter(request, response);
             return;
         }
-        jwt = authHeader.substring(7);  //se c'è il token lo estraggo a partire dal 7° carattere (dopo "Bearer ")
-        userEmail = jwtService.extractUsername(jwt);//to do extract the user email from JWT token
-        if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
+        jwt = authHeader.substring(7); // se c'è il token lo estraggo a partire dal 7° carattere (dopo "Bearer ")
+        userEmail = jwtService.extractUsername(jwt);
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-            if(jwtService.isTokenValid(jwt, userDetails)){
+            if (jwtService.isTokenValid(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                                                                         userDetails,
                                                                         null,
