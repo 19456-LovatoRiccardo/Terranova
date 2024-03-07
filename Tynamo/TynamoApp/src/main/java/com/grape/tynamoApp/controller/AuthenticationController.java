@@ -1,5 +1,9 @@
-package com.grape.tynamoApp.auth;
+package com.grape.tynamoApp.controller;
 
+import com.grape.tynamoApp.auth.AuthenticationRequest;
+import com.grape.tynamoApp.auth.AuthenticationResponse;
+import com.grape.tynamoApp.auth.AuthenticationService;
+import com.grape.tynamoApp.auth.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 20550
  */
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
     @Autowired
