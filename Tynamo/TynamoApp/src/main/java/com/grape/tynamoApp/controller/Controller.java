@@ -18,16 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author 20550
  */
 @RestController
-@RequestMapping("/crud")
-public class Controller {
-    @Autowired DaoManager DAO;
-    
-    @GetMapping(path="/user")
-    @Operation(summary = "Get Patty user", description = "Get Patty")
-    public Utente user(){
-        Utente utente = new Utente("Patty", "12345");
-        return utente;
-    }
+@RequestMapping("/api/debug")
+public class DebugController {
+    @Autowired
+    private DaoManager DAO;
     
     @GetMapping(path="/user/all")
     @Operation(summary = "Get all users", description = "")

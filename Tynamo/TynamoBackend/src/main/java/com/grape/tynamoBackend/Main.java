@@ -56,6 +56,10 @@ public class Main {
         for (Utente utente : elencoUtenti) {
             System.out.println(utente.getId()+"\t"+utente.getUsername()+"\t"+utente.getPassword());
         }
+        
+        // Cleanup database
+        daoUtente.remove(utente1);
+        daoUtente.remove(utente2);
     }
     
 }

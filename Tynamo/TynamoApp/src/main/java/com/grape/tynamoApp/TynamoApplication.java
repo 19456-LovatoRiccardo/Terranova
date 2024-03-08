@@ -13,11 +13,11 @@ import com.grape.tynamoBackend.dao.DaoManager;
 public class TynamoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TynamoApplication.class, args);
+        SpringApplication.run(TynamoApplication.class, args);
 	}
         
-        @Bean
-        public DaoManager repo() {
-            return new DaoManager();
-        }
+    @Bean
+    public DaoManager repo() {
+        return new DaoManager();
+    }
 }
