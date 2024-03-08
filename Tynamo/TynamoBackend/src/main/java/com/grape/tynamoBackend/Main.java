@@ -16,9 +16,18 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Utente utente1 = new Utente("PaoloGamer", "p154");
-        Utente utente2 = new Utente("Pier1689", "h2zbM");
-        Utente utente3 = new Utente("BadlandsLoner", "1234");
+        Utente utente1 = Utente.builder()
+                .username("PaoloGamer")
+                .password("p154")
+                .build();
+        Utente utente2 = Utente.builder()
+                .username("Pier1689")
+                .password("h2zbM")
+                .build();
+        Utente utente3 = Utente.builder()
+                .username("BadlandsLoner")
+                .password("1234")
+                .build();
         
         DaoUtente daoUtente = DaoManager.getDaoUtente();
 

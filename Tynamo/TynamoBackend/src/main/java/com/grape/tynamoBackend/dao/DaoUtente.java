@@ -27,26 +27,38 @@ public class DaoUtente {
     }
     
     public Utente getById(Long id) {
+        Utente utente = null;
         DaoManager.getEM().getTransaction().begin();
-        TypedQuery<Utente> tq = DaoManager.getEM().createQuery("SELECT u FROM Utente u WHERE u.id=:id", Utente.class);
-        tq.setParameter("id", id);
-        Utente utente = tq.getSingleResult();
-        DaoManager.getEM().getTransaction().commit();
+        try {
+            TypedQuery<Utente> tq = DaoManager.getEM().createQuery("SELECT u FROM Utente u WHERE u.id=:id", Utente.class);
+            tq.setParameter("id", id);
+            utente = tq.getSingleResult();
+        } catch(Exception e) { // non mostrare errore in output
+        } finally {
+            DaoManager.getEM().getTransaction().commit();
+        }
         return utente;
     }
     
     public Utente getByUsername(String username) {
+        Utente utente = null;
         DaoManager.getEM().getTransaction().begin();
-        TypedQuery<Utente> tq = DaoManager.getEM().createQuery("SELECT u FROM Utente u WHERE u.username=:username", Utente.class);
-        tq.setParameter("username", username);
-        Utente utente = tq.getSingleResult();
-        DaoManager.getEM().getTransaction().commit();
+        try {
+            TypedQuery<Utente> tq = DaoManager.getEM().createQuery("SELECT u FROM Utente u WHERE u.username=:username", Utente.class);
+            tq.setParameter("username", username);
+            utente = tq.getSingleResult();
+        } catch(Exception e) { // non mostrare errore in output
+        } finally {
+            DaoManager.getEM().getTransaction().commit();
+        }
         return utente;
     }
 
     public void update(Utente utente) {
         DaoManager.getEM().getTransaction().begin();
         /*
+        // Questo non è possibile perchè le Query normali non accettano parametri
+        // Ma il nuovo codice crea una vulnerabilità di sicurezza
         Query query = DaoManager.getEM().createQuery("UPDATE Utente SET username=\'?1\', password=\'?2\' WHERE id=?3");
         query.setParameter(1, utente.getUsername());
         query.setParameter(2, utente.getPassword());
