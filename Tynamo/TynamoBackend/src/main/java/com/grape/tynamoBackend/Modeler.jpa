@@ -43,7 +43,10 @@
                 <xwm/>
                 <xm/>
             </basic>
-            <many-to-one primaryKey="false" connected-entity-id="_171032828837237" v="true" name="persona" id="_171032830249842"/>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_171032828837237" v="true" xvt="" name="contatto" pname="persona" id="_171032830249842">
+                <xwm/>
+                <xm/>
+            </many-to-one>
             <id attribute-type="Long" v="true" xvt="" name="id" pname="id" id="_17103277905517">
                 <xwm/>
                 <xm/>
