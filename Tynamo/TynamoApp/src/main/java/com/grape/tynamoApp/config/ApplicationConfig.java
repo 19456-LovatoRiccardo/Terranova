@@ -26,7 +26,7 @@ public class ApplicationConfig {
     
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> DAO.getDaoUtente().getByUsername(username);
+        return username -> DAO.getDaoAccount().getByEmail(username);
 // import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //                .orElseThrow(()-> new UsernameNotFoundException("User not found"));
     }

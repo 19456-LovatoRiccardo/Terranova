@@ -1,8 +1,8 @@
 package com.grape.tynamoBackend;
 
+import com.grape.tynamoBackend.dao.DaoAccount;
 import com.grape.tynamoBackend.dao.DaoManager;
-import com.grape.tynamoBackend.dao.DaoUtente;
-import com.grape.tynamoBackend.domain.Utente;
+import com.grape.tynamoBackend.domain.Account;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
         Utente utente1 = Utente.builder()
                 .username("PaoloGamer")
                 .password("p154")
@@ -69,6 +70,19 @@ public class Main {
         // Cleanup database
         daoUtente.remove(utente1);
         daoUtente.remove(utente2);
+        */
+        Account acc1 = Account.builder()
+                .email("PaoloGamer")
+                .password("p154")
+                .build();
+        
+        DaoAccount daoAccount = DaoManager.getDaoAccount();
+
+        // Create
+        daoAccount.insert(acc1);
+        
+        // Cleanup database
+        daoAccount.remove(acc1);
     }
     
 }

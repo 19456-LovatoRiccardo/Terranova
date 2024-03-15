@@ -10,19 +10,19 @@ import jakarta.persistence.Persistence;
 public class DaoManager {
     
     private final static EntityManager em;
-    private final static DaoUtente daoUtente;
+    private final static DaoAccount daoAccount;
 
     static {
         em =  Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();
-        daoUtente = new DaoUtente();
+        daoAccount = new DaoAccount();
     }
 
     public static EntityManager getEM(){
         return DaoManager.em;
     }
 
-    public static DaoUtente getDaoUtente(){
-        return daoUtente;
+    public static DaoAccount getDaoAccount(){
+        return daoAccount;
     }
         
 }

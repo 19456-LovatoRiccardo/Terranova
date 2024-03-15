@@ -1,8 +1,8 @@
 
 package com.grape.tynamoApp.controller;
 
-import com.grape.tynamoBackend.domain.Utente;
 import com.grape.tynamoBackend.dao.DaoManager;
+import com.grape.tynamoBackend.domain.Account;
 
 import java.util.List;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,13 +24,13 @@ public class DebugController {
     
     @GetMapping(path="/user/all")
     @Operation(summary = "Get all users", description = "")
-    public List<Utente>getAllUsers(){
-        return DAO.getDaoUtente().getAll();
+    public List<Account>getAllUsers(){
+        return DAO.getDaoAccount().getAll();
     }
     
     @GetMapping(path="/user/id/{id}")
     @Operation(summary = "Get user by ID", description = "")
-    public Utente getUserById(@PathVariable("id") Long id){
-        return DAO.getDaoUtente().getById(id);
+    public Account getUserById(@PathVariable("id") Long id){
+        return DAO.getDaoAccount().getById(id);
     }
 }

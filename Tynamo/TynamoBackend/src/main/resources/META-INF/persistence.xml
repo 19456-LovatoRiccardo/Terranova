@@ -2,7 +2,24 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
   <persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.grape.tynamoBackend.domain.Utente</class>
+    <class>com.grape.tynamo.domain.Anagrafica</class>
+    <class>com.grape.tynamo.domain.PartitaIVA</class>
+    <class>com.grape.tynamo.domain.Sede</class>
+    <class>com.grape.tynamo.domain.Persona</class>
+    <class>com.grape.tynamo.domain.Account</class>
+    <class>com.grape.tynamo.domain.EE</class>
+    <class>com.grape.tynamo.domain.GAS</class>
+    <class>com.grape.tynamo.domain.EEandGAS</class>
+    <class>com.grape.tynamo.domain.Contratto</class>
+    <class>com.grape.tynamoBackend.domain.Anagrafica</class>
+    <class>com.grape.tynamoBackend.domain.PartitaIVA</class>
+    <class>com.grape.tynamoBackend.domain.Sede</class>
+    <class>com.grape.tynamoBackend.domain.Persona</class>
+    <class>com.grape.tynamoBackend.domain.Account</class>
+    <class>com.grape.tynamoBackend.domain.EE</class>
+    <class>com.grape.tynamoBackend.domain.GAS</class>
+    <class>com.grape.tynamoBackend.domain.EEandGAS</class>
+    <class>com.grape.tynamoBackend.domain.Contratto</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3336/Terranova"/>

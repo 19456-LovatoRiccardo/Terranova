@@ -2,7 +2,7 @@ package com.grape.tynamoApp.auth;
 
 import com.grape.tynamoApp.config.JwtService;
 import com.grape.tynamoBackend.dao.DaoManager;
-import com.grape.tynamoBackend.domain.Utente;
+import com.grape.tynamoBackend.domain.Account;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +25,14 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     
     public AuthenticationResponse register(RegisterRequest request){
-        var user = Utente.builder()
-                .username(request.getEmail())
+        var account = Account.builder()
+                .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
         
-        DAO.getDaoUtente().insert(user);
+        DAO.getDaoAccount().insert(account);
         
-        var jwtToken = jwtService.generateToken(user);
+        var jwtToken = jwtService.generateToken(account);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -46,7 +46,7 @@ public class AuthenticationService {
                 )
         );
         
-        var user = DAO.getDaoUtente().getByUsername(request.getEmail());
+        var user = DAO.getDaoAccount().getByEmail(request.getEmail());
         //        .orElseThrow();
         
         var jwtToken = jwtService.generateToken(user);
