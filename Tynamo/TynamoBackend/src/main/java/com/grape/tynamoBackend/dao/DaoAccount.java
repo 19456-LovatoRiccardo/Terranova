@@ -56,9 +56,10 @@ public class DaoAccount {
 
     public void update(Account account) {
         DaoManager.getEM().getTransaction().begin();
-        Query query = DaoManager.getEM().createQuery("UPDATE Account SET email=\'" + account.getEmail() +
-                "\', password=\'" + account.getPassword() + "\', anagrafica_id=\'" + account.getAnagrafica().getId() + "\' WHERE id=" + account.getId());
-        query.executeUpdate();
+        Account rigaTabella = DaoManager.getEM().find(Account.class, account.getId());
+        rigaTabella.setEmail(account.getEmail());
+        rigaTabella.setPassword(account.getPassword());
+        rigaTabella.setAnagrafica(account.getAnagrafica());
         DaoManager.getEM().getTransaction().commit();
     }
 
