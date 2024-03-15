@@ -1,7 +1,7 @@
 package com.grape.tynamoBackend.dao;
 
 import com.grape.tynamoBackend.domain.Account;
-import jakarta.persistence.Query;
+
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
