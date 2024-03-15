@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DebugController {
     @Autowired DaoManager DAO;
     
-    @GetMapping(path="/user/all")
+    @GetMapping(path="/account/all")
     @Operation(summary = "Get all users", description = "")
     public List<Account>getAllUsers(){
         return DAO.getDaoAccount().getAll();
     }
     
-    @GetMapping(path="/user/id/{id}")
+    @GetMapping(path="/account/id/{id}")
     @Operation(summary = "Get user by ID", description = "")
     public Account getUserById(@PathVariable("id") Long id){
         return DAO.getDaoAccount().getById(id);
