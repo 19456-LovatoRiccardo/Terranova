@@ -23,7 +23,8 @@
 
 
   nav {
-    position: relative;
+    display: flex;
+    justify-content: center; /* Centra gli elementi del nav */
 }
 
 nav ul {
@@ -64,7 +65,24 @@ nav ul li a {
     padding: 0 20px; /* Aggiunge spazio intorno ai link */
 }
 
+.logoHome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  margin: 3px;
+  z-index: 1;
+}
 
+ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.login {
+  margin-left: auto; /* Sposta l'icona a destra */
+}
 
 
 
