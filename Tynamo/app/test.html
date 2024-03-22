@@ -1,0 +1,135 @@
+<html>
+    <style>
+        table,th,td {
+            border : 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td {
+            padding: 5px;
+        }
+    </style>
+    
+    <head>
+        <title>Terranova Test</title>
+    </head>
+
+    <body>
+        <h2>Terranova Test</h1>
+
+        <label for="indirizzo">Indirizzo IP:</label>
+        <input value="localhost" id="indirizzo">
+        <label for="porta">Porta:</label>
+        <input value="9091" id="porta">
+        <button type="button"
+                onclick="checkConnection()">
+            Check Connection
+        </button>
+        <output id="connectionResult"></output>
+
+        <p></p>
+        
+        <button type="button"
+                onclick="getAllAccounts()">
+            Get All Accounts
+        </button>
+        <table id="allAccountsResult"></table>
+
+        <p></p>
+
+        <p>Register</p>
+        <input placeholder="email" id="registerEmail">
+        <input placeholder="password" id="registerPassword">
+        <button type="button"
+                onclick="register()">
+            Register
+        </button>
+        <output id="registerResult"></output>
+
+        <p></p>
+
+        <p>Login</p>
+        <input placeholder="email" id="loginEmail">
+        <input placeholder="password" id="loginPassword">
+        <button type="button"
+                onclick="login()">
+            Login
+        </button>
+        <output id="loginResult"></output>
+        
+        <script>
+            function getIndirizzo() {
+                let indirizzoIp = document.getElementById("indirizzo").value
+                let numPorta = document.getElementById("porta").value
+                return  "http://" + indirizzoIp + ":" + numPorta + "/api/"
+            }
+            function inviaRichiestaGET(indirizzo, callback) {
+                let xhttp = new XMLHttpRequest()
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        callback(this)
+                    }
+                }
+                xhttp.open("GET", getIndirizzo()+indirizzo, true)
+                xhttp.send()
+            }
+            function inviaRichiestaPOST(indirizzo, body, callback) {
+                let xhttp = new XMLHttpRequest()
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        callback(this)
+                    }
+                }
+                xhttp.open("POST", getIndirizzo()+indirizzo, true)
+                xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+                xhttp.send(JSON.stringify(body))
+            }
+
+            function checkConnection() {
+                inviaRichiestaGET("debug/checkConnection", checkConnectionResult)
+                document.getElementById("connectionResult").innerHTML = "The Connection Failed."
+            }
+            function checkConnectionResult(xhttp) {
+                document.getElementById("connectionResult").innerHTML = "The Connection was Successful!"
+            }
+
+            function getAllAccounts() {
+                inviaRichiestaGET("debug/account/all", allAccountsResult)
+            }
+            function allAccountsResult(xhttp) {
+                var accounts = JSON.parse(xhttp.responseText)
+                var table = ""
+                table += "<tr>"
+                table += "<th>Email</th>"
+                table += "<th>Password</th>"
+                table += "</tr>"
+                for (var i=0; i < accounts.length; i++) {
+                    table += "<tr>"
+                    table += "<td>" + accounts[i]["email"] + "</td>"
+                    table += "<td>" + accounts[i]["password"] + "</td>"
+                    table += "</tr>"
+                }
+                document.getElementById("allAccountsResult").innerHTML = table
+            }
+
+            function register() {
+                let email = document.getElementById("registerEmail").value
+                let password = document.getElementById("registerPassword").value
+                let body = {"email": email, "password": password}
+                inviaRichiestaPOST("auth/register", body, registerResult)
+            }
+            function registerResult(xhttp) {
+                document.getElementById("registerResult").innerHTML = xhttp.responseText
+            }
+
+            function login() {
+                let email = document.getElementById("loginEmail").value
+                let password = document.getElementById("loginPassword").value
+                let body = {"email": email, "password": password}
+                inviaRichiestaPOST("auth/authenticate", body, loginResult)
+            }
+            function loginResult(xhttp) {
+                document.getElementById("loginResult").innerHTML = xhttp.responseText
+            }
+        </script>
+    </body>
+</html> 

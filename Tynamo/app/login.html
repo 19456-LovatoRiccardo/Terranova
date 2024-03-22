@@ -10,27 +10,25 @@
 </head>
 <body>
   <div class="wrapper">
-    <form action="">
-      <h1>Login</h1>
-      <div class="input-box">
-        <input type="password" placeholder="Codice Univoco" id="codice" required>
-        <img src="img/hide-img.png" id="occhioIconaCodice">
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Password" id="password" required>
-        <img src="img/hide-img.png" id="occhioIconaPassword">
-      </div>
-      <div class="remember-forgot">
-        <label><input type="checkbox">Ricordami</label>
-        <a href="resetPw.html">Password dimenticata ?</a>
-      </div>
-      
-      <button type="submit" class="btn">Login</button>
+    <h1>Login</h1>
+    <div class="input-box">
+      <input type="password" placeholder="Codice Univoco" id="codice" required>
+      <img src="img/hide-img.png" id="occhioIconaCodice">
+    </div>
+    <div class="input-box">
+      <input type="password" placeholder="Password" id="password" required>
+      <img src="img/hide-img.png" id="occhioIconaPassword">
+    </div>
+    <div class="remember-forgot">
+      <label><input type="checkbox">Ricordami</label>
+      <a href="resetPw.html">Password dimenticata ?</a>
+    </div>
+    
+    <button type="submit" class="btn" onclick="inviaRichiesta()">Login</button>
 
-      <div class="register-link">
-        <p>Non hai un contratto Tynamo? <a href="registerFirst.html"> Registrati subito.</a></p>
-      </div>
-    </form>
+    <div class="register-link">
+      <p>Non hai un contratto Tynamo? <a href="registerFirst.html"> Registrati subito.</a></p>
+    </div>
   </div>
 
 
@@ -94,12 +92,23 @@ const executeCodes = () => {
   });
 };
 window.addEventListener("load", executeCodes);
+    
+  function inviaRichiesta() {
+    var xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        authenticate(this)
+      }
+    }
+    xhttp.open("POST", "http://localhost:9091/api/auth/authenticate", true)
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({"email": codice.value, "password": password.value}));
+  }
 
-
-
+  function authenticate(xhttp) {
+    window.location.href = "home.html"
+  }
 
 </script>
-
-
 </body>
 </html>
