@@ -6,6 +6,7 @@ import com.grape.tynamoBackend.domain.Account;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,7 +25,12 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     
-    public AuthenticationResponse register(RegisterRequest request){
+    public ResponseEntity<?> register(RegisterRequest request) {
+        if (DAO.getDaoAccount().getByEmail(request.getEmail()) != null) {
+            var responseBuilder = ResponseEntity.badRequest();
+            return responseBuilder.body("Email already exists");
+        }
+        
         var account = Account.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -33,12 +39,13 @@ public class AuthenticationService {
         DAO.getDaoAccount().insert(account);
         
         var jwtToken = jwtService.generateToken(account);
-        return AuthenticationResponse.builder()
+        var response = AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+        return ResponseEntity.ok(response);
     }
     
-    public AuthenticationResponse authenticate(AuthenticationRequest request){
+    public ResponseEntity<?> authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                     request.getEmail(), 
@@ -47,11 +54,11 @@ public class AuthenticationService {
         );
         
         var user = DAO.getDaoAccount().getByEmail(request.getEmail());
-        //        .orElseThrow();
         
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
+        var response = AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+        return ResponseEntity.ok(response);
     }
 }
