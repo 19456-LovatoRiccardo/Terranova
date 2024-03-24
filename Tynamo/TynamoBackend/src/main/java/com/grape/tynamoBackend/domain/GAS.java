@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 /**
  * @author 20550
  */
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

@@ -146,6 +146,13 @@ public class Main {
             csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).withCSVParser(parser).build();
             while ((celle = csvReader.readNext()) != null) {
                 Contratto contratto;
+                for (int i=13;i<=16;i++) {
+                    if (celle[i].equals("1")) {
+                        celle[i] = "true";
+                    } else if (celle[i].equals("0")) {
+                        celle[i] = "false";
+                    }
+                }
                 switch (celle[6]) {
                     case "EE":
                         contratto = EE.builder()
