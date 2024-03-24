@@ -17,25 +17,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author 20550
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/debug")
 public class DebugController {
     @Autowired DaoManager DAO;
     
-    @CrossOrigin
     @GetMapping(path="/checkConnection")
     public boolean checkConnection(){
         return true;
     }
     
-    @CrossOrigin
     @GetMapping(path="/account/all")
     @Operation(summary = "Get all users", description = "")
     public List<Account> getAllUsers(){
         return DAO.getDaoAccount().getAll();
     }
     
-    @CrossOrigin
     @GetMapping(path="/account/id/{id}")
     @Operation(summary = "Get user by ID", description = "")
     public Account getUserById(@PathVariable("id") Long id){

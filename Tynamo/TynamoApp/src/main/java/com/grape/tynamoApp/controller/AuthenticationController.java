@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author 20550
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -26,19 +27,16 @@ public class AuthenticationController {
     @Autowired
     private final AuthenticationService service;
     
-    @CrossOrigin
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         return service.register(request);
     }
     
-    @CrossOrigin
     @PostMapping("/authenticate")
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) {
         return service.authenticate(request);
     }
     
-    @CrossOrigin
     @GetMapping("/logout")
     public ResponseEntity<?> logoutUser() {
         SecurityContextHolder.clearContext();
