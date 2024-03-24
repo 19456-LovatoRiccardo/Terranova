@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 /**
  * @author 20550
  */
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -33,6 +32,13 @@ public class Persona extends Anagrafica {
     }
 
     public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    @Builder
+    public Persona(String cognome, String nome, Long id, String ragSociale, String codiceFiscale, String indirizzo, int numCivico, int cap, String localita, String provincia, String nazione, String numTelefonico, String email, Persona contatto) {
+        super(id, ragSociale, codiceFiscale, indirizzo, numCivico, cap, localita, provincia, nazione, numTelefonico, email, contatto);
+        this.cognome = cognome;
         this.nome = nome;
     }
 

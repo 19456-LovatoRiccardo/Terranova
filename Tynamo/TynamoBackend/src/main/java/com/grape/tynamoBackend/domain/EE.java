@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 /**
  * @author 20550
  */
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -46,4 +45,12 @@ public class EE extends Contratto {
         this.energiaAnno = energiaAnno;
     }
 
+    @Builder
+    public EE(float potenzaImp, float potenzaDisp, float energiaAnno, Long id, String dataRichiestaServizi, String dataInizioValidita, String dataFineValidita, String descrizioneOfferta, String stato, String tipoPagamento, Sede sede) {
+        super(id, dataRichiestaServizi, dataInizioValidita, dataFineValidita, descrizioneOfferta, stato, tipoPagamento, sede);
+        this.potenzaImp = potenzaImp;
+        this.potenzaDisp = potenzaDisp;
+        this.energiaAnno = energiaAnno;
+    }
+    
 }

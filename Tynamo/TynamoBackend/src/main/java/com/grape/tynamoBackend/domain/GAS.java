@@ -66,4 +66,14 @@ public class GAS extends Contratto {
         this.usoCommerciale = usoCommerciale;
     }
 
+    @Builder
+    public GAS(float gasAnno, boolean usoCotturaCibi, boolean produzioneAcquaCalda, boolean riscaldamentoIndividuale, boolean usoCommerciale, Long id, String dataRichiestaServizi, String dataInizioValidita, String dataFineValidita, String descrizioneOfferta, String stato, String tipoPagamento, Sede sede) {
+        super(id, dataRichiestaServizi, dataInizioValidita, dataFineValidita, descrizioneOfferta, stato, tipoPagamento, sede);
+        this.gasAnno = gasAnno;
+        this.usoCotturaCibi = usoCotturaCibi;
+        this.produzioneAcquaCalda = produzioneAcquaCalda;
+        this.riscaldamentoIndividuale = riscaldamentoIndividuale;
+        this.usoCommerciale = usoCommerciale;
+    }
+
 }

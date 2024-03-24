@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 /**
  * @author 20550
  */
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,6 +22,12 @@ public class PartitaIVA extends Anagrafica {
     }
 
     public void setPartitaIVA(String partitaIVA) {
+        this.partitaIVA = partitaIVA;
+    }
+
+    @Builder
+    public PartitaIVA(String partitaIVA, Long id, String ragSociale, String codiceFiscale, String indirizzo, int numCivico, int cap, String localita, String provincia, String nazione, String numTelefonico, String email, Persona contatto) {
+        super(id, ragSociale, codiceFiscale, indirizzo, numCivico, cap, localita, provincia, nazione, numTelefonico, email, contatto);
         this.partitaIVA = partitaIVA;
     }
 
