@@ -3,6 +3,7 @@ package com.grape.tynamoBackend.domain;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import java.util.Collection;
@@ -24,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Account implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
     @Basic
     private String email;
