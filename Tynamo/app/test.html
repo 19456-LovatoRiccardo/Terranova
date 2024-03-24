@@ -18,11 +18,11 @@
 
         <label for="indirizzo">Indirizzo IP:</label>
         <input value="localhost" id="indirizzo">
-        <label for="porta">Porta:</label>
-        <input value="9091" id="porta">
+        <label for="porta">Numero di Porta:</label>
+        <input value="3336" id="porta">
         <button type="button"
                 onclick="checkConnection()">
-            Check Connection
+            Controlla Connessione
         </button>
         <output id="connectionResult"></output>
 
@@ -55,6 +55,16 @@
             Login
         </button>
         <output id="loginResult"></output>
+
+        <p></p>
+
+        <p>Richiedi Anagrafica</p>
+        <input placeholder="token" id="anagraficaToken">
+        <button type="button"
+                onclick="richiediAnagrafica()">
+            Richiedi
+        </button>
+        <output id="anagraficaResult"></output>
         
         <script>
             function getIndirizzo() {
@@ -62,8 +72,7 @@
                 let numPorta = document.getElementById("porta").value
                 return  "http://" + indirizzoIp + ":" + numPorta + "/api/"
             }
-            function inviaRichiestaGET(indirizzo, callback) {
-                let xhttp = new XMLHttpRequest()
+            function inviaRichiestaGET(xhttp, indirizzo, callback) {
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         callback(this)
@@ -72,8 +81,7 @@
                 xhttp.open("GET", getIndirizzo()+indirizzo, true)
                 xhttp.send()
             }
-            function inviaRichiestaPOST(indirizzo, body, callback) {
-                let xhttp = new XMLHttpRequest()
+            function inviaRichiestaPOST(xhttp, indirizzo, body, callback) {
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         callback(this)
@@ -85,15 +93,17 @@
             }
 
             function checkConnection() {
-                inviaRichiestaGET("debug/checkConnection", checkConnectionResult)
-                document.getElementById("connectionResult").innerHTML = "The Connection Failed."
+                let xhttp = new XMLHttpRequest()
+                inviaRichiestaGET(xhttp, "debug/checkConnection", checkConnectionResult)
+                document.getElementById("connectionResult").innerHTML = "Connessione Fallita."
             }
             function checkConnectionResult(xhttp) {
-                document.getElementById("connectionResult").innerHTML = "The Connection was Successful!"
+                document.getElementById("connectionResult").innerHTML = "Connessione Riuscita!"
             }
 
             function getAllAccounts() {
-                inviaRichiestaGET("debug/account/all", allAccountsResult)
+                let xhttp = new XMLHttpRequest()
+                inviaRichiestaGET(xhttp, "debug/account/all", allAccountsResult)
             }
             function allAccountsResult(xhttp) {
                 var accounts = JSON.parse(xhttp.responseText)
@@ -115,7 +125,8 @@
                 let email = document.getElementById("registerEmail").value
                 let password = document.getElementById("registerPassword").value
                 let body = {"email": email, "password": password}
-                inviaRichiestaPOST("auth/register", body, registerResult)
+                let xhttp = new XMLHttpRequest()
+                inviaRichiestaPOST(xhttp, "auth/register", body, registerResult)
             }
             function registerResult(xhttp) {
                 document.getElementById("registerResult").innerHTML = xhttp.responseText
@@ -125,10 +136,21 @@
                 let email = document.getElementById("loginEmail").value
                 let password = document.getElementById("loginPassword").value
                 let body = {"email": email, "password": password}
-                inviaRichiestaPOST("auth/authenticate", body, loginResult)
+                let xhttp = new XMLHttpRequest()
+                inviaRichiestaPOST(xhttp, "auth/authenticate", body, loginResult)
             }
             function loginResult(xhttp) {
                 document.getElementById("loginResult").innerHTML = xhttp.responseText
+            }
+
+            function richiediAnagrafica() {
+                let token = document.getElementById("anagraficaToken").value
+                let xhttp = new XMLHttpRequest()
+                xhttp.setRequestHeader('Authorization','Bearer ' + token)
+                inviaRichiestaGET(xhttp, "privateArea/anagrafica", richiediAnagraficaResult)
+            }
+            function richiediAnagraficaResult(xhttp) {
+                document.getElementById("anagraficaResult").innerHTML = xhttp.responseText
             }
         </script>
     </body>
