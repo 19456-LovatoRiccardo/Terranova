@@ -11,18 +11,24 @@ public class DaoManager {
     
     private final static EntityManager em;
     private final static DaoAccount daoAccount;
+    private final static DaoAnagrafica daoAnagrafica;
 
     static {
         em =  Persistence.createEntityManagerFactory("DEFAULT_PU").createEntityManager();
         daoAccount = new DaoAccount();
+        daoAnagrafica = new DaoAnagrafica();
     }
 
-    public static EntityManager getEM(){
+    public static EntityManager getEM() {
         return DaoManager.em;
     }
 
-    public static DaoAccount getDaoAccount(){
+    public static DaoAccount getDaoAccount() {
         return daoAccount;
     }
-        
+    
+    public static DaoAnagrafica getDaoAnagrafica() {
+        return daoAnagrafica;
+    }
+    
 }

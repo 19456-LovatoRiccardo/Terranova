@@ -1,6 +1,6 @@
 package com.grape.tynamoBackend.dao;
 
-import com.grape.tynamoBackend.domain.Account;
+import com.grape.tynamoBackend.domain.Anagrafica;
 
 import jakarta.persistence.TypedQuery;
 import java.util.List;
@@ -9,45 +9,45 @@ import java.util.List;
  *
  * @author 20550
  */
-public class DaoAccount {
+public class DaoAnagrafica {
     
-    public void insert(Account riga) {
+    public void insert(Anagrafica riga) {
         DaoManager.getEM().getTransaction().begin();
         DaoManager.getEM().persist(riga);
         DaoManager.getEM().getTransaction().commit();
     }
     
-    public List<Account> getAll() {
-        List<Account> listaRighe;
+    public List<Anagrafica> getAll() {
+        List<Anagrafica> listaRighe;
         DaoManager.getEM().getTransaction().begin();
-        TypedQuery tq = DaoManager.getEM().createQuery("SELECT x FROM Account x", Account.class);
+        TypedQuery tq = DaoManager.getEM().createQuery("SELECT x FROM Anagrafica x", Anagrafica.class);
         listaRighe = tq.getResultList();
         DaoManager.getEM().getTransaction().commit();
         return listaRighe;
     }
     
-    public Account getById(Long id) {
-        return DaoManager.getEM().find(Account.class, id);
+    public Anagrafica getById(Long id) {
+        return DaoManager.getEM().find(Anagrafica.class, id);
     }
-    
-    public void update(Account nuovaRiga) {
+
+    public void update(Anagrafica nuovaRiga) {
         DaoManager.getEM().getTransaction().begin();
-        Account rigaTabella = DaoManager.getEM().find(Account.class, nuovaRiga.getId());
+        Anagrafica rigaTabella = DaoManager.getEM().find(Anagrafica.class, nuovaRiga.getId());
         rigaTabella = nuovaRiga;
         DaoManager.getEM().getTransaction().commit();
     }
     
-    public void remove(Account riga) {
+    public void remove(Anagrafica riga) {
         DaoManager.getEM().getTransaction().begin();
         DaoManager.getEM().remove(riga);
         DaoManager.getEM().getTransaction().commit();
     }
     
-    public Account getByEmail(String email) {
-        Account account = null;
+    public Anagrafica getByEmail(String email) {
+        Anagrafica account = null;
         DaoManager.getEM().getTransaction().begin();
         try {
-            TypedQuery<Account> tq = DaoManager.getEM().createQuery("SELECT a FROM Account a WHERE a.email=:email", Account.class);
+            TypedQuery<Anagrafica> tq = DaoManager.getEM().createQuery("SELECT a FROM Anagrafica a WHERE a.email=:email", Anagrafica.class);
             tq.setParameter("email", email);
             account = tq.getSingleResult();
         } finally {

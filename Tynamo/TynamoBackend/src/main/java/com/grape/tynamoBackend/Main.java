@@ -92,16 +92,14 @@ public class Main {
                                 .build();
                         break;
                 }
-                DaoManager.getEM().getTransaction().begin();
-                DaoManager.getEM().persist(anagrafica);
-                DaoManager.getEM().getTransaction().commit();
+                DaoManager.getDaoAnagrafica().insert(anagrafica);
             }
             
             // Contatti
             filereader = new FileReader("../../dataset/Contatti.csv"); 
             csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).withCSVParser(parser).build();
             while ((celle = csvReader.readNext()) != null) {
-                Persona persona = Persona.builder()
+                Persona contatto = Persona.builder()
                         .cognome(celle[1])
                         .nome(celle[2])
                         .ragSociale(celle[3])
@@ -115,10 +113,16 @@ public class Main {
                         .numTelefonico(celle[12])
                         .email(celle[13])
                         .build();
+                DaoManager.getDaoAnagrafica().insert(contatto);
+                Anagrafica anagraficaConContatto = DaoManager.getDaoAnagrafica().getById(Long.valueOf(celle[0]));
+                anagraficaConContatto.setContatto(contatto);
+                DaoManager.getDaoAnagrafica().update(anagraficaConContatto);
+                /*
                 DaoManager.getEM().getTransaction().begin();
-                DaoManager.getEM().persist(persona);
-                DaoManager.getEM().find(Anagrafica.class, Long.valueOf(celle[0])).setContatto(persona);
+                DaoManager.getEM().persist(contatto);
+                DaoManager.getEM().find(Anagrafica.class, Long.valueOf(celle[0])).setContatto(contatto);
                 DaoManager.getEM().getTransaction().commit();
+                */
             }
             
             // Sedi
