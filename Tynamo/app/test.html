@@ -47,9 +47,23 @@
 
         <p></p>
 
-        <p>Register (Non Funzionante)</p>
+        <p>Register</p>
         <input placeholder="email" id="registerEmail">
         <input placeholder="password" id="registerPassword">
+        <input placeholder="cognome" id="registerCognome">
+        <input placeholder="nome" id="registerNome">
+        <br>
+        <input type="number" placeholder="numero civico" id="registerNumCivico">
+        <input type="number" placeholder="cap" id="registerCap">
+        <input placeholder="ragione sociale" id="registerRagSociale">
+        <br>
+        <input value="codice fiscale" id="registerCodiceFiscale">
+        <input value="indirizzo" id="registerIndirizzo">
+        <input value="località" id="registerLocalita">
+        <br>
+        <input value="provincia" id="registerProvincia">
+        <input value="nazione" id="registerNazione">
+        <input value="numero telefonico" id="registerNumTelefonico">
         <button type="button"
                 onclick="register()">
             Register
@@ -65,6 +79,14 @@
             Richiedi
         </button>
         <output id="anagraficaResult"></output>
+
+        <p></p>
+        
+        <button type="button"
+                onclick="getAllAnagrafiche()">
+            Get All Anagrafiche
+        </button>
+        <table id="allAnagraficheResult"></table>
         
         <script>
             function getIndirizzo() {
@@ -117,7 +139,22 @@
             function register() {
                 let email = document.getElementById("registerEmail").value
                 let password = document.getElementById("registerPassword").value
-                let body = {"email": email, "password": password}
+                let cognome = document.getElementById("registerCognome").value
+                let nome = document.getElementById("registerNome").value
+                let ragSociale = document.getElementById("registerRagSociale").value
+                let codiceFiscale = document.getElementById("registerCodiceFiscale").value
+                let indirizzo = document.getElementById("registerIndirizzo").value
+                let numCivico = document.getElementById("registerNumCivico").value
+                let cap = document.getElementById("registerCap").value
+                let localita = document.getElementById("registerLocalita").value
+                let provincia = document.getElementById("registerProvincia").value
+                let nazione = document.getElementById("registerNazione").value
+                let numTelefonico = document.getElementById("registerNumTelefonico").value
+                let body = {"email": email, "password": password, "cognome": cognome, "nome": nome,
+                            "ragSociale": ragSociale, "codiceFiscale": codiceFiscale, "indirizzo": indirizzo,
+                            "numCivico": numCivico, "cap": cap, "localita": localita, "provincia": provincia,
+                            "nazione": nazione, "numTelefonico": numTelefonico}
+
                 let xhttp = new XMLHttpRequest()
                 preparaRichiesta(xhttp, registerResult)
                 xhttp.open("POST", getIndirizzo()+"auth/register", true)
@@ -154,6 +191,28 @@
             }
             function richiediAnagraficaResult(xhttp) {
                 document.getElementById("anagraficaResult").innerHTML = xhttp.responseText
+            }
+
+            function getAllAnagrafiche() {
+                let xhttp = new XMLHttpRequest()
+                preparaRichiesta(xhttp, allAnagraficheResult)
+                xhttp.open("GET", getIndirizzo()+"debug/anagrafica/all", true)
+                xhttp.send()
+            }
+            function allAnagraficheResult(xhttp) {
+                var anagrafiche = JSON.parse(xhttp.responseText)
+                var table = ""
+                table += "<tr>"
+                table += "<th>ID</th>"
+                table += "<th>Ragione Sociale</th>"
+                table += "</tr>"
+                for (var i=0; i < anagrafiche.length; i++) {
+                    table += "<tr>"
+                    table += "<td>" + anagrafiche[i]["id"] + "</td>"
+                    table += "<td>" + anagrafiche[i]["ragSociale"] + "</td>"
+                    table += "</tr>"
+                }
+                document.getElementById("allAnagraficheResult").innerHTML = table
             }
         </script>
     </body>
