@@ -22,32 +22,6 @@ import java.io.FileReader;
 public class Main {
 
     public static void main(String[] args) {
-        /*
-        Account acc1 = Account.builder()
-                .email("PaoloGamer")
-                .password("p154")
-                .build();
-        Account acc2 = Account.builder()
-                .email("BadlandsLoner")
-                .password("1234")
-                .build();
-        
-        DaoAccount daoAccount = DaoManager.getDaoAccount();
-
-        // Create
-        daoAccount.insert(acc1);
-        daoAccount.insert(acc2);
-        
-        // Update
-        acc2.setEmail("GigioBadlands");
-        acc2.setPassword("54321");
-        daoAccount.update(acc2);
-
-        // Cleanup database
-        daoAccount.remove(acc1);
-        daoAccount.remove(acc2);
-        */
-        
         try {
             CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
             String[] celle;
@@ -117,12 +91,6 @@ public class Main {
                 Anagrafica anagraficaConContatto = DaoManager.getDaoAnagrafica().getById(Long.valueOf(celle[0]));
                 anagraficaConContatto.setContatto(contatto);
                 DaoManager.getDaoAnagrafica().update(anagraficaConContatto);
-                /*
-                DaoManager.getEM().getTransaction().begin();
-                DaoManager.getEM().persist(contatto);
-                DaoManager.getEM().find(Anagrafica.class, Long.valueOf(celle[0])).setContatto(contatto);
-                DaoManager.getEM().getTransaction().commit();
-                */
             }
             
             // Sedi
@@ -140,9 +108,7 @@ public class Main {
                         .provincia(celle[7])
                         .nazione(celle[8])
                         .build();
-                DaoManager.getEM().getTransaction().begin();
-                DaoManager.getEM().persist(sede);
-                DaoManager.getEM().getTransaction().commit();
+                DaoManager.getDaoSede().insert(sede);
             }
             
             // Contratti
@@ -211,11 +177,11 @@ public class Main {
                                 .build();
                         break;
                 }
-                DaoManager.getEM().getTransaction().begin();
-                DaoManager.getEM().persist(contratto);
-                DaoManager.getEM().getTransaction().commit();
+                DaoManager.getDaoContratto().insert(contratto);
             }
-        } catch (Exception e) { } 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }
     
 }
