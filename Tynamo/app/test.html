@@ -10,16 +10,16 @@
     </style>
     
     <head>
-        <title>Terranova Test</title>
+        <title>Terranova Debug Test</title>
     </head>
 
     <body>
-        <h2>Terranova Test</h1>
+        <h2>Terranova Debug Test</h1>
 
         <label for="indirizzo">Indirizzo IP:</label>
         <input value="localhost" id="indirizzo">
         <label for="porta">Numero di Porta:</label>
-        <input value="3336" id="porta">
+        <input value="9091" id="porta">
         <button type="button"
                 onclick="checkConnection()">
             Controlla Connessione
@@ -36,17 +36,6 @@
 
         <p></p>
 
-        <p>Register</p>
-        <input placeholder="email" id="registerEmail">
-        <input placeholder="password" id="registerPassword">
-        <button type="button"
-                onclick="register()">
-            Register
-        </button>
-        <output id="registerResult"></output>
-
-        <p></p>
-
         <p>Login</p>
         <input placeholder="email" id="loginEmail">
         <input placeholder="password" id="loginPassword">
@@ -55,6 +44,17 @@
             Login
         </button>
         <output id="loginResult"></output>
+
+        <p></p>
+
+        <p>Register (Non Funzionante)</p>
+        <input placeholder="email" id="registerEmail">
+        <input placeholder="password" id="registerPassword">
+        <button type="button"
+                onclick="register()">
+            Register
+        </button>
+        <output id="registerResult"></output>
 
         <p></p>
 
@@ -72,29 +72,20 @@
                 let numPorta = document.getElementById("porta").value
                 return  "http://" + indirizzoIp + ":" + numPorta + "/api/"
             }
-            function inviaRichiestaGET(xhttp, indirizzo, callback) {
+            function preparaRichiesta(xhttp, callback) {
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         callback(this)
                     }
                 }
-                xhttp.open("GET", getIndirizzo()+indirizzo, true)
-                xhttp.send()
-            }
-            function inviaRichiestaPOST(xhttp, indirizzo, body, callback) {
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        callback(this)
-                    }
-                }
-                xhttp.open("POST", getIndirizzo()+indirizzo, true)
-                xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-                xhttp.send(JSON.stringify(body))
+                return xhttp
             }
 
             function checkConnection() {
                 let xhttp = new XMLHttpRequest()
-                inviaRichiestaGET(xhttp, "debug/checkConnection", checkConnectionResult)
+                preparaRichiesta(xhttp, checkConnectionResult)
+                xhttp.open("GET", getIndirizzo()+"debug/checkConnection", true)
+                xhttp.send()
                 document.getElementById("connectionResult").innerHTML = "Connessione Fallita."
             }
             function checkConnectionResult(xhttp) {
@@ -103,7 +94,9 @@
 
             function getAllAccounts() {
                 let xhttp = new XMLHttpRequest()
-                inviaRichiestaGET(xhttp, "debug/account/all", allAccountsResult)
+                preparaRichiesta(xhttp, allAccountsResult)
+                xhttp.open("GET", getIndirizzo()+"debug/account/all", true)
+                xhttp.send()
             }
             function allAccountsResult(xhttp) {
                 var accounts = JSON.parse(xhttp.responseText)
@@ -126,10 +119,14 @@
                 let password = document.getElementById("registerPassword").value
                 let body = {"email": email, "password": password}
                 let xhttp = new XMLHttpRequest()
-                inviaRichiestaPOST(xhttp, "auth/register", body, registerResult)
+                preparaRichiesta(xhttp, registerResult)
+                xhttp.open("POST", getIndirizzo()+"auth/register", true)
+                xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+                xhttp.send(JSON.stringify(body))
             }
             function registerResult(xhttp) {
-                document.getElementById("registerResult").innerHTML = xhttp.responseText
+                let token = JSON.parse(xhttp.responseText).token
+                document.getElementById("registerResult").innerHTML = "Token: " + token
             }
 
             function login() {
@@ -137,17 +134,23 @@
                 let password = document.getElementById("loginPassword").value
                 let body = {"email": email, "password": password}
                 let xhttp = new XMLHttpRequest()
-                inviaRichiestaPOST(xhttp, "auth/authenticate", body, loginResult)
+                preparaRichiesta(xhttp, loginResult)
+                xhttp.open("POST", getIndirizzo()+"auth/authenticate", true)
+                xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+                xhttp.send(JSON.stringify(body))
             }
             function loginResult(xhttp) {
-                document.getElementById("loginResult").innerHTML = xhttp.responseText
+                let token = JSON.parse(xhttp.responseText).token
+                document.getElementById("loginResult").innerHTML = "Token: " + token
             }
 
             function richiediAnagrafica() {
                 let token = document.getElementById("anagraficaToken").value
                 let xhttp = new XMLHttpRequest()
+                preparaRichiesta(xhttp, richiediAnagraficaResult)
+                xhttp.open("GET", getIndirizzo()+"privateArea/anagrafica", true)
                 xhttp.setRequestHeader('Authorization','Bearer ' + token)
-                inviaRichiestaGET(xhttp, "privateArea/anagrafica", richiediAnagraficaResult)
+                xhttp.send()
             }
             function richiediAnagraficaResult(xhttp) {
                 document.getElementById("anagraficaResult").innerHTML = xhttp.responseText

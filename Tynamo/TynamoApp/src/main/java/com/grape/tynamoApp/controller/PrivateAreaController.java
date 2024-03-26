@@ -27,7 +27,7 @@ public class PrivateAreaController {
     
     @GetMapping("/anagrafica")
     public Anagrafica anagrafica(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
-        var account = DAO.getDaoAccount().getByEmail(jwtService.extractUsername(token));
+        var account = DAO.getDaoAccount().getByEmail(jwtService.extractUsername(token.substring(7)));
         return account.getAnagrafica();
     }
 }
