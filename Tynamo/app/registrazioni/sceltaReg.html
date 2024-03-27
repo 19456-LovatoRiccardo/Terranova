@@ -17,12 +17,12 @@
             <h2 style="text-align: center;">Scegli il tipo di account:</h2>
             <br></br>
             <label class="radio">
-                <input type="radio" value="Privato" name="Privato" required>
+                <input type="radio" value="Privato" name="radio" required>
                 Privato
                 <span></span>
             </label>
             <label class="radio">
-                <input type="radio" value="Azienda" name="Azienda" required>
+                <input type="radio" value="Azienda" name="radio" required>
                 Azienda
                 <span></span>
             </label>
@@ -30,7 +30,7 @@
         </div>
       
 
-      <button type="submit" class="btn" onclick="controllo()">Avanti</button>
+      <button type="button" class="btn" onclick="controllo()">Avanti</button>
 
       <div class="register-link">
         <p>Hai gia' un account Tynamo? <a href="../login.html"> Accedi qui.</a></p>
@@ -44,14 +44,12 @@ let radioAzienda = document.getElementsByName("Azienda");
 
 function controllo() {
     if (radioPrivato.value = "Privato"){
-        location.href = "registerPrivato.html";
+      window.location.href = "registerPrivato.html";
     }
-    else {
-      location.href = "registerAzienda.html";
+    else if (radioAzienda = "Azienda"){
+      window.location.href = "registerAzienda.html";
     }
-        
-    }
-
+}
 </script>
 
 
