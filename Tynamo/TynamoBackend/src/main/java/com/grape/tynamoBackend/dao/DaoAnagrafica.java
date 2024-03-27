@@ -50,6 +50,8 @@ public class DaoAnagrafica {
             TypedQuery<Anagrafica> tq = DaoManager.getEM().createQuery("SELECT a FROM Anagrafica a WHERE a.email=:email", Anagrafica.class);
             tq.setParameter("email", email);
             account = tq.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             DaoManager.getEM().getTransaction().commit();
         }

@@ -50,6 +50,8 @@ public class DaoAccount {
             TypedQuery<Account> tq = DaoManager.getEM().createQuery("SELECT a FROM Account a WHERE a.email=:email", Account.class);
             tq.setParameter("email", email);
             account = tq.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             DaoManager.getEM().getTransaction().commit();
         }

@@ -27,12 +27,10 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     
     public ResponseEntity<?> register(RegisterRequest request) {
-        /*
         if (DAO.getDaoAccount().getByEmail(request.getEmail()) != null || DAO.getDaoAnagrafica().getByEmail(request.getEmail()) != null) {
             var responseBuilder = ResponseEntity.badRequest();
             return responseBuilder.body("Email already exists");
         }
-        */
         
         var anagrafica = Persona.builder()
                 .cognome(request.getCognome())
