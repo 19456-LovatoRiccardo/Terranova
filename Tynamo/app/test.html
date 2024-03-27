@@ -88,6 +88,14 @@
         </button>
         <table id="allAnagraficheResult"></table>
         
+        <p></p>
+        
+        <button type="button"
+                onclick="getAllContratti()">
+            Get All Anagrafiche
+        </button>
+        <table id="allContrattiResult"></table>
+        
         <script>
             function getIndirizzo() {
                 let indirizzoIp = document.getElementById("indirizzo").value
@@ -213,6 +221,28 @@
                     table += "</tr>"
                 }
                 document.getElementById("allAnagraficheResult").innerHTML = table
+            }
+            
+            function getAllContratti() {
+                let xhttp = new XMLHttpRequest()
+                preparaRichiesta(xhttp, allContrattiResult)
+                xhttp.open("GET", getIndirizzo()+"debug/contratto/all", true)
+                xhttp.send()
+            }
+            function allContrattiResult(xhttp) {
+                var contratti = JSON.parse(xhttp.responseText)
+                var table = ""
+                table += "<tr>"
+                table += "<th>ID</th>"
+                table += "<thDescrizione Offerta</th>"
+                table += "</tr>"
+                for (var i=0; i < contratti.length; i++) {
+                    table += "<tr>"
+                    table += "<td>" + contratti[i]["id"] + "</td>"
+                    table += "<td>" + contratti[i]["descrizioneOfferta"] + "</td>"
+                    table += "</tr>"
+                }
+                document.getElementById("allContrattiResult").innerHTML = table
             }
         </script>
     </body>
