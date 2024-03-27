@@ -16,15 +16,18 @@
     <body>
         <h2>Terranova Debug Test</h1>
 
-        <label for="indirizzo">Indirizzo IP:</label>
-        <input value="localhost" id="indirizzo">
-        <label for="porta">Numero di Porta:</label>
-        <input value="9091" id="porta">
-        <button type="button"
-                onclick="checkConnection()">
-            Controlla Connessione
-        </button>
-        <output id="connectionResult"></output>
+        <iframe name="noRedirect" id="noRedirect" style="display: none"></iframe>
+
+        <form action="" target="noRedirect" onsubmit="checkConnection()">
+            <label for="indirizzo">Indirizzo IP:</label>
+            <input value="localhost" id="indirizzo" required>
+            <label for="porta">Numero di Porta:</label>
+            <input value="9091" id="porta" required>
+            <button type="submit">
+                Controlla Connessione
+            </button>
+            <output id="connectionResult"></output>
+        </form>
 
         <p></p>
         
@@ -36,49 +39,52 @@
 
         <p></p>
 
-        <p>Login</p>
-        <input placeholder="email" id="loginEmail">
-        <input placeholder="password" id="loginPassword">
-        <button type="button"
-                onclick="login()">
-            Login
-        </button>
-        <output id="loginResult"></output>
+        <form action="" target="noRedirect" onsubmit="login()">
+            <p>Login</p>
+            <input placeholder="email" id="loginEmail" required>
+            <input placeholder="password" id="loginPassword" required>
+            <button type="submit">
+                Login
+            </button>
+            <output id="loginResult"></output>
+        </form>
 
         <p></p>
 
-        <p>Register</p>
-        <input placeholder="email" id="registerEmail">
-        <input placeholder="password" id="registerPassword">
-        <input placeholder="cognome" id="registerCognome">
-        <input placeholder="nome" id="registerNome">
-        <br>
-        <input type="number" placeholder="numero civico" id="registerNumCivico">
-        <input type="number" placeholder="cap" id="registerCap">
-        <input placeholder="ragione sociale" id="registerRagSociale">
-        <br>
-        <input value="codice fiscale" id="registerCodiceFiscale">
-        <input value="indirizzo" id="registerIndirizzo">
-        <input value="località" id="registerLocalita">
-        <br>
-        <input value="provincia" id="registerProvincia">
-        <input value="nazione" id="registerNazione">
-        <input value="numero telefonico" id="registerNumTelefonico">
-        <button type="button"
-                onclick="register()">
-            Register
-        </button>
-        <output id="registerResult"></output>
+        <form action="" target="noRedirect" onsubmit="register()">
+            <p>Register</p>
+            <input placeholder="email" id="registerEmail" required>
+            <input placeholder="password" id="registerPassword" required>
+            <input placeholder="cognome" id="registerCognome" required>
+            <input placeholder="nome" id="registerNome" required>
+            <br>
+            <input type="number" placeholder="numero civico" id="registerNumCivico" required>
+            <input type="number" placeholder="cap" id="registerCap" required>
+            <input placeholder="ragione sociale" id="registerRagSociale" required>
+            <br>
+            <input placeholder="codice fiscale" value="codice fiscale" id="registerCodiceFiscale" required>
+            <input placeholder="indirizzo" value="indirizzo" id="registerIndirizzo" required>
+            <input placeholder="località" value="località" id="registerLocalita" required>
+            <br>
+            <input placeholder="provincia" value="provincia" id="registerProvincia" required>
+            <input placeholder="nazione" value="nazione" id="registerNazione" required>
+            <input placeholder="numero telefonico" value="numero telefonico" id="registerNumTelefonico" required>
+            <button type="submit">
+                Register
+            </button>
+            <output id="registerResult"></output>
+        </form>
 
         <p></p>
 
-        <p>Richiedi Anagrafica</p>
-        <input placeholder="token" id="anagraficaToken">
-        <button type="button"
-                onclick="richiediAnagrafica()">
-            Richiedi
-        </button>
-        <output id="anagraficaResult"></output>
+        <form action="" target="noRedirect" onsubmit="richiediAnagrafica()">
+            <p>Richiedi Anagrafica</p>
+            <input placeholder="token" id="anagraficaToken" required>
+            <button type="submit">
+                Richiedi
+            </button>
+            <output id="anagraficaResult"></output>
+        </form>
 
         <p></p>
         
@@ -102,6 +108,7 @@
                 let numPorta = document.getElementById("porta").value
                 return  "http://" + indirizzoIp + ":" + numPorta + "/api/"
             }
+            
             function preparaRichiesta(xhttp, callback) {
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
@@ -132,13 +139,19 @@
                 var accounts = JSON.parse(xhttp.responseText)
                 var table = ""
                 table += "<tr>"
+                table += "<th>ID</th>"
                 table += "<th>Email</th>"
                 table += "<th>Password</th>"
+                table += "<th>ID Anagrafica</th>"
+                table += "<th>Ragione Sociale</th>"
                 table += "</tr>"
                 for (var i=0; i < accounts.length; i++) {
                     table += "<tr>"
+                    table += "<td>" + accounts[i]["id"] + "</td>"
                     table += "<td>" + accounts[i]["email"] + "</td>"
                     table += "<td>" + accounts[i]["password"] + "</td>"
+                    table += "<td>" + accounts[i]["anagrafica"]["id"] + "</td>"
+                    table += "<td>" + accounts[i]["anagrafica"]["ragSociale"] + "</td>"
                     table += "</tr>"
                 }
                 document.getElementById("allAccountsResult").innerHTML = table
@@ -213,11 +226,17 @@
                 table += "<tr>"
                 table += "<th>ID</th>"
                 table += "<th>Ragione Sociale</th>"
+                table += "<th>Codice Fiscale</th>"
+                table += "<th>Indirizzo</th>"
+                table += "<th>Località</th>"
                 table += "</tr>"
                 for (var i=0; i < anagrafiche.length; i++) {
                     table += "<tr>"
                     table += "<td>" + anagrafiche[i]["id"] + "</td>"
                     table += "<td>" + anagrafiche[i]["ragSociale"] + "</td>"
+                    table += "<td>" + anagrafiche[i]["codiceFiscale"] + "</td>"
+                    table += "<td>" + anagrafiche[i]["indirizzo"] + "</td>"
+                    table += "<td>" + anagrafiche[i]["localita"] + "</td>"
                     table += "</tr>"
                 }
                 document.getElementById("allAnagraficheResult").innerHTML = table
@@ -234,12 +253,22 @@
                 var table = ""
                 table += "<tr>"
                 table += "<th>ID</th>"
-                table += "<thDescrizione Offerta</th>"
+                table += "<th>Descrizione Offerta</th>"
+                table += "<th>Stato</th>"
+                table += "<th>Tipo pagamento</th>"
+                table += "<th>ID Sede</th>"
+                table += "<th>Indirizzo</th>"
+                table += "<th>Località</th>"
                 table += "</tr>"
                 for (var i=0; i < contratti.length; i++) {
                     table += "<tr>"
                     table += "<td>" + contratti[i]["id"] + "</td>"
                     table += "<td>" + contratti[i]["descrizioneOfferta"] + "</td>"
+                    table += "<td>" + contratti[i]["stato"] + "</td>"
+                    table += "<td>" + contratti[i]["tipoPagamento"] + "</td>"
+                    table += "<td>" + contratti[i]["sede"]["id"] + "</td>"
+                    table += "<td>" + contratti[i]["sede"]["indirizzo"] + "</td>"
+                    table += "<td>" + contratti[i]["sede"]["localita"] + "</td>"
                     table += "</tr>"
                 }
                 document.getElementById("allContrattiResult").innerHTML = table
