@@ -22,7 +22,7 @@ public class JwtService {
     private static final String SECRET_KEY = "qi+Et/TK2Ls84b6aqN6fHmvf9dyZe500l0wrOfevjOM+3gtIrEKBgIiXFqgxYBUc";
     private static final long EXPIRATION_TIME = 5*60*1000; //timeout token -> 5'
     
-    String extractUsername(String token) {
+    public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
     

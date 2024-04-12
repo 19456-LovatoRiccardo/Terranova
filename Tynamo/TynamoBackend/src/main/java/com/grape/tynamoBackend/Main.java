@@ -1,10 +1,19 @@
 package com.grape.tynamoBackend;
 
 import com.grape.tynamoBackend.dao.DaoManager;
-import com.grape.tynamoBackend.dao.DaoUtente;
-import com.grape.tynamoBackend.domain.Utente;
-
-import java.util.List;
+import com.grape.tynamoBackend.domain.Anagrafica;
+import com.grape.tynamoBackend.domain.Contratto;
+import com.grape.tynamoBackend.domain.EE;
+import com.grape.tynamoBackend.domain.EEandGAS;
+import com.grape.tynamoBackend.domain.GAS;
+import com.grape.tynamoBackend.domain.PartitaIVA;
+import com.grape.tynamoBackend.domain.Persona;
+import com.grape.tynamoBackend.domain.Sede;
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import java.io.FileReader;
 
 /**
  *
@@ -12,59 +21,167 @@ import java.util.List;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Utente utente1 = Utente.builder()
-                .username("PaoloGamer")
-                .password("p154")
-                .build();
-        Utente utente2 = Utente.builder()
-                .username("Pier1689")
-                .password("h2zbM")
-                .build();
-        Utente utente3 = Utente.builder()
-                .username("BadlandsLoner")
-                .password("1234")
-                .build();
-        
-        DaoUtente daoUtente = DaoManager.getDaoUtente();
-
-        // Create
-        daoUtente.insert(utente1);
-        daoUtente.insert(utente2);
-        daoUtente.insert(utente3);
-        
-        // Read
-        Utente utenteTestRead = daoUtente.getByUsername("Pier1689");
-        
-        // Update
-        utente1.setUsername("PaoloGamer64");
-        daoUtente.update(utente1);
-        Utente utenteTestUpdate = daoUtente.getByUsername("PaoloGamer64");
-
-        // Delete
-        daoUtente.remove(utente3);
-        List<Utente> elencoUtenti = daoUtente.getAll();
-        
-        // Print test results
-        System.out.println("\nTest Read");
-        System.out.println("UTENTI");
-        System.out.println("ID\tUSERNAME\tPASSWORD");
-        System.out.println(utenteTestRead.getId()+"\t"+utenteTestRead.getUsername()+"\t"+utenteTestRead.getPassword());
-        
-        System.out.println("\nTest Update");
-        System.out.println("UTENTI");
-        System.out.println("ID\tUSERNAME\tPASSWORD");
-        System.out.println(utenteTestUpdate.getId()+"\t"+utenteTestUpdate.getUsername()+"\t"+utenteTestUpdate.getPassword());
-        
-        System.out.println("\nTest Read All (after Remove)");
-        System.out.println("UTENTI");
-        System.out.println("ID\tUSERNAME\tPASSWORD");
-        for (Utente utente : elencoUtenti) {
-            System.out.println(utente.getId()+"\t"+utente.getUsername()+"\t"+utente.getPassword());
-        }
+        try {
+            CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
+            String[] celle;
+            
+            // Anagrafiche
+            FileReader filereader = new FileReader("../../dataset/Anagrafiche.csv"); 
+            CSVReader csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).withCSVParser(parser).build();
+            while ((celle = csvReader.readNext()) != null) {
+                Anagrafica anagrafica;
+                switch (celle[4]) {
+                    case "":    // Persona
+                        anagrafica = Persona.builder()
+                                .id(Long.valueOf(celle[0]))
+                                .cognome(celle[1])
+                                .nome(celle[2])
+                                .ragSociale(celle[3])
+                                .codiceFiscale(celle[5])
+                                .indirizzo(celle[6])
+                                .numCivico(Integer.parseInt(celle[7]))
+                                .cap(Integer.parseInt(celle[8]))
+                                .localita(celle[9])
+                                .provincia(celle[10])
+                                .nazione(celle[11])
+                                .numTelefonico(celle[12])
+                                .email(celle[13])
+                                .build();
+                        break;
+                    default:    // PartitaIVA
+                        anagrafica = PartitaIVA.builder()
+                                .id(Long.valueOf(celle[0]))
+                                .ragSociale(celle[3])
+                                .partitaIVA(celle[4])
+                                .codiceFiscale(celle[5])
+                                .indirizzo(celle[6])
+                                .numCivico(Integer.parseInt(celle[7]))
+                                .cap(Integer.parseInt(celle[8]))
+                                .localita(celle[9])
+                                .provincia(celle[10])
+                                .nazione(celle[11])
+                                .numTelefonico(celle[12])
+                                .email(celle[13])
+                                .build();
+                        break;
+                }
+                DaoManager.getDaoAnagrafica().insert(anagrafica);
+            }
+            
+            // Contatti
+            filereader = new FileReader("../../dataset/Contatti.csv"); 
+            csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).withCSVParser(parser).build();
+            while ((celle = csvReader.readNext()) != null) {
+                Persona contatto = Persona.builder()
+                        .cognome(celle[1])
+                        .nome(celle[2])
+                        .ragSociale(celle[3])
+                        .codiceFiscale(celle[5])
+                        .indirizzo(celle[6])
+                        .numCivico(Integer.parseInt(celle[7]))
+                        .cap(Integer.parseInt(celle[8]))
+                        .localita(celle[9])
+                        .provincia(celle[10])
+                        .nazione(celle[11])
+                        .numTelefonico(celle[12])
+                        .email(celle[13])
+                        .build();
+                DaoManager.getDaoAnagrafica().insert(contatto);
+                Anagrafica anagraficaConContatto = DaoManager.getDaoAnagrafica().getById(Long.valueOf(celle[0]));
+                anagraficaConContatto.setContatto(contatto);
+                DaoManager.getDaoAnagrafica().update(anagraficaConContatto);
+            }
+            
+            // Sedi
+            filereader = new FileReader("../../dataset/Sedi.csv"); 
+            csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).withCSVParser(parser).build();
+            while ((celle = csvReader.readNext()) != null) {
+                Sede sede = Sede.builder()
+                        .id(Long.valueOf(celle[0]))
+                        .anagrafica(DaoManager.getEM().find(Anagrafica.class, Long.valueOf(celle[1])))
+                        .descrizione(celle[2])
+                        .indirizzo(celle[3])
+                        .numCivico(Integer.parseInt(celle[4]))
+                        .cap(Integer.parseInt(celle[5]))
+                        .localita(celle[6])
+                        .provincia(celle[7])
+                        .nazione(celle[8])
+                        .build();
+                DaoManager.getDaoSede().insert(sede);
+            }
+            
+            // Contratti
+            filereader = new FileReader("../../dataset/Contratti.csv"); 
+            csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).withCSVParser(parser).build();
+            while ((celle = csvReader.readNext()) != null) {
+                Contratto contratto;
+                for (int i=13;i<=16;i++) {
+                    if (celle[i].equals("1")) {
+                        celle[i] = "true";
+                    } else if (celle[i].equals("0")) {
+                        celle[i] = "false";
+                    }
+                }
+                switch (celle[6]) {
+                    case "EE":
+                        contratto = EE.builder()
+                                .id(Long.valueOf(celle[0]))
+                                .sede(DaoManager.getEM().find(Sede.class, Long.valueOf(celle[1])))
+                                .dataRichiestaServizi(celle[2])
+                                .dataInizioValidita(celle[3])
+                                .dataFineValidita(celle[4])
+                                .descrizioneOfferta(celle[5])
+                                .stato(celle[7])
+                                .tipoPagamento(celle[8])
+                                .potenzaImp(Float.parseFloat(celle[9]))
+                                .potenzaDisp(Float.parseFloat(celle[10]))
+                                .energiaAnno(Float.parseFloat(celle[11]))
+                                .build();
+                        break;
+                    case "GAS":
+                        contratto = GAS.builder()
+                                .id(Long.valueOf(celle[0]))
+                                .sede(DaoManager.getEM().find(Sede.class, Long.valueOf(celle[1])))
+                                .dataRichiestaServizi(celle[2])
+                                .dataInizioValidita(celle[3])
+                                .dataFineValidita(celle[4])
+                                .descrizioneOfferta(celle[5])
+                                .stato(celle[7])
+                                .tipoPagamento(celle[8])
+                                .gasAnno(Float.parseFloat(celle[12]))
+                                .usoCotturaCibi(Boolean.parseBoolean(celle[13]))
+                                .produzioneAcquaCalda(Boolean.parseBoolean(celle[14]))
+                                .riscaldamentoIndividuale(Boolean.parseBoolean(celle[15]))
+                                .usoCommerciale(Boolean.parseBoolean(celle[16]))
+                                .build();
+                        break;
+                    default:    // EE/GAS
+                        contratto = EEandGAS.builder()
+                                .id(Long.valueOf(celle[0]))
+                                .sede(DaoManager.getEM().find(Sede.class, Long.valueOf(celle[1])))
+                                .dataRichiestaServizi(celle[2])
+                                .dataInizioValidita(celle[3])
+                                .dataFineValidita(celle[4])
+                                .descrizioneOfferta(celle[5])
+                                .stato(celle[7])
+                                .tipoPagamento(celle[8])
+                                .potenzaImp(Float.parseFloat(celle[9]))
+                                .potenzaDisp(Float.parseFloat(celle[10]))
+                                .energiaAnno(Float.parseFloat(celle[11]))
+                                .gasAnno(Float.parseFloat(celle[12]))
+                                .usoCotturaCibi(Boolean.parseBoolean(celle[13]))
+                                .produzioneAcquaCalda(Boolean.parseBoolean(celle[14]))
+                                .riscaldamentoIndividuale(Boolean.parseBoolean(celle[15]))
+                                .usoCommerciale(Boolean.parseBoolean(celle[16]))
+                                .build();
+                        break;
+                }
+                DaoManager.getDaoContratto().insert(contratto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }
     
 }

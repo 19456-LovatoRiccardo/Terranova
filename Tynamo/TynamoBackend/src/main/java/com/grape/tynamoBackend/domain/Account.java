@@ -3,7 +3,9 @@ package com.grape.tynamoBackend.domain;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import java.util.Collection;
 import java.util.List;
 import lombok.Builder;
@@ -16,19 +18,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 /**
  * @author 20550
  */
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Utente implements UserDetails {
+public class Account implements UserDetails {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
     @Basic
-    private String username;
+    private String email;
     @Basic
     private String password;
+    @OneToOne
+    private Anagrafica anagrafica;
 
     public Long getId() {
         return id;
@@ -38,22 +42,39 @@ public class Utente implements UserDetails {
         this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public Anagrafica getAnagrafica() {
+        return anagrafica;
+    }
+
+    public void setAnagrafica(Anagrafica anagrafica) {
+        this.anagrafica = anagrafica;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(username));
+        return List.of(new SimpleGrantedAuthority(email));
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
+    }
+    
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override
@@ -74,10 +95,5 @@ public class Utente implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 }

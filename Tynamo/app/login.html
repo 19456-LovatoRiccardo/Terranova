@@ -4,33 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tynamo - Accesso</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../app/css/baseFormStyle.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" type="image/x-icon" href="img/tynamo.png">
 </head>
 <body>
   <div class="wrapper">
-    <form action="">
-      <h1>Login</h1>
-      <div class="input-box">
-        <input type="password" placeholder="Codice Univoco" id="codice" required>
-        <img src="img/hide-img.png" id="occhioIconaCodice">
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Password" id="password" required>
-        <img src="img/hide-img.png" id="occhioIconaPassword">
-      </div>
-      <div class="remember-forgot">
-        <label><input type="checkbox">Ricordami</label>
-        <a href="resetPw.html">Password dimenticata ?</a>
-      </div>
-      
-      <button type="submit" class="btn">Login</button>
+    <h1>Login</h1>
+    <div class="input-box">
+      <input type="text" placeholder="Mail" required>
+    </div>
+    <div class="input-box">
+      <input type="password" placeholder="Password" id="password" required>
+      <img src="img/hide-img.png" id="occhioIconaPassword">
+    </div>
+    <div class="remember-forgot">
+      <label><input type="checkbox">Ricordami</label>
+      <a href="resetPw.html">Password dimenticata ?</a>
+    </div>
+    
+    <button type="submit" class="btn" onclick="inviaRichiesta()">Login</button>
 
-      <div class="register-link">
-        <p>Non hai un contratto Tynamo? <a href="registerFirst.html"> Registrati subito.</a></p>
-      </div>
-    </form>
+    <div class="register-link">
+      <p>Non hai un contratto Tynamo? <a href="../app/registrazioni/sceltaReg.html"> Registrati subito.</a></p>
+    </div>
   </div>
 
 
@@ -52,21 +49,10 @@
 
 
   <script>
-    let occhioIconaCodice = document.getElementById("occhioIconaCodice");
     let occhioIconaPassword = document.getElementById("occhioIconaPassword");
     
-    let codice = document.getElementById("codice");
     let password = document.getElementById("password");
 
-    occhioIconaCodice.onclick = function(){
-        if(codice.type == "password"){
-            codice.type = "text";
-            occhioIconaCodice.src = "img/show-img.png"
-        } else {
-            codice.type = "password";
-            occhioIconaCodice.src = "img/hide-img.png"
-        }
-    }
 
 
     occhioIconaPassword.onclick = function(){
@@ -94,12 +80,23 @@ const executeCodes = () => {
   });
 };
 window.addEventListener("load", executeCodes);
+    
+  function inviaRichiesta() {
+    var xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        authenticate(this)
+      }
+    }
+    xhttp.open("POST", "http://localhost:9091/api/auth/authenticate", true)
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({"email": codice.value, "password": password.value}));
+  }
 
-
-
+  function authenticate(xhttp) {
+    window.location.href = "home.html"
+  }
 
 </script>
-
-
 </body>
 </html>

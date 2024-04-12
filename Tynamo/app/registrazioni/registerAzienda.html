@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tynamo - Registrazione</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="img/tynamo.png">
+</head>
+<body>
+
+
+
+
+  <div id="wrapper1" class="wrapper">
+    <form id="FormPrivato1">
+      <h1>Registrazione</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Partita IVA" >
+      </div>
+
+      <div class="input-box">
+        <input type="mail" placeholder="Email" >
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Ragione Sociale" >
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Indirizzo" >
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Numero Civico" >
+      </div>
+
+      
+
+      <button type="button" class="btn" id="Avanti1">Avanti</button>
+      
+      
+
+      <div class="register-link">
+        <p>Hai gia' un account Tynamo? <a href="../login.html"> Accedi qui.</a></p>
+
+      </div>
+    </form>
+
+    
+
+    
+
+  </div>
+<div id="wrapper2" class="wrapper2">
+  <form id="FormPrivato2">
+    <h1>Registrazione</h1>
+    
+
+    <div class="input-box">
+      <input type="text" placeholder="CAP" >
+    </div>
+
+    <div class="input-box">
+      <input type="text" placeholder="Localita" >
+    </div>
+
+    <div class="input-box">
+      <input type="text" placeholder="Provincia" >
+    </div>
+
+    <div class="input-box">
+      <input type="text" placeholder="Nazione" >
+    </div>
+
+    <div class="input-box">
+      <input type="text" placeholder="Numero Telefonico" >
+    </div>
+
+    <button type="submit" class="btn">Avanti</button>
+
+    <br></br>
+
+    <button type="button" class="btn" id="Indietro1">Indietro</button>
+
+    <div class="register-link">
+      <p>Hai gia' un account Tynamo? <a href="../login.html"> Accedi qui.</a></p>
+    </div>
+  </form>
+</div>
+   
+<script>
+  var Visibile1 = document.getElementById("wrapper1");
+  var Visibile2 = document.getElementById("wrapper2");
+
+  var Form1 = document.getElementById("FormPrivato1");
+  var Form2 = document.getElementById("FormPrivato2");
+
+  var Avanti1 = document.getElementById("Avanti1");
+
+  var Indietro1 = document.getElementById("Indietro1");
+
+  Avanti1.onclick	= function(){
+    Form1.style.left = "-450px";
+    Form2.style.left = "40px";
+
+      Visibile1.style.overflow = "hidden";
+      Visibile2.style.overflow = "visible";
+  }
+  
+
+  Indietro1.onclick	= function(){
+    Form1.style.left = "40px";
+    Form2.style.left = "-450px";
+
+    Visibile2.style.overflow = "hidden";
+    Visibile1.style.overflow = "visible";
+  }
+
+</script>
+
+
+</body>
+</html>

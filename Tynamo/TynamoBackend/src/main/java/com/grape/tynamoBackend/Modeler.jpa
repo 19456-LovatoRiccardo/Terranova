@@ -1,35 +1,452 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<entity-mappings ptype="MONOLITH" ppkg="com.grape.tynamo" epkg="domain" v="5.4.4" rws="_17050605879002" Pws="_17050605879002" cws="_17050605879002" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_17050605878991" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <entity compositePrimaryKeyClass="UtentePK" abs="false" class="Utente" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_17050606507423">
-        <ath>19456</ath>
+<entity-mappings ptype="MONOLITH" ppkg="com.grape.tynamoBackend" epkg="domain" v="5.4.4" rws="_17050605879002" Pws="_17050605879002" cws="_17050605879002" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_17050605878991" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <entity compositePrimaryKeyClass="AnagraficaPK" abs="true" class="Anagrafica" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_17103277905516">
+        <ath>20550</ath>
         <attributes>
-            <basic attribute-type="String" v="true" xvt="" name="username" id="_17050606873996">
+            <basic attribute-type="String" v="true" xvt="" name="ragSociale" id="_171032838497543">
                 <xwm/>
                 <xm/>
             </basic>
-            <basic attribute-type="String" v="true" xvt="" name="password" id="_17050606951437">
+            <basic attribute-type="String" v="true" xvt="" name="codiceFiscale" id="_171032841201944">
                 <xwm/>
                 <xm/>
             </basic>
-            <id attribute-type="Long" v="true" xvt="" name="id" id="_17050606507694">
+            <basic attribute-type="String" v="true" xvt="" name="indirizzo" id="_171032848977145">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="int" v="true" xvt="" name="numCivico" id="_171032849934046">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="int" v="true" xvt="" name="cap" id="_171032850666847">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="localita" id="_171032942780170">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="provincia" id="_171032943315271">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="nazione" id="_171032944386473">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="numTelefonico" id="_171032852916451">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="email" id="_171032855934852">
+                <xwm/>
+                <xm/>
+            </basic>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_171032828837237" v="true" xvt="" name="contatto" id="_171032830249842">
+                <xwm/>
+                <xm/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_17103277905517">
                 <xwm/>
                 <xm/>
                 <generated-value strategy="DEFAULT"/>
             </id>
         </attributes>
-        <nq e="false" name="Utente.findAll">
-            <query>Select e from Utente e</query>
+        <nq e="false" name="Anagrafica.findAll">
+            <query>Select e from Anagrafica e</query>
         </nq>
-        <nq e="false" name="Utente.findByUsername">
-            <query>Select u from Utente u where u.username=:username</query>
+        <nq e="false" name="Anagrafica.findByRagSociale">
+            <query>Select a from Anagrafica a where a.ragSociale=:ragSociale</query>
         </nq>
-        <nq e="false" name="Utente.findByPassword">
-            <query>Select u from Utente u where u.password=:password</query>
+        <nq e="false" name="Anagrafica.findByCodiceFiscale">
+            <query>Select a from Anagrafica a where a.codiceFiscale=:codiceFiscale</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByIndirizzo">
+            <query>Select a from Anagrafica a where a.indirizzo=:indirizzo</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByNumCivico">
+            <query>Select a from Anagrafica a where a.numCivico=:numCivico</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByCap">
+            <query>Select a from Anagrafica a where a.cap=:cap</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByLocalita">
+            <query>Select a from Anagrafica a where a.localita=:localita</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByProvincia">
+            <query>Select a from Anagrafica a where a.provincia=:provincia</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByNazione">
+            <query>Select a from Anagrafica a where a.nazione=:nazione</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByNumTelefonico">
+            <query>Select a from Anagrafica a where a.numTelefonico=:numTelefonico</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByEmail">
+            <query>Select a from Anagrafica a where a.email=:email</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByLocalita">
+            <query>Select a from Anagrafica a where a.localita=:localita</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByProvincia">
+            <query>Select a from Anagrafica a where a.provincia=:provincia</query>
+        </nq>
+        <nq e="false" name="Anagrafica.findByNazione">
+            <query>Select a from Anagrafica a where a.nazione=:nazione</query>
         </nq>
     </entity>
+    <entity compositePrimaryKeyClass="PartitaIVAPK" abs="false" class="PartitaIVA" superclassId="_17103277905516" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_17103278128709">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="partitaIVA" id="_171032868208660">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="PartitaIVA.findAll">
+            <query>Select e from PartitaIVA e</query>
+        </nq>
+        <nq e="false" name="PartitaIVA.findByPartitaIVA">
+            <query>Select p from PartitaIVA p where p.partitaIVA=:partitaIVA</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="SedePK" abs="false" class="Sede" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171032787858315">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="descrizione" id="_171032875499863">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="indirizzo" id="_171032876221464">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="int" v="true" xvt="" name="numCivico" id="_171032876826365">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="int" v="true" xvt="" name="cap" id="_171032878562366">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="localita" id="_171032879598367">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="provincia" id="_171032880152068">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="nazione" id="_171032880484769">
+                <xwm/>
+                <xm/>
+            </basic>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_17103277905516" v="true" xvt="" name="anagrafica" id="_171032811105728">
+                <xwm/>
+                <xm/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_171032787858316">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Sede.findAll">
+            <query>Select e from Sede e</query>
+        </nq>
+        <nq e="false" name="Sede.findByDescrizione">
+            <query>Select s from Sede s where s.descrizione=:descrizione</query>
+        </nq>
+        <nq e="false" name="Sede.findByIndirizzo">
+            <query>Select s from Sede s where s.indirizzo=:indirizzo</query>
+        </nq>
+        <nq e="false" name="Sede.findByNumCivico">
+            <query>Select s from Sede s where s.numCivico=:numCivico</query>
+        </nq>
+        <nq e="false" name="Sede.findByCap">
+            <query>Select s from Sede s where s.cap=:cap</query>
+        </nq>
+        <nq e="false" name="Sede.findByLocalita">
+            <query>Select s from Sede s where s.localita=:localita</query>
+        </nq>
+        <nq e="false" name="Sede.findByProvincia">
+            <query>Select s from Sede s where s.provincia=:provincia</query>
+        </nq>
+        <nq e="false" name="Sede.findByNazione">
+            <query>Select s from Sede s where s.nazione=:nazione</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="PersonaPK" abs="false" class="Persona" superclassId="_17103277905516" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171032828837237">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="cognome" id="_171032870444961">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="nome" id="_171032870771062">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="Persona.findAll">
+            <query>Select e from Persona e</query>
+        </nq>
+        <nq e="false" name="Persona.findByCognome">
+            <query>Select p from Persona p where p.cognome=:cognome</query>
+        </nq>
+        <nq e="false" name="Persona.findByNome">
+            <query>Select p from Persona p where p.nome=:nome</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="AccountPK" abs="false" class="Account" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171032858867753">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="email" id="_171032866318158">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="password" id="_171032866695859">
+                <xwm/>
+                <xm/>
+            </basic>
+            <one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_17103277905516" v="true" xvt="" name="anagrafica" id="_171032864832857">
+                <xwm/>
+                <xm/>
+            </one-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_171032858867854">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Account.findAll">
+            <query>Select e from Account e</query>
+        </nq>
+        <nq e="false" name="Account.findByEmail">
+            <query>Select a from Account a where a.email=:email</query>
+        </nq>
+        <nq e="false" name="Account.findByPassword">
+            <query>Select a from Account a where a.password=:password</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="EEPK" abs="false" class="EE" superclassId="_171050411555154" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171050350907526">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="float" v="true" xvt="" name="potenzaImp" id="_171050353802632">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="float" v="true" xvt="" name="potenzaDisp" id="_171050354483333">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="float" v="true" xvt="" name="energiaAnno" id="_171050355169834">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="EE.findAll">
+            <query>Select e from EE e</query>
+        </nq>
+        <nq e="false" name="EE.findByPotenzaImp">
+            <query>Select e from EE e where e.potenzaImp=:potenzaImp</query>
+        </nq>
+        <nq e="false" name="EE.findByPotenzaDisp">
+            <query>Select e from EE e where e.potenzaDisp=:potenzaDisp</query>
+        </nq>
+        <nq e="false" name="EE.findByEnergiaAnno">
+            <query>Select e from EE e where e.energiaAnno=:energiaAnno</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="GASPK" abs="false" class="GAS" superclassId="_171050411555154" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171050351509329">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="float" v="true" xvt="" name="gasAnno" id="_171050356082535">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="usoCotturaCibi" id="_171050357144236">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="produzioneAcquaCalda" id="_171050358255437">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="riscaldamentoIndividuale" id="_171050359743438">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="usoCommerciale" id="_171050360960239">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="GAS.findAll">
+            <query>Select e from GAS e</query>
+        </nq>
+        <nq e="false" name="GAS.findByGasAnno">
+            <query>Select g from GAS g where g.gasAnno=:gasAnno</query>
+        </nq>
+        <nq e="false" name="GAS.findByUsoCotturaCibi">
+            <query>Select g from GAS g where g.usoCotturaCibi=:usoCotturaCibi</query>
+        </nq>
+        <nq e="false" name="GAS.findByProduzioneAcquaCalda">
+            <query>Select g from GAS g where g.produzioneAcquaCalda=:produzioneAcquaCalda</query>
+        </nq>
+        <nq e="false" name="GAS.findByRiscaldamentoIndividuale">
+            <query>Select g from GAS g where g.riscaldamentoIndividuale=:riscaldamentoIndividuale</query>
+        </nq>
+        <nq e="false" name="GAS.findByUsoCommerciale">
+            <query>Select g from GAS g where g.usoCommerciale=:usoCommerciale</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="EEandGASPK" abs="false" class="EEandGAS" superclassId="_171050411555154" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171050395652240">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="float" v="true" xvt="" name="potenzaImp" id="_171050405322849">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="float" v="true" xvt="" name="potenzaDisp" id="_171050406330750">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="float" v="true" xvt="" name="energiaAnno" id="_171050406783651">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="float" v="true" xvt="" name="gasAnno" id="_171050395652242">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="usoCotturaCibi" id="_171050395652243">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="produzioneAcquaCalda" id="_171050395652244">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="riscaldamentoIndividuale" id="_171050395652245">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="boolean" v="true" xvt="" name="usoCommerciale" id="_171050395652246">
+                <xwm/>
+                <xm/>
+            </basic>
+        </attributes>
+        <nq e="false" name="EEandGAS.findAll">
+            <query>Select e from EEandGAS e</query>
+        </nq>
+        <nq e="false" name="GAS.findByGasAnno">
+            <query>Select g from EEandGAS g where g.gasAnno=:gasAnno</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByUsoCotturaCibi">
+            <query>Select g from EEandGAS g where g.usoCotturaCibi=:usoCotturaCibi</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByProduzioneAcquaCalda">
+            <query>Select g from EEandGAS g where g.produzioneAcquaCalda=:produzioneAcquaCalda</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByRiscaldamentoIndividuale">
+            <query>Select g from EEandGAS g where g.riscaldamentoIndividuale=:riscaldamentoIndividuale</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByUsoCommerciale">
+            <query>Select g from EEandGAS g where g.usoCommerciale=:usoCommerciale</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByPotenzaImp">
+            <query>Select e from EEandGAS e where e.potenzaImp=:potenzaImp</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByPotenzaDisp">
+            <query>Select e from EEandGAS e where e.potenzaDisp=:potenzaDisp</query>
+        </nq>
+        <nq e="false" name="EEandGAS.findByEnergiaAnno">
+            <query>Select e from EEandGAS e where e.energiaAnno=:energiaAnno</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="ContrattoPK" abs="true" class="Contratto" v="true" jbn="false" xre="false" m="false" rootElement="_17050605878991" id="_171050411555154">
+        <ath>20550</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="dataRichiestaServizi" id="_171050414324557">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="dataInizioValidita" id="_171050415523658">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="dataFineValidita" id="_171050416469359">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="descrizioneOfferta" id="_171050417283760">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="stato" id="_171050417722161">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="tipoPagamento" id="_171050418066962">
+                <xwm/>
+                <xm/>
+            </basic>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_171032787858315" v="true" xvt="" name="sede" id="_171050420320664">
+                <xwm/>
+                <xm/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_171050411555955">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Contratto.findAll">
+            <query>Select e from Contratto e</query>
+        </nq>
+        <nq e="false" name="Contratto.findByDataRichiestaServizi">
+            <query>Select c from Contratto c where c.dataRichiestaServizi=:dataRichiestaServizi</query>
+        </nq>
+        <nq e="false" name="Contratto.findByDataInizioValidita">
+            <query>Select c from Contratto c where c.dataInizioValidita=:dataInizioValidita</query>
+        </nq>
+        <nq e="false" name="Contratto.findByDataFineValidita">
+            <query>Select c from Contratto c where c.dataFineValidita=:dataFineValidita</query>
+        </nq>
+        <nq e="false" name="Contratto.findByDescrizioneOfferta">
+            <query>Select c from Contratto c where c.descrizioneOfferta=:descrizioneOfferta</query>
+        </nq>
+        <nq e="false" name="Contratto.findByStato">
+            <query>Select c from Contratto c where c.stato=:stato</query>
+        </nq>
+        <nq e="false" name="Contratto.findByTipoPagamento">
+            <query>Select c from Contratto c where c.tipoPagamento=:tipoPagamento</query>
+        </nq>
+    </entity>
+    <c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </c>
     <wsl>
         <ws n="Main" id="_17050605879002">
-            <i ref="_17050606507423" x="432" y="248"/>
+            <i ref="_171032787858315" x="756" y="141"/>
+            <i ref="_171032858867753" x="92" y="103"/>
+            <i ref="_171032828837237" x="535" y="582"/>
+            <i ref="_171050395652240" x="1160" y="593"/>
+            <i ref="_17103277905516" x="385" y="103"/>
+            <i ref="_171050351509329" x="958" y="593"/>
+            <i ref="_17103278128709" x="274" y="535"/>
+            <i ref="_171050350907526" x="798" y="593"/>
+            <i ref="_171050411555154" x="972" y="235"/>
         </ws>
     </wsl>
 </entity-mappings>
