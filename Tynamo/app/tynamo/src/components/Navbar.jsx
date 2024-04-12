@@ -1,6 +1,5 @@
 import LOGO from '../assets/LOGO.png'
 import './Navbar.css'
-import 'boxicons'
 
 function Navbar() {
     return (
