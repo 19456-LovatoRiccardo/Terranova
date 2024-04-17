@@ -83,6 +83,15 @@ padding: 0;
   position: relative;
 }
 
-#login {
-  margin-left: auto; /* Sposta l'icona a destra */
+#iconsDiv {
+  margin-left: auto;  /* Sposta le icone a destra */
+  display: flex;  /* Metti le icone in orizzontale */
+  right: 25px;
+  position: relative;
+  font-size: 25px; /* Altezza icone */
+}
+
+#menu {
+  right: 18px;
+  position: relative;
 }
