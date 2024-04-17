@@ -8,10 +8,11 @@ function Navbar() {
         <nav>
             <input type="image" src={LOGO} class="logoHome" alt="LOGO"/>
             <ul>
-                <li><a href="#">Chi siamo</a></li>
-                <li><a href="#">Offerte</a></li>
-                <li><a href="#">Contattaci</a></li>
-                <li class="login"><a href="login.html" class='bx bxs-user'></a></li>
+                <li class='navbarLink'><a href="#">Chi siamo</a></li>
+                <li class='navbarLink'><a href="#">Offerte</a></li>
+                <li class='navbarLink'><a href="#">Contattaci</a></li>
+                <li id="menu" hidden><a href="#" class='bx bx-menu'></a></li>
+                <li id="login"><a href="login.html" class='bx bxs-user'></a></li>
             </ul>
         </nav>
       </>

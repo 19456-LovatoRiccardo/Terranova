@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -64,9 +65,9 @@ nav ul li a {
 
 .logoHome {
 position: fixed;
-top: 0;
-left: 0;
-width: 300px;
+top: 3px;
+left: 25px;
+height: 60px;
 margin: 3px;
 z-index: 1;
 }
@@ -77,6 +78,11 @@ list-style-type: none;
 padding: 0;
 }
 
-.login {
-margin-left: auto; /* Sposta l'icona a destra */
+.navbarLink {
+  left: 255px;
+  position: relative;
+}
+
+#login {
+  margin-left: auto; /* Sposta l'icona a destra */
 }
