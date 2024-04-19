@@ -66,7 +66,7 @@ nav ul li a {
 .logoHome {
 position: fixed;
 top: 3px;
-left: 25px;
+left: 20px;
 height: 60px;
 margin: 3px;
 z-index: 1;
@@ -92,6 +92,35 @@ padding: 0;
 }
 
 #menu {
-  right: 18px;
   position: relative;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  right: -25px;
+  top: 58px;
+  position: absolute;
+  background-color: #004a8f;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  text-align: right;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  opacity: 0.4;
+}
+
+a:hover {
+  opacity: 0.7;
 }

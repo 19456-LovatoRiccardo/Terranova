@@ -3,13 +3,15 @@ import LOGO from '../assets/LOGO.png'
 import './Navbar.css'
 
 function Navbar() {
-    const [minimize, setMinimize] = useState(window.innerWidth);
+    const [minimize, setMinimize] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
 
     const handleWindowSizeChange = () => {
-      if (window.innerWidth < 900) {
+      if (window.innerWidth < 865) {
         setMinimize(true)
       } else {
         setMinimize(false)
+        setShowMenu(false)
       }
     };
 
@@ -31,11 +33,24 @@ function Navbar() {
                 <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Offerte</a></li>
                 <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Contattaci</a></li>
                 <div id='iconsDiv'>
-                    <li id="menu" style={{ display: minimize ? "block" : "none" }}><a href="#" class='bx bx-fw bx-menu bx-md'></a></li>
-                    <li id="login"><a href="login.html" class='bx bx-fw bxs-user bx-md'></a></li>
+                  <div class="dropdown">
+                    <li id="menu" class="dropbtn" style={{ display: minimize ? "block" : "none" }}>
+                      <a onClick={() => setShowMenu(showMenu => !showMenu)} class='bx bx-fw bx-menu bx-md'/>
+                    </li>
+                    <div class="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
+                      <a href="#">Chi siamo</a>
+                      <a href="#">Offerte</a>
+                      <a href="#">Contattaci</a>
+                      <a href="#">Login</a>
+                    </div>
+                  </div>
+                  <li id="login" style={{ display: minimize ? "none" : "block" }}>
+                    <a href="login.html" class='bx bx-fw bxs-user bx-md'/>
+                  </li>
                 </div>
             </ul>
         </nav>
+
       </>
     )
 }
