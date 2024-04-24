@@ -25,7 +25,7 @@ function Navbar() {
 
     return (
       <>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></link>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
         <nav>
             <input type="image" src={LOGO} class="logoHome" alt="LOGO"/>
             <ul>
