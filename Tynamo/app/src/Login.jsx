@@ -44,23 +44,26 @@ function PageContent() {
   return (
     <>
       <div class="wrapper">
-        <h1>Login</h1>
-        <div class="input-box">
-          <input type="text" placeholder="Mail" id="email" required/>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Password" id="password" required/>
-          <img src={isPasswordHidden ? showIcon : hideIcon} id="occhioIconaPassword"/>
-        </div>
-        <div class="remember-forgot">
-          <label><input type="checkbox"/>Ricordami</label>
-          <a href="resetPw.html">Password dimenticata ?</a>
-        </div>
-        
-        <button type="submit" class="btn" onClick={() => inviaRichiesta()}>Login</button>
-        <div class="register-link">
-          <p>Non hai un contratto Tynamo? <a href="./register.html"> Registrati subito.</a></p>
-        </div>
+        <form onSubmit={e => {e.preventDefault(); inviaRichiesta();}}>
+          <h1>Login</h1>
+
+          <div class="input-box">
+            <input type="text" placeholder="Email" id="email" required/>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Password" id="password" required/>
+            <img src={isPasswordHidden ? showIcon : hideIcon} id="occhioIconaPassword"/>
+          </div>
+          <div class="remember-forgot">
+            <label><input type="checkbox"/>Ricordami</label>
+            <a href="resetPw.html">Password dimenticata ?</a>
+          </div>
+          
+          <button type="submit" class="btn">Login</button>
+          <div class="register-link">
+            <p>Non hai un contratto Tynamo? <a href="./register.html"> Registrati subito.</a></p>
+          </div>
+        </form>
       </div>
     </>
   );

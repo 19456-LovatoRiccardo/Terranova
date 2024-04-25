@@ -57,33 +57,33 @@ function RegisterPrivato() {
   return (
     <>
       <div class="wrapper" style={{ display: isPage1 ? "block" : "none" }}>
-        <form>
+        <form onSubmit={e => {e.preventDefault(); setIsPage1(isPage1 => false);}}>
           <h1>Registrazione Privato</h1>
 
           <div class="input-box">
-            <input type="mail" placeholder="Email" id="privatoEmail"/>
+            <input type="mail" placeholder="Email" id="privatoEmail" required/>
           </div>
           <div class="input-box">
-            <input type="password" placeholder="Password" id="privatoPassword"/>
+            <input type="password" placeholder="Password" id="privatoPassword" required/>
             <img src={isPasswordHidden ? showIcon : hideIcon} class="iconButton" id="privatoPasswordIcona"/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Nome" id="privatoNome"/>
+            <input type="text" placeholder="Nome" id="privatoNome" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Cognome" id="privatoCognome"/>
+            <input type="text" placeholder="Cognome" id="privatoCognome" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Ragione Sociale" id="privatoRagSociale"/>
+            <input type="text" placeholder="Ragione Sociale" id="privatoRagSociale" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Codice fiscale" id="privatoCodiceFiscale"/>
+            <input type="text" placeholder="Codice fiscale" id="privatoCodiceFiscale" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Indirizzo" id="privatoIndirizzo"/>
+            <input type="text" placeholder="Indirizzo" id="privatoIndirizzo" required/>
           </div>
 
-          <button type="button" class="btn" id="Avanti1" onClick={() => setIsPage1(isPage1 => false)}>Avanti</button>
+          <button type="submit" class="btn" id="Avanti1">Avanti</button>
           <div class="register-link">
             <p>Hai gia' un account Tynamo? <a href="../login.html"> Accedi qui.</a></p>
           </div>
@@ -91,29 +91,29 @@ function RegisterPrivato() {
       </div>
 
       <div class="wrapper" style={{ display: isPage1 ? "none" : "block" }}>
-        <form>
+        <form onSubmit={e => {e.preventDefault(); inviaRichiestaPrivato();}}>
           <h1>Registrazione Privato</h1>
 
           <div class="input-box">
-            <input type="number" placeholder="Numero Civico" id="privatoNumCivico"/>
+            <input inputmode="numeric" type="number" placeholder="Numero Civico" id="privatoNumCivico" required/>
           </div>
           <div class="input-box">
-            <input type="number" placeholder="CAP" id="privatoCap"/>
+            <input inputmode="numeric" type="number" placeholder="CAP" id="privatoCap" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Localita" id="privatoLocalita"/>
+            <input type="text" placeholder="Localita" id="privatoLocalita" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Provincia" id="privatoProvincia"/>
+            <input type="text" placeholder="Provincia" id="privatoProvincia" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Nazione" id="privatoNazione"/>
+            <input type="text" placeholder="Nazione" id="privatoNazione" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Numero Telefonico" id="privatoNumTelefonico"/>
+            <input type="text" placeholder="Numero Telefonico" id="privatoNumTelefonico" required/>
           </div>
 
-          <button type="button" class="btn" onClick={() => inviaRichiestaPrivato()}>Registrati</button>
+          <button type="submit" class="btn">Registrati</button>
           <br></br>
           <button type="button" class="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
           <div class="register-link">
@@ -175,33 +175,30 @@ function RegisterAzienda() {
   return (
     <>
       <div class="wrapper" style={{ display: isPage1 ? "block" : "none" }}>
-        <form>
+        <form onSubmit={e => {e.preventDefault(); setIsPage1(isPage1 => false);}}>
           <h1>Registrazione Azienda</h1>
 
           <div class="input-box">
-            <input type="mail" placeholder="Email" id="aziendaEmail"/>
+            <input type="mail" placeholder="Email" id="aziendaEmail" required/>
           </div>
           <div class="input-box">
-            <input type="password" placeholder="Password" id="aziendaPassword"/>
+            <input type="password" placeholder="Password" id="aziendaPassword" required/>
             <img src={isPasswordHidden ? showIcon : hideIcon} class="iconButton" id="aziendaPasswordIcona"/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Partita IVA" id="aziendaPartitaIVA"/>
+            <input type="text" placeholder="Partita IVA" id="aziendaPartitaIVA" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Ragione Sociale" id="aziendaRagSociale"/>
+            <input type="text" placeholder="Ragione Sociale" id="aziendaRagSociale" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Codice fiscale" id="aziendaCodiceFiscale"/>
+            <input type="text" placeholder="Codice fiscale" id="aziendaCodiceFiscale" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Indirizzo" id="aziendaIndirizzo"/>
-          </div>
-          <div class="input-box">
-            <input type="number" placeholder="Numero Civico" id="aziendaNumCivico"/>
+            <input type="text" placeholder="Indirizzo" id="aziendaIndirizzo" required/>
           </div>
 
-          <button type="button" class="btn" id="Avanti1" onClick={() => setIsPage1(isPage1 => false)}>Avanti</button>
+          <button type="submit" class="btn" id="Avanti1">Avanti</button>
           <div class="register-link">
             <p>Hai gia' un account Tynamo? <a href="../login.html"> Accedi qui.</a></p>
           </div>
@@ -209,26 +206,29 @@ function RegisterAzienda() {
       </div>
 
       <div class="wrapper" style={{ display: isPage1 ? "none" : "block" }}>
-        <form>
+        <form onSubmit={e => {e.preventDefault(); inviaRichiestaAzienda();}}>
           <h1>Registrazione Azienda</h1>
           
           <div class="input-box">
-            <input type="number" placeholder="CAP" id="aziendaCap"/>
+            <input inputmode="numeric" type="number" placeholder="Numero Civico" id="aziendaNumCivico" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Localita" id="aziendaLocalita"/>
+            <input inputmode="numeric" type="number" placeholder="CAP" id="aziendaCap" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Provincia" id="aziendaProvincia"/>
+            <input type="text" placeholder="Localita" id="aziendaLocalita" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Nazione" id="aziendaNazione"/>
+            <input type="text" placeholder="Provincia" id="aziendaProvincia" required/>
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Numero Telefonico" id="aziendaNumTelefonico"/>
+            <input type="text" placeholder="Nazione" id="aziendaNazione" required/>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Numero Telefonico" id="aziendaNumTelefonico" required/>
           </div>
 
-          <button type="button" class="btn" onClick={() => inviaRichiestaAzienda()}>Avanti</button>
+          <button type="submit" class="btn">Avanti</button>
           <br></br>
           <button type="button" class="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
           <div class="register-link">
