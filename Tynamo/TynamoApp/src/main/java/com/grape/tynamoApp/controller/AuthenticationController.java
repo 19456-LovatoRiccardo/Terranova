@@ -2,7 +2,8 @@ package com.grape.tynamoApp.controller;
 
 import com.grape.tynamoApp.auth.AuthenticationRequest;
 import com.grape.tynamoApp.auth.AuthenticationService;
-import com.grape.tynamoApp.auth.RegisterRequest;
+import com.grape.tynamoApp.auth.RegisterPrivatoRequest;
+import com.grape.tynamoApp.auth.RegisterAziendaRequest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,13 @@ public class AuthenticationController {
     @Autowired
     private final AuthenticationService service;
     
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
-        return service.register(request);
+    @PostMapping("/register/privato")
+    public ResponseEntity<?> registerPrivato(@RequestBody RegisterPrivatoRequest request) {
+        return service.registerPrivato(request);
+    }
+    @PostMapping("/register/azienda")
+    public ResponseEntity<?> registerAzienda(@RequestBody RegisterAziendaRequest request) {
+        return service.registerAzienda(request);
     }
     
     @PostMapping("/authenticate")
