@@ -22,6 +22,7 @@ nav ul {
   top: 0; /* Sposta il rettangolo in cima alla pagina */
   left: 0; /* Assicura che il rettangolo sia allineato a sinistra */
   width: 100%; /* Assicura che il rettangolo occupi tutta la larghezza della pagina */
+  height: 74px;
   background-color: #004483;
 }
 
@@ -50,13 +51,17 @@ nav ul li a {
 }
 
 .logoHome {
-position: fixed;
-top: 3px;
-left: 20px;
-height: 60px;
-margin: 3px;
-z-index: 1;
+  z-index: 1;
 }
+
+.logoHomeImage {
+  position: fixed;
+  top: 3px;
+  left: 20px;
+  height: 60px;
+  margin: 3px;
+}
+  
 
 ul {
 display: flex;

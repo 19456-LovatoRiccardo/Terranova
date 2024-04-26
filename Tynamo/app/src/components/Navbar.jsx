@@ -27,7 +27,9 @@ function Navbar() {
     <>
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
       <nav>
-        <input type="image" src={LOGO} class="logoHome" alt="LOGO"/>
+        <a href="index.html" class="logoHome">
+          <img src={LOGO} class="logoHomeImage" alt="LOGO"/>
+        </a>
         <ul>
           <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Chi siamo</a></li>
           <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Offerte</a></li>
@@ -41,7 +43,7 @@ function Navbar() {
                 <a href="#">Chi siamo</a>
                 <a href="#">Offerte</a>
                 <a href="#">Contattaci</a>
-                <a href="#">Login</a>
+                <a href="login.html">Login</a>
               </div>
             </div>
             <li id="login" style={{ display: minimize ? "none" : "block" }}>
