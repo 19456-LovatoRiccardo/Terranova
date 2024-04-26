@@ -24,14 +24,14 @@ async function RegisterPrivato() {
             ragSociale, codiceFiscale, numTelefonico,
             indirizzo, numCivico, cap, localita, provincia, nazione
         }).then((res) => {
-            console.log("Token: " + res["data"]["token"]);
-            // window.location.href = "index.html"
+            window.sessionStorage.setItem("token", "Bearer " + res.data.token);
+            window.location.href = "index.html"
         });
     } catch (err) {
         if (!err?.response) {
             console.log("No server response");
         } else {
-            console.log("Registration failed");
+            console.log("Registration failed: " + err.response.data);
         }
     }
 };

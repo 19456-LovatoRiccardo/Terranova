@@ -87,15 +87,15 @@ padding: 0;
   cursor: pointer;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+#logout, #logout-dropdown {
+  cursor: pointer;
 }
+
 
 .dropdown-content {
   display: none;
   right: -25px;
-  top: 58px;
+  top: 51px;
   position: absolute;
   background-color: #004a8f;
   min-width: 160px;

@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import LOGO from '../assets/LOGO.png'
+import Authorize from '../api/Authorize.jsx'
+import Logout from '../api/Logout.jsx'
 import './Navbar.css'
 
 function Navbar() {
   const [minimize, setMinimize] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
-  const handleWindowSizeChange = () => {
+  const handleWindowSizeChangeNotAuthenticated = () => {
     if (window.innerWidth < 865) {
       setMinimize(true)
     } else {
@@ -15,12 +18,35 @@ function Navbar() {
     }
   };
 
+  const handleWindowSizeChangeAuthenticated = () => {
+    if (window.innerWidth < 1165) {
+      setMinimize(true)
+    } else {
+      setMinimize(false)
+      setShowMenu(false)
+    }
+  };
+
   useEffect(() => {
-    handleWindowSizeChange();
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    };
+    async function asyncFunction() {
+      const authorizationResult = await Authorize()
+      if (authorizationResult != null) {
+        setAuthenticated(true);
+        handleWindowSizeChangeAuthenticated();
+        window.addEventListener('resize', handleWindowSizeChangeAuthenticated);
+        return () => {
+          window.removeEventListener('resize', handleWindowSizeChangeAuthenticated);
+        }
+      } else {
+        setAuthenticated(false);
+        handleWindowSizeChangeNotAuthenticated();
+        window.addEventListener('resize', handleWindowSizeChangeNotAuthenticated);
+        return () => {
+          window.removeEventListener('resize', handleWindowSizeChangeNotAuthenticated);
+        };
+      }
+    }
+    asyncFunction()
   }, []);
 
   return (
@@ -40,14 +66,28 @@ function Navbar() {
                 <a onClick={() => setShowMenu(showMenu => !showMenu)} className='bx bx-fw bx-menu bx-md'/>
               </li>
               <div className="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
+                <a href="area-personale.html" style={{ display: authenticated ? "block" : "none" }}>
+                  Area Personale
+                </a>
                 <a href="#">Chi siamo</a>
                 <a href="#">Offerte</a>
                 <a href="#">Contattaci</a>
-                <a href="login.html">Login</a>
+                <a href="login.html" style={{ display: authenticated ? "none" : "block" }}>
+                  Login
+                </a>
+                <a id="logout-dropdown" onClick={() => Logout()} style={{ display: authenticated ? "block" : "none" }}>
+                  Logout
+                </a>
               </div>
             </div>
-            <li id="login" style={{ display: minimize ? "none" : "block" }}>
+            <li id="areaPersonale" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
+              <a href="area-personale.html">Area Personale</a>
+            </li>
+            <li id="login" style={{ display: (minimize || authenticated) ? "none" : "block" }}>
               <a href="login.html" className='bx bx-fw bxs-user bx-md'/>
+            </li>
+            <li id="logout" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
+              <a onClick={() => Logout()} className='bx bx-fw bx-log-out bx-md'/>
             </li>
           </div>
         </ul>

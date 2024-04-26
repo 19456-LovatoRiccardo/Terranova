@@ -12,14 +12,14 @@ async function Login() {
             email,
             password,
         }).then((res) => {
-            console.log("Token: " + res["data"]["token"]);
-            // window.location.href = "index.html"
+            window.sessionStorage.setItem("token", "Bearer " + res.data.token);
+            window.location.href = "index.html"
         });
     } catch (err) {
         if (!err?.response) {
             console.log("No server response");
         } else {
-            console.log("Login failed");
+            console.log("Login failed: " + err.response.data);
         }
     }
 };

@@ -68,7 +68,7 @@ public class AuthenticationService {
     }
     
     public ResponseEntity<?> registerAzienda(RegisterAziendaRequest request) {
-        if (DAO.getDaoAccount().getByEmail(request.getEmail()) != null || DAO.getDaoAnagrafica().getByEmail(request.getEmail()) != null) {
+        if (DAO.getDaoAccount().getByEmail(request.getEmail()) != null) {
             var responseBuilder = ResponseEntity.badRequest();
             return responseBuilder.body("Email already exists");
         } else if (request.getEmail().equals("")) {
@@ -107,6 +107,14 @@ public class AuthenticationService {
     }
     
     public ResponseEntity<?> authenticate(AuthenticationRequest request) {
+        if (request.getEmail().equals("")) {
+            var responseBuilder = ResponseEntity.badRequest();
+            return responseBuilder.body("Missing email");
+        } else if (DAO.getDaoAccount().getByEmail(request.getEmail()) == null) {
+            var responseBuilder = ResponseEntity.badRequest();
+            return responseBuilder.body("Email isn't registered");
+        } 
+        
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                     request.getEmail(), 
@@ -119,6 +127,19 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var response = AuthenticationResponse.builder()
                 .token(jwtToken)
+                .build();
+        return ResponseEntity.ok(response);
+    }
+    
+    public ResponseEntity<?> validateToken(String token) {
+        token = token.substring(7);
+        if (jwtService.isTokenExpired(token)) {
+            var responseBuilder = ResponseEntity.badRequest();
+            return responseBuilder.body("Token has expired");
+        }
+        
+        var response = ValidationResponse.builder()
+                .email(jwtService.extractUsername(token))
                 .build();
         return ResponseEntity.ok(response);
     }
