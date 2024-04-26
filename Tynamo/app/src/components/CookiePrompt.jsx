@@ -24,17 +24,17 @@ function CookiePrompt() {
 
   return (
     <>
-      <div class="cookie">
+      <div className="cookie">
         <header>
-          <i class='bx bxs-cookie' ></i>
+          <i className='bx bxs-cookie' ></i>
           <h2>Consenso Cookies</h2>
         </header>
-        <div class="cookieData">
+        <div className="cookieData">
           <p>Questo sito web utilizza i cookie per aiutarti a avere un'esperienza di navigazione superiore e più pertinente sul sito. </p>
         </div>
-        <div class="cookieBtn">
-          <button class="button" id="acceptBtn">Accept</button>
-          <button class="button" id="declineBtn">Decline</button>
+        <div className="cookieBtn">
+          <button className="button" id="acceptBtn">Accept</button>
+          <button className="button" id="declineBtn">Decline</button>
         </div>
       </div>
     </>

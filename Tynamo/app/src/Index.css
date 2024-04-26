@@ -49,10 +49,10 @@ body {
   line-height: normal;
 }
 
-.titolo2 {
+.titolo h1 {
   position: absolute;
   left: 15px;
-  top: 22px;
+  top: 25px;
   font-size: 128px; 
 }
 

@@ -4,25 +4,8 @@ import ReactDOM from 'react-dom/client'
 import showIcon from './assets/show-img.png'
 import hideIcon from './assets/hide-img.png'
 import Navbar from './components/Navbar.jsx'
+import Login from './api/Login.jsx'
 import './Login.css'
-
-function inviaRichiesta() {
-  var xhttp = new XMLHttpRequest()
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      authenticate(this)
-    }
-  }
-  let email = document.getElementById("email");
-  let password = document.getElementById("password");
-
-  xhttp.open("POST", "http://localhost:9091/api/auth/authenticate", true)
-  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhttp.send(JSON.stringify({"email": email.value, "password": password.value}));
-}
-function authenticate(xhttp) {
-  window.location.href = "index.html"
-}
 
 function PageContent() {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
@@ -42,24 +25,24 @@ function PageContent() {
 
   return (
     <>
-      <div class="wrapper">
-        <form onSubmit={e => {e.preventDefault(); inviaRichiesta();}}>
+      <div className="wrapper">
+        <form onSubmit={e => {e.preventDefault(); Login();}}>
           <h1>Login</h1>
 
-          <div class="input-box">
+          <div className="input-box">
             <input type="text" placeholder="Email" id="email" required/>
           </div>
-          <div class="input-box">
+          <div className="input-box">
             <input type="password" placeholder="Password" id="password" required/>
             <img src={isPasswordHidden ? showIcon : hideIcon} id="occhioIconaPassword"/>
           </div>
-          <div class="remember-forgot">
+          <div className="remember-forgot">
             <label><input type="checkbox"/>Ricordami</label>
             <a href="resetPw.html">Password dimenticata ?</a>
           </div>
           
-          <button type="submit" class="btn">Login</button>
-          <div class="register-link">
+          <button type="submit" className="btn">Login</button>
+          <div className="register-link">
             <p>Non hai un contratto Tynamo? <a href="./register.html"> Registrati subito.</a></p>
           </div>
         </form>

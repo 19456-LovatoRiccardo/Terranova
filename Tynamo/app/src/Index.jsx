@@ -8,14 +8,14 @@ import './Index.css'
 function PageContent() {
   return (
     <>
-      <img class="cropped-bg" src={croppedBG}/>
-      <div class="separatore"/>
-      <div class="titolo">
+      <img className="cropped-bg" src={croppedBG}/>
+      <div className="separatore"/>
+      <div className="titolo">
         <p>Benvenuto in</p>
-        <p class="titolo2">Tynamo</p>
+        <h1>Tynamo</h1>
       </div>
-      <div class="evidenziatore">
-        <p class="descrizione">
+      <div className="evidenziatore">
+        <p className="descrizione">
           Benvenuti nell'era dell'energia sostenibile:
           dove innovazione e responsabilità
           ambientale si incontrano per illuminare il

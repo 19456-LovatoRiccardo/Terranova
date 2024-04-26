@@ -27,19 +27,19 @@ function Navbar() {
     <>
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
       <nav>
-        <a href="index.html" class="logoHome">
-          <img src={LOGO} class="logoHomeImage" alt="LOGO"/>
+        <a href="index.html" className="logoHome">
+          <img src={LOGO} className="logoHomeImage" alt="LOGO"/>
         </a>
         <ul>
-          <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Chi siamo</a></li>
-          <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Offerte</a></li>
-          <li class='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Contattaci</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Chi siamo</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Offerte</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Contattaci</a></li>
           <div id='iconsDiv'>
-            <div class="dropdown">
-              <li id="menu" class="dropbtn" style={{ display: minimize ? "block" : "none" }}>
-                <a onClick={() => setShowMenu(showMenu => !showMenu)} class='bx bx-fw bx-menu bx-md'/>
+            <div className="dropdown">
+              <li id="menu" className="dropbtn" style={{ display: minimize ? "block" : "none" }}>
+                <a onClick={() => setShowMenu(showMenu => !showMenu)} className='bx bx-fw bx-menu bx-md'/>
               </li>
-              <div class="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
+              <div className="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
                 <a href="#">Chi siamo</a>
                 <a href="#">Offerte</a>
                 <a href="#">Contattaci</a>
@@ -47,7 +47,7 @@ function Navbar() {
               </div>
             </div>
             <li id="login" style={{ display: minimize ? "none" : "block" }}>
-              <a href="login.html" class='bx bx-fw bxs-user bx-md'/>
+              <a href="login.html" className='bx bx-fw bxs-user bx-md'/>
             </li>
           </div>
         </ul>
