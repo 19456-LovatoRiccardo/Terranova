@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(./assets/bg2.png);
+  background-size: cover;
+  background-position: center;
+  overflow-y: hidden;
+}
+
+.containerInformazioni {
+  width: 598px;
+  position: absolute;
+  left: 10%;
+  bottom: 250px;
+  border-radius: 12px;
+  overflow-wrap: break-word;
+  background: rgba(0, 11, 70, 0.80);
+}
+
+.containerInformazioni i {
+  color: white;
+  height: 50px; /* This pushes the top of the container upwards */
+  font-size: 24px;
+  font-weight: 600;
+  opacity: 0.85;
+  left: 20px;
+  top: 25px;
+  position: relative;
+}
+
+.containerInformazioni h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  opacity: 0.85;
+  left: 80px;
+  top: 20px;
+  position: absolute;
+}
+
+.containerInformazioni p {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-left: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.containerContratti {
+  width: 598px;
+  height: 613px;
+  position: absolute;
+  right: 10%;
+  bottom: 120px;
+  border-radius: 12px;
+  background: rgba(0, 11, 70, 0.80);
+}
