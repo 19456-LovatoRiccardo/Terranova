@@ -16,6 +16,7 @@ async function Authorize() {
                 "Authorization" : window.sessionStorage.getItem("token")
             }
         }).then((res) => {
+            window.sessionStorage.setItem("token", "Bearer " + res.data.token); // renew token
             email = res.data.email;
         });
     } catch (err) {

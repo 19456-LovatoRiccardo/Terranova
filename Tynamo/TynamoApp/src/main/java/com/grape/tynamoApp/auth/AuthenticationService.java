@@ -133,13 +133,19 @@ public class AuthenticationService {
     
     public ResponseEntity<?> validateToken(String token) {
         token = token.substring(7);
+        var account = DAO.getDaoAccount().getByEmail(jwtService.extractUsername(token));
         if (jwtService.isTokenExpired(token)) {
             var responseBuilder = ResponseEntity.badRequest();
             return responseBuilder.body("Token has expired");
+        } else if (account == null) {
+            var responseBuilder = ResponseEntity.badRequest();
+            return responseBuilder.body("Invalid Token");
         }
         
+        var newToken = jwtService.generateToken(account); // renew token
         var response = ValidationResponse.builder()
-                .email(jwtService.extractUsername(token))
+                .email(account.getEmail())
+                .token(newToken)
                 .build();
         return ResponseEntity.ok(response);
     }
