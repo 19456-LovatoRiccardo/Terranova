@@ -3,6 +3,8 @@ package com.grape.tynamoApp.controller;
 import com.grape.tynamoApp.config.JwtService;
 import com.grape.tynamoBackend.dao.DaoManager;
 import com.grape.tynamoBackend.domain.Anagrafica;
+import com.grape.tynamoBackend.domain.Contratto;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,5 +31,11 @@ public class PrivateAreaController {
     public Anagrafica anagrafica(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         var account = DAO.getDaoAccount().getByEmail(jwtService.extractUsername(token.substring(7)));
         return account.getAnagrafica();
+    }
+    
+    @GetMapping("/contratti")
+    public List<Contratto> contratti(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+        var account = DAO.getDaoAccount().getByEmail(jwtService.extractUsername(token.substring(7)));
+        return DAO.getDaoAnagrafica().getContratti(account.getAnagrafica());
     }
 }

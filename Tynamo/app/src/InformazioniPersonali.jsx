@@ -4,17 +4,21 @@ import ReactDOM from 'react-dom/client'
 import NavbarAreaPersonale from './components/NavbarAreaPersonale.jsx'
 import CookiePrompt from './components/CookiePrompt.jsx'
 import GetInformazioniPersonali from './api/GetInformazioniPersonali.jsx';
+import GetContratti from './api/GetContratti.jsx';
 import './InformazioniPersonali.css'
 
 function PageContent() {
   const [isPrivato, setIsPrivato] = useState(true);
-  const [anagrafica, setAnagrafica] = useState({})
+  const [anagrafica, setAnagrafica] = useState({});
+  const [contratti, setContratti] = useState(<></>);
 
   useEffect(() => {
     async function asyncFunction() {
       const authorizationResult = await GetInformazioniPersonali()
       setIsPrivato(!("partitaIVA" in authorizationResult));
       setAnagrafica(authorizationResult);
+      const risultatoContratti = await GetContratti()
+      setContratti(risultatoContratti);
     }
     asyncFunction()
   }, []);
@@ -35,7 +39,7 @@ function PageContent() {
         <br/>
       </div>
       <div className="containerContratti">
-
+        {contratti}
       </div>
     </>
   );

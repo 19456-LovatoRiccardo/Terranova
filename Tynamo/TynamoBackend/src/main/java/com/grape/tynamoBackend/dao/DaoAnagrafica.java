@@ -1,6 +1,7 @@
 package com.grape.tynamoBackend.dao;
 
 import com.grape.tynamoBackend.domain.Anagrafica;
+import com.grape.tynamoBackend.domain.Contratto;
 
 import jakarta.persistence.TypedQuery;
 import java.util.List;
@@ -58,4 +59,16 @@ public class DaoAnagrafica {
         return account;
     }
     
+    public List<Contratto> getContratti(Anagrafica anagrafica) {
+        List<Contratto> listaRighe;
+        DaoManager.getEM().getTransaction().begin();
+        TypedQuery tq = DaoManager.getEM().createQuery("SELECT c FROM Contratto c "
+                + "INNER JOIN c.sede s "
+                + "INNER JOIN s.anagrafica a "
+                + "WHERE a.id = :anagraficaId", Contratto.class);
+        tq.setParameter("anagraficaId", anagrafica.getId());
+        listaRighe = tq.getResultList();
+        DaoManager.getEM().getTransaction().commit();
+        return listaRighe;
+    }
 }
