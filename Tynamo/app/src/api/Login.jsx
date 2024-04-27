@@ -13,7 +13,7 @@ async function Login() {
             password,
         }).then((res) => {
             window.sessionStorage.setItem("token", "Bearer " + res.data.token);
-            window.location.href = "index.html"
+            window.location.href = "/index.html"
         });
     } catch (err) {
         if (!err?.response) {

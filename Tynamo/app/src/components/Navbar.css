@@ -24,6 +24,7 @@ nav ul {
   width: 100%; /* Assicura che il rettangolo occupi tutta la larghezza della pagina */
   height: 74px;
   background-color: #004483;
+  z-index: 1;
 }
 
 nav ul li {
@@ -51,7 +52,7 @@ nav ul li a {
 }
 
 .logoHome {
-  z-index: 1;
+  z-index: 2;
 }
 
 .logoHomeImage {

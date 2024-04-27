@@ -53,7 +53,7 @@ function Navbar() {
     <>
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
       <nav>
-        <a href="index.html" className="logoHome">
+        <a href="/index.html" className="logoHome">
           <img src={LOGO} className="logoHomeImage" alt="LOGO"/>
         </a>
         <ul>
@@ -66,13 +66,13 @@ function Navbar() {
                 <a onClick={() => setShowMenu(showMenu => !showMenu)} className='bx bx-fw bx-menu bx-md'/>
               </li>
               <div className="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
-                <a href="area-personale.html" style={{ display: authenticated ? "block" : "none" }}>
+                <a href="area-personale/informazioni-personali.html" style={{ display: authenticated ? "block" : "none" }}>
                   Area Personale
                 </a>
                 <a href="#">Chi siamo</a>
                 <a href="#">Offerte</a>
                 <a href="#">Contattaci</a>
-                <a href="login.html" style={{ display: authenticated ? "none" : "block" }}>
+                <a href="/login.html" style={{ display: authenticated ? "none" : "block" }}>
                   Login
                 </a>
                 <a id="logout-dropdown" onClick={() => Logout()} style={{ display: authenticated ? "block" : "none" }}>
@@ -81,10 +81,10 @@ function Navbar() {
               </div>
             </div>
             <li id="areaPersonale" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
-              <a href="area-personale.html">Area Personale</a>
+              <a href="/area-personale/informazioni-personali.html">Area Personale</a>
             </li>
             <li id="login" style={{ display: (minimize || authenticated) ? "none" : "block" }}>
-              <a href="login.html" className='bx bx-fw bxs-user bx-md'/>
+              <a href="/login.html" className='bx bx-fw bxs-user bx-md'/>
             </li>
             <li id="logout" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
               <a onClick={() => Logout()} className='bx bx-fw bx-log-out bx-md'/>

@@ -23,11 +23,8 @@ function RegisterOptions() {
           <br></br>
             <div className="radio-group">
                 <h2>Scegli il tipo di account:</h2>
-                <br></br>
                 <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Privato")}>Privato</button>
-                <br></br>
                 <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Azienda")}>Azienda</button>
-                <br></br>
             </div>
 
           <div className="register-link">

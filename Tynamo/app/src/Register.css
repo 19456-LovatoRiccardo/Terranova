@@ -25,6 +25,7 @@ body {
   right: 15%;
   top: 20%;
   position: absolute;
+  z-index: 0;
 }
 
 .wrapper form {
