@@ -113,16 +113,15 @@ function RegisterContratto() {
         <form onSubmit={e => {e.preventDefault(); RegisterContrattoAPI(utility, searchParams.get('descrizione'));}}>
           <h1>Metodo di Pagamento</h1>
 
-          <div className="input-box">
             <label className="labelPagamento">Scegli il tipo di Pagamento: </label>
             <br/>
             <select id="tipoPagamento" className ="tipoPagamento">
+              <option style={{ display: "none" }} disabled selected value> Seleziona </option>
               <option className="opzionePagamento" value="Carta di credito">Carta di Credito</option>
               <option className="opzionePagamento" value="Bonifico">Bonifico</option>
               <option className="opzionePagamento" value="IBAN">IBAN</option>
               <option className="opzionePagamento" value="Bollettino">Bollettino</option>
             </select>
-          </div>
 
           <button type="submit" className="btn">Conferma metodo di Pagamento</button>
           <br></br>
@@ -155,7 +154,7 @@ function PageContent() {
     async function asyncFunction() {
       const authorizationResult = await Authorize()
       if (authorizationResult == null) {
-        window.location.href = "/login.html"
+        //window.location.href = "/login.html"
       }
     }
     asyncFunction()
