@@ -59,7 +59,7 @@ function Navbar() {
         <ul>
           <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/chi-siamo.html">Chi siamo</a></li>
           <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/offerte.html">Offerte</a></li>
-          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Contattaci</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/contattaci.html">Contattaci</a></li>
           <div id='iconsDiv'>
             <div className="dropdown">
               <li id="menu" className="dropbtn" style={{ display: minimize ? "block" : "none" }}>
@@ -71,7 +71,7 @@ function Navbar() {
                 </a>
                 <a href="/chi-siamo.html">Chi siamo</a>
                 <a href="/offerte.html">Offerte</a>
-                <a href="#">Contattaci</a>
+                <a href="/contattaci.html">Contattaci</a>
                 <a href="/login.html" style={{ display: authenticated ? "none" : "block" }}>
                   Login
                 </a>
