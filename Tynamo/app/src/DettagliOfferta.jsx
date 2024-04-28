@@ -8,7 +8,7 @@ import RegisterContrattoAPI from './api/RegisterContratto.jsx';
 import './DettagliOfferta.css'
 
 const store = createStore();
-store.setState("currentPage", "Options"); 
+store.setState("currentPage", "Tipo Pagamento"); 
 store.setState("utility", null); 
 
 function RegisterOptions() {
@@ -114,13 +114,13 @@ function RegisterContratto() {
           <h1>Metodo di Pagamento</h1>
 
           <div className="input-box">
-            <label>Scegli il tipo di Pagamento: </label>
+            <label className="labelPagamento">Scegli il tipo di Pagamento: </label>
             <br/>
-            <select id="tipoPagamento">
-              <option value="Carta di credito">Carta di Credito</option>
-              <option value="Bonifico">Bonifico</option>
-              <option value="IBAN">IBAN</option>
-              <option value="Bollettino">Bollettino</option>
+            <select id="tipoPagamento" className ="tipoPagamento">
+              <option className="opzionePagamento" value="Carta di credito">Carta di Credito</option>
+              <option className="opzionePagamento" value="Bonifico">Bonifico</option>
+              <option className="opzionePagamento" value="IBAN">IBAN</option>
+              <option className="opzionePagamento" value="Bollettino">Bollettino</option>
             </select>
           </div>
 
