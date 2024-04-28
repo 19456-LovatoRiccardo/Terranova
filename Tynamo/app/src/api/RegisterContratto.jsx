@@ -55,6 +55,7 @@ async function RegisterContratto(utility, descrizioneOfferta) {
         }, {
             headers: {"Authorization" : window.sessionStorage.getItem("token")}
         }).then((res) => {
+            window.location.href = "/area-personale/informazioni-personali.html"
             return true;
         });
     } catch (err) {

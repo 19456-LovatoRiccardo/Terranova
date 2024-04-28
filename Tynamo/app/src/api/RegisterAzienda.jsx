@@ -24,6 +24,7 @@ async function RegisterAzienda() {
             indirizzo, numCivico, cap, localita, provincia, nazione
         }).then((res) => {
             window.sessionStorage.setItem("token", "Bearer " + res.data.token);
+            window.location.href = "/area-personale/informazioni-personali.html"
             return true;
         });
     } catch (err) {

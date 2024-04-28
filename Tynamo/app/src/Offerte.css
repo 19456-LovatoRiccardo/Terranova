@@ -17,99 +17,72 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro1 {
-  width: 430px;
-  height: 560px;
-  position: absolute;
-  left: 30px;
-  bottom: 112px;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  
-
+div {
+  top: 18%;
+  height: 69%;
 }
 
-
-.riquadro2 {
-  width: 430px;
-  height: 560px;
+.riquadro1 {
+  width: 22%;
   position: absolute;
-  left: 510px;
-  bottom: 112px;
+  left: 3%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
 
+.riquadro2 {
+  width: 21%;
+  position: absolute;
+  left: 28%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
 }
 
 .riquadro3 {
-  width: 430px;
-  height: 560px;
+  width: 21%;
   position: absolute;
-  right: 500px;
-  bottom: 112px;
+  right: 28%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
-
+  text-align: center;
 }
 
-
 .riquadro4 {
-  width: 430px;
-  height: 560px;
+  width: 22%;
   position: absolute;
-  right: 20px;
-  bottom: 112px;
+  right: 3%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
-
+  text-align: center;
 }
 
 .riquadroTestoTitolo {
-  margin-top: 30px;
+  margin-top: 5%;
+  margin-bottom: 7%;
   text-align: center;
   font-family: Epilogue;
 }
 
-.riquadroElenco1 {
-  text-align: center;
-  color: #494949;
-  font-size: 25px;
-  font-family: Epilogue;
-  margin-top: 40px;
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
-.riquadroElenco2 {
+.riquadroElenco {
+  margin-top: -2%;
   text-align: center;
   color: #494949;
-  font-size: 25px;
+  font-size: 20px;
   font-family: Epilogue;
-  margin-top: 10px;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 5%;
+  margin-left: 5%;
 }
-
-.riquadroElenco3 {
-  text-align: center;
-  color: #494949;
-  font-size: 25px;
-  font-family: Epilogue;
-  margin-top: 10px;
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
 
 .sceltaOfferta {
   display: flex;
-  width: 332px;
-  height: 45px;
-  padding: 13.5px 141.85px 14.5px 141.84px;
+  width: 90%;
+  height: 10%;
   align-items: flex-start;
   position: absolute;
-  left: 50px;
-  bottom: 30px;
+  left: 5%;
+  bottom: 5%;
   border-radius: 40px;
   background: rgba(15, 0, 108, 0.58);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
@@ -123,13 +96,9 @@ body {
   font-size: 25px;
   text-decoration: none;
   position: relative;
-  bottom: 5px;
-  right: 20px;
-  margin-right: 20px;
   white-space: nowrap;
-  top: 1px;
-  right: 28px;
+  right: 44px;
   font-family: Epilogue; 
-
+  margin-left: 50%;
 }
 

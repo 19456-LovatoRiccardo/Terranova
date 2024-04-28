@@ -17,44 +17,41 @@ body {
   overflow-y: hidden;
 }
 
-
 .riquadro1 {
-  width: 556px;
-  height: 450px;
+  width: 25%;
+  height: 70%;
   position: absolute;
-  left: 42px;
-  top: 171px;
+  left: 5%;
+  top: 20%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
-  
-
+  text-align: center;
 }
 
-
 .riquadro2 {
-  width: 556px;
-  height: 450px;
+  height: 50%;
   position: absolute;
-  right: 681px;
-  bottom: 18px;
+  left: 35%;
+  right: 35%;
+  top: 30%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
-
+  text-align: center;
 }
 
 .riquadro3 {
-  width: 556px;
-  height: 450px;
+  width: 25%;
+  height: 70%;
   position: absolute;
-  right: 49px;
-  top: 171px;
+  right: 5%;
+  top: 20%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
-
+  text-align: center;
 }
 
 .riquadroTestoTitolo {
-  margin-top: 30px;
+  margin-top: 5%;
   text-align: center;
   font-family: Epilogue;
 }
@@ -62,9 +59,9 @@ body {
 .riquadroTesto {
   text-align: center;
   color: #494949;
-  font-size: 25px;
+  font-size: 22px;
   font-family: Epilogue;
-  margin-top: 50px;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-top: 10%;
+  margin-right: 5%;
+  margin-left: 5%;
 }

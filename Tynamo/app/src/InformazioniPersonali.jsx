@@ -32,7 +32,7 @@ function PageContent() {
         <p style={{ display: isPrivato ? "none" : "block" }}>Ragione Sociale: {anagrafica.ragSociale}</p>
         <p style={{ display: isPrivato ? "none" : "block" }}>Partita IVA: {anagrafica.partitaIVA}</p>
         <p>Codice Fiscale: {anagrafica.codiceFiscale}</p>
-        <p>Indirizzo: {anagrafica.indirizzo} n. {anagrafica.numCivico}, {anagrafica.cap} {anagrafica.localita} {anagrafica.provincia} </p>
+        <p>Indirizzo: {anagrafica.indirizzo} n. {anagrafica.numCivico}, {anagrafica.cap} {anagrafica.localita} ({anagrafica.provincia})</p>
         <p>Email: {anagrafica.email}</p>
         <p>Telefono: {anagrafica.numTelefonico}</p>
         <br/>
