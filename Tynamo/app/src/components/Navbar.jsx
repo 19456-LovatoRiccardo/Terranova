@@ -57,8 +57,8 @@ function Navbar() {
           <img src={LOGO} className="logoHomeImage" alt="LOGO"/>
         </a>
         <ul>
-          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Chi siamo</a></li>
-          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Offerte</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/chi-siamo.html">Chi siamo</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/offerte.html">Offerte</a></li>
           <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="#">Contattaci</a></li>
           <div id='iconsDiv'>
             <div className="dropdown">
@@ -69,8 +69,8 @@ function Navbar() {
                 <a href="area-personale/informazioni-personali.html" style={{ display: authenticated ? "block" : "none" }}>
                   Area Personale
                 </a>
-                <a href="#">Chi siamo</a>
-                <a href="#">Offerte</a>
+                <a href="/chi-siamo.html">Chi siamo</a>
+                <a href="/offerte.html">Offerte</a>
                 <a href="#">Contattaci</a>
                 <a href="/login.html" style={{ display: authenticated ? "none" : "block" }}>
                   Login

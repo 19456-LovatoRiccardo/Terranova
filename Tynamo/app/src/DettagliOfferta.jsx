@@ -2,34 +2,29 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { createStore } from 'state-pool';
 import ReactDOM from 'react-dom/client'
-import showIcon from './assets/show-img.png'
-import hideIcon from './assets/hide-img.png'
 import Navbar from './components/Navbar.jsx'
-import RegisterPrivatoAPI from './api/RegisterPrivato.jsx'
-import RegisterAziendaAPI from './api/RegisterAzienda.jsx'
-import './Register.css'
+import './DettagliOfferta.css'
 
 const store = createStore();
 store.setState("currentPage", "Options"); 
+store.setState("utility", null); 
 
 function RegisterOptions() {
   const [currentPage, setCurrentPage] = store.useState("currentPage");
+  const [utility, setUtility] = store.useState("utility");
 
   return (
     <>
       <div className="wrapper">
         <form>
-          <h1>Registrazione</h1>
+          <h1>Scelta Offerta</h1>
           <br></br>
             <div className="radio-group">
-                <h2>Scegli il tipo di account:</h2>
-                <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Privato")}>Privato</button>
-                <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Azienda")}>Azienda</button>
+                <h2>Scegli il tipo di offerta:</h2>
+                <button type="button" className="btn" onClick={() => setUtility(utility => "EE")}>Energia Elettrica</button>
+                <button type="button" className="btn" onClick={() => setUtility(utility => "GAS")}>GAS</button>
+                <button type="button" className="btn" onClick={() => setUtility(utility => "EEandGAS")}>EE e GAS</button>
             </div>
-
-          <div className="register-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
         </form>
       </div>
     </>
@@ -210,7 +205,22 @@ function RegisterAzienda() {
 }
 
 function PageContent() {
-  const [currentPage, setCurrentPage] = store.useState("currentPage");
+  const searchParams = new URLSearchParams(document.location.search)
+  const [currentPage, setCurrentPage] = store.useState("currentPage")
+
+  switch (searchParams.get('descrizione')) {
+    case "Easy Energy":
+      break;
+    case "Family":
+      break;
+    case "Full Power":
+      break;
+    case "Super Power":
+      break;
+    default:
+      window.location.href = "/offerte.html"
+      break;
+  }
 
   return (
     <>
