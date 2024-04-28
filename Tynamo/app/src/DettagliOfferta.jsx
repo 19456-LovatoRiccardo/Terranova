@@ -1,8 +1,10 @@
 import React from 'react'
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { createStore } from 'state-pool';
 import ReactDOM from 'react-dom/client'
 import Navbar from './components/Navbar.jsx'
+import Authorize from './api/Authorize.jsx'
+import RegisterContrattoAPI from './api/RegisterContratto.jsx';
 import './DettagliOfferta.css'
 
 const store = createStore();
@@ -21,9 +23,9 @@ function RegisterOptions() {
           <br></br>
             <div className="radio-group">
                 <h2>Scegli il tipo di offerta:</h2>
-                <button type="button" className="btn" onClick={() => setUtility(utility => "EE")}>Energia Elettrica</button>
-                <button type="button" className="btn" onClick={() => setUtility(utility => "GAS")}>GAS</button>
-                <button type="button" className="btn" onClick={() => setUtility(utility => "EEandGAS")}>EE e GAS</button>
+                <button type="button" className="btn" onClick={() => {setUtility("EE"); setCurrentPage("Contratto")}}>Energia Elettrica</button>
+                <button type="button" className="btn" onClick={() => {setUtility("GAS"); setCurrentPage("Contratto")}}>GAS</button>
+                <button type="button" className="btn" onClick={() => {setUtility("EEandGAS"); setCurrentPage("Contratto")}}>EE e GAS</button>
             </div>
         </form>
       </div>
@@ -31,173 +33,100 @@ function RegisterOptions() {
   )
 }
 
-function RegisterPrivato() {
-  const [isPage1, setIsPage1] = useState(true);
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  useEffect(() => {
-    let icona = document.getElementById("privatoPasswordIcona");
-    let password = document.getElementById("privatoPassword");
-    icona.onclick = function() {
-      if (password.type == "password") {
-          password.type = "text";
-          setIsPasswordHidden(false);
-      } else {
-          password.type = "password";
-          setIsPasswordHidden(true);
-      }
-    }
-  }, []);
+function RegisterContratto() {
+  const searchParams = new URLSearchParams(document.location.search)
+  const [currentPage, setCurrentPage] = store.useState("currentPage");
+  const [utility, setUtility] = store.useState("utility");
 
   return (
     <>
-      <div className="wrapper" style={{ display: isPage1 ? "block" : "none" }}>
-        <form onSubmit={e => {e.preventDefault(); setIsPage1(isPage1 => false);}}>
-          <h1>Registrazione Privato</h1>
-
-          <div className="input-box">
-            <input type="mail" placeholder="Email" id="privatoEmail" required/>
-          </div>
-          <div className="input-box">
-            <input type="password" placeholder="Password" id="privatoPassword" required/>
-            <img src={isPasswordHidden ? showIcon : hideIcon} className="iconButton" id="privatoPasswordIcona"/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Nome" id="privatoNome" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Cognome" id="privatoCognome" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Ragione Sociale" id="privatoRagSociale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Codice fiscale" id="privatoCodiceFiscale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Indirizzo" id="privatoIndirizzo" required/>
-          </div>
-
-          <button type="submit" className="btn" id="Avanti1">Avanti</button>
-          <div className="register-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-
-      <div className="wrapper" style={{ display: isPage1 ? "none" : "block" }}>
-        <form onSubmit={e => {e.preventDefault(); RegisterPrivatoAPI();}}>
-          <h1>Registrazione Privato</h1>
-
-          <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="Numero Civico" id="privatoNumCivico" required/>
-          </div>
-          <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="CAP" id="privatoCap" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Localita" id="privatoLocalita" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Provincia" id="privatoProvincia" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Nazione" id="privatoNazione" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Numero Telefonico" id="privatoNumTelefonico" required/>
-          </div>
-
-          <button type="submit" className="btn">Registrati come Privato</button>
-          <br></br>
-          <button type="button" className="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
-          <div className="register-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html">Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-    </>
-  )
-}
-
-function RegisterAzienda() {
-  const [isPage1, setIsPage1] = useState(true);
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  useEffect(() => {
-    let icona = document.getElementById("aziendaPasswordIcona");
-    let password = document.getElementById("aziendaPassword");
-    icona.onclick = function() {
-      if (password.type == "password") {
-          password.type = "text";
-          setIsPasswordHidden(false);
-      } else {
-          password.type = "password";
-          setIsPasswordHidden(true);
-      }
-    }
-  }, []);
-
-  return (
-    <>
-      <div className="wrapper" style={{ display: isPage1 ? "block" : "none" }}>
-        <form onSubmit={e => {e.preventDefault(); setIsPage1(isPage1 => false);}}>
-          <h1>Registrazione Azienda</h1>
-
-          <div className="input-box">
-            <input type="mail" placeholder="Email" id="aziendaEmail" required/>
-          </div>
-          <div className="input-box">
-            <input type="password" placeholder="Password" id="aziendaPassword" required/>
-            <img src={isPasswordHidden ? showIcon : hideIcon} className="iconButton" id="aziendaPasswordIcona"/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Partita IVA" id="aziendaPartitaIVA" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Ragione Sociale" id="aziendaRagSociale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Codice fiscale" id="aziendaCodiceFiscale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Indirizzo" id="aziendaIndirizzo" required/>
-          </div>
-
-          <button type="submit" className="btn" id="Avanti1">Avanti</button>
-          <div className="register-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-
-      <div className="wrapper" style={{ display: isPage1 ? "none" : "block" }}>
-        <form onSubmit={e => {e.preventDefault(); RegisterAziendaAPI();}}>
-          <h1>Registrazione Azienda</h1>
+      <div className="wrapper" style={{ display: (currentPage == "Contratto") ? "block" : "none" }}>
+        <form onSubmit={e => {e.preventDefault(); setCurrentPage("Sede")}}>
+          <h1>Registrazione Contratto</h1>
           
           <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="Numero Civico" id="aziendaNumCivico" required/>
+            <input type="date" placeholder="Data Inizio" id="dataInizio" required/>
           </div>
           <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="CAP" id="aziendaCap" required/>
+            <input type="date" placeholder="Data Fine" id="dataFine" required/>
+          </div>
+          {(utility == "GAS") ? null : <>
+            <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
+              <input inputMode="numeric" type="number" placeholder="Potenza Imp" id="potenzaImp" required/>
+            </div>
+            <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
+              <input inputMode="numeric" type="number" placeholder="Potenza Disp" id="potenzaDisp" required/>
+            </div>
+            <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
+              <input inputMode="numeric" type="number" placeholder="Energia Anno" id="energiaAnno" required/>
+            </div>
+          </>}
+          {(utility == "EE") ? null : <>
+            <div className="input-box">
+              <input inputMode="numeric" type="number" placeholder="Gas Anno" id="gasAnno" required/>
+            </div>
+            <div className="checkBox">
+              <label><input type="checkbox" id="usoCotturaCibi"/>Uso Cottura Cibi</label>
+              <br/>
+              <label><input type="checkbox" id="produzioneAcquaCalda"/>Produzione Acqua Calda</label>
+              <br/>
+              <label><input type="checkbox" id="riscaldamentoIndividuale"/>Riscaldamento Individuale</label>
+              <br/>
+              <label><input type="checkbox" id="usoCommerciale"/>Uso Commerciale</label>
+            </div>
+          </>}
+          <button type="submit" className="btn">Registra Contratto</button>
+          <br></br>
+        </form>
+      </div>
+        
+      <div className="wrapper" style={{ display: (currentPage == "Sede") ? "block" : "none" }}>
+        <form onSubmit={e => {e.preventDefault(); setCurrentPage("Tipo Pagamento")}}>
+          <h1>Registrazione Sede</h1>
+
+          <div className="input-box">
+            <input type="text" placeholder="Indirizzo" id="indirizzo" required/>
           </div>
           <div className="input-box">
-            <input type="text" placeholder="Localita" id="aziendaLocalita" required/>
+            <input inputMode="numeric" type="number" placeholder="Numero Civico" id="numCivico" required/>
           </div>
           <div className="input-box">
-            <input type="text" placeholder="Provincia" id="aziendaProvincia" required/>
+            <input inputMode="numeric" type="number" placeholder="CAP" id="cap" required/>
           </div>
           <div className="input-box">
-            <input type="text" placeholder="Nazione" id="aziendaNazione" required/>
+            <input type="text" placeholder="Localita" id="localita" required/>
           </div>
           <div className="input-box">
-            <input type="text" placeholder="Numero Telefonico" id="aziendaNumTelefonico" required/>
+            <input type="text" placeholder="Provincia" id="provincia" required/>
+          </div>
+          <div className="input-box">
+            <input type="text" placeholder="Nazione" id="nazione" required/>
           </div>
 
-          <button type="submit" className="btn">Registrati come Azienda</button>
+          <button type="submit" className="btn">Registra Sede</button>
           <br></br>
-          <button type="button" className="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
-          <div className="register-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
+          <button type="button" className="btn" onClick={() => setCurrentPage("Contratto")}>Indietro</button>
+        </form>
+      </div>
+
+      <div className="wrapper" style={{ display: (currentPage == "Tipo Pagamento") ? "block" : "none" }}>
+        <form onSubmit={e => {e.preventDefault(); RegisterContrattoAPI(utility, searchParams.get('descrizione'));}}>
+          <h1>Metodo di Pagamento</h1>
+
+          <div className="input-box">
+            <label>Scegli il tipo di Pagamento: </label>
+            <br/>
+            <select id="tipoPagamento">
+              <option value="Carta di credito">Carta di Credito</option>
+              <option value="Bonifico">Bonifico</option>
+              <option value="IBAN">IBAN</option>
+              <option value="Bollettino">Bollettino</option>
+            </select>
           </div>
+
+          <button type="submit" className="btn">Conferma metodo di Pagamento</button>
+          <br></br>
+          <button type="button" className="btn" onClick={() => setCurrentPage("Sede")}>Indietro</button>
         </form>
       </div>
     </>
@@ -208,25 +137,34 @@ function PageContent() {
   const searchParams = new URLSearchParams(document.location.search)
   const [currentPage, setCurrentPage] = store.useState("currentPage")
 
-  switch (searchParams.get('descrizione')) {
-    case "Easy Energy":
-      break;
-    case "Family":
-      break;
-    case "Full Power":
-      break;
-    case "Super Power":
-      break;
-    default:
-      window.location.href = "/offerte.html"
-      break;
-  }
+  useEffect(() => {
+    switch (searchParams.get('descrizione')) {
+      case "Easy Energy":
+        break;
+      case "Family":
+        break;
+      case "Full Power":
+        break;
+      case "Super Power":
+        break;
+      default:
+        window.location.href = "/offerte.html"
+        break;
+    }
+
+    async function asyncFunction() {
+      const authorizationResult = await Authorize()
+      if (authorizationResult == null) {
+        window.location.href = "/login.html"
+      }
+    }
+    asyncFunction()
+  }, []);
 
   return (
     <>
       {(currentPage == "Options") ? <RegisterOptions/> : null}
-      {(currentPage == "Privato") ? <RegisterPrivato/> : null}
-      {(currentPage == "Azienda") ? <RegisterAzienda/> : null}
+      {(currentPage != "Options") ? <RegisterContratto/> : null}
     </>
   )
 }

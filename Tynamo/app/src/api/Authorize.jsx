@@ -13,7 +13,7 @@ async function Authorize() {
     try {
         const res = await API.get("/auth/validateToken", {
             headers: {
-                "Authorization" : window.sessionStorage.getItem("token")
+                "Authorization": window.sessionStorage.getItem("token")
             }
         }).then((res) => {
             window.sessionStorage.setItem("token", "Bearer " + res.data.token); // renew token

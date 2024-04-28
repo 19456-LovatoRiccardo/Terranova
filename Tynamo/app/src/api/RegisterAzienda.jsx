@@ -24,7 +24,7 @@ async function RegisterAzienda() {
             indirizzo, numCivico, cap, localita, provincia, nazione
         }).then((res) => {
             window.sessionStorage.setItem("token", "Bearer " + res.data.token);
-            window.location.href = "/index.html"
+            return true;
         });
     } catch (err) {
         if (!err?.response) {
@@ -33,6 +33,7 @@ async function RegisterAzienda() {
             console.log("Registration failed: "  + err.response.data);
         }
     }
+    return false;
 };
 
 export default RegisterAzienda;

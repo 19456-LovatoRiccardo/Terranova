@@ -65,14 +65,37 @@ body {
   bottom: 120px;
   border-radius: 12px;
   background: rgba(0, 11, 70, 0.80);
+  overflow-y: auto;
+}
+
+.containerContratti ul {
+  display: block;
 }
 
 .containerContratti ul li {
+  display: block;
   color: white;
   font-size: 20px;
   font-weight: 600;
   opacity: 0.85;
   margin-left: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
+}
+ 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(0, 11, 70);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #6a7db3; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #435074; 
 }

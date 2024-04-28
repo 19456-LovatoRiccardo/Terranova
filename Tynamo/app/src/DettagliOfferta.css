@@ -100,33 +100,16 @@ body {
   --border-color: #fff;
 }
 
+.wrapper .checkBox{
+  font-size: 16px;
+  margin-top: -5px;
+  margin-left: 8px;
+}
 
-
-  .wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-  }
-
-  .wrapper2 .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-  }
-  .remember-forgot label input{
+  .checkBox label input{
     accent-color: #fff;
-    margin-right: 3px;
-  
-  }
-  .remember-forgot a{
-    color: #fff;
-    text-decoration: none;
-  
-  }
-  .remember-forgot a:hover{
-    text-decoration: underline;
+    margin-right: 4px;
+    margin-bottom: 20px;
   }
   
   .wrapper .btn{

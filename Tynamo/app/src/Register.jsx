@@ -127,6 +127,7 @@ function RegisterPrivato() {
 function RegisterAzienda() {
   const [isPage1, setIsPage1] = useState(true);
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  
   useEffect(() => {
     let icona = document.getElementById("aziendaPasswordIcona");
     let password = document.getElementById("aziendaPassword");
