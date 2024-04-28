@@ -11,6 +11,9 @@ function PageContent() {
       <a href="/dettagli-offerta.html?descrizione=Family"><button>Family</button></a>
       <a href="/dettagli-offerta.html?descrizione=Full Power"><button>Full Power</button></a>
       <a href="/dettagli-offerta.html?descrizione=Super Power"><button>Super Power</button></a>
+
+
+      
     </>
   );
 }

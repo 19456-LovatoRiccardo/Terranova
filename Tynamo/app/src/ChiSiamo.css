@@ -16,3 +16,55 @@ body {
   background-repeat: repeat-x;
   overflow-y: hidden;
 }
+
+
+.riquadro1 {
+  width: 556px;
+  height: 450px;
+  position: absolute;
+  left: 42px;
+  top: 171px;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  
+
+}
+
+
+.riquadro2 {
+  width: 556px;
+  height: 450px;
+  position: absolute;
+  right: 681px;
+  bottom: 18px;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+
+}
+
+.riquadro3 {
+  width: 556px;
+  height: 450px;
+  position: absolute;
+  right: 49px;
+  top: 171px;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+
+}
+
+.riquadroTestoTitolo {
+  margin-top: 30px;
+  text-align: center;
+  font-family: Epilogue;
+}
+
+.riquadroTesto {
+  text-align: center;
+  color: #494949;
+  font-size: 25px;
+  font-family: Epilogue;
+  margin-top: 50px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
