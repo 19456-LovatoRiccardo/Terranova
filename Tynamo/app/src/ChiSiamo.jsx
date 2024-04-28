@@ -13,6 +13,12 @@ function PageContent() {
                                 creare un futuro energetico più pulito e più accessibile per tutti, ci impegniamo a guidare il settore verso una transizione ecologica.</h3>
     </div>
 
+
+    <div class="riquadro3"><h1 class="riquadroTestoTitolo">La nostra missione</h1>
+      <h3 class="riquadroTesto">La nostra missione è di fornire energia affidabile, efficiente e sostenibile per soddisfare le esigenze dei nostri clienti, preservando al contempo 
+                                il nostro pianeta per le generazioni future. Ci impegniamo a offrire servizi energetici innovativi 
+                                che migliorino la qualità della vita, riducano l'impatto ambientale e promuovano la responsabilità sociale e ambientale.</h3>
+    </div>
     <div class="riquadro2">
     <h1 class="riquadroTestoTitolo">Trasparenza</h1>
       <h3 class="riquadroTesto">La trasparenza e l'integrità sono i pilastri su cui si basa il nostro operato. Ci impegniamo a operare in modo etico, responsabile 

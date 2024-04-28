@@ -8,22 +8,32 @@ function PageContent() {
   return (
     <>
     <div class="riquadro1">
-      <h1 class="riquadroTestoTitolo">Chi Siamo</h1>
-      <h3 class="riquadroTesto">Benvenuti in Tynamo, un'azienda dedicata a fornire soluzioni energetiche sostenibili per le comunità di oggi e di domani. Fondata con la visione di 
-                                creare un futuro energetico più pulito e più accessibile per tutti, ci impegniamo a guidare il settore verso una transizione ecologica.</h3>
+    <i class='bx bxs-home-alt-2' ></i>
+    <p>+39 02 12345678</p>
+    <i class='bx bx-devices'></i>
+    <p>+39 347 9876543</p>
     </div>
 
     <div class="riquadro2">
-    <h1 class="riquadroTestoTitolo">Trasparenza</h1>
-      <h3 class="riquadroTesto">La trasparenza e l'integrità sono i pilastri su cui si basa il nostro operato. Ci impegniamo a operare in modo etico, responsabile 
-                                e trasparente in tutte le nostre attività, rispettando sempre gli standard più elevati di comportamento aziendale.</h3>
+    <i class='bx bxs-location-plus' ></i>
+    <p>Verona, Italy</p>
+    <iframe class= "mappa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.0660318602972!2d10.9692262766284!3d45.42817023584146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f5f61f8852227%3A0xfab7331910c8e071!2sITIS%20Guglielmo%20Marconi!5e0!3m2!1sit!2sit!4v1714310186579!5m2!1sit!2sit" 
+    width="100" 
+    height="450" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    </div>
 
+    <div class="riquadro3">
+    <i class='bx bxs-envelope' ></i>
+    <p>tynamo@assistenza.com</p>
+    <i class='bx bxs-info-circle' ></i>
+    <p>tynamo@info.com</p>
     </div>
-    <div class="riquadro3"><h1 class="riquadroTestoTitolo">La nostra missione</h1>
-      <h3 class="riquadroTesto">La nostra missione è di fornire energia affidabile, efficiente e sostenibile per soddisfare le esigenze dei nostri clienti, preservando al contempo 
-                                il nostro pianeta per le generazioni future. Ci impegniamo a offrire servizi energetici innovativi 
-                                che migliorino la qualità della vita, riducano l'impatto ambientale e promuovano la responsabilità sociale e ambientale.</h3>
-    </div>
+
+
     
     </>
   );
