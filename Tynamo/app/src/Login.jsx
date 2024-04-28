@@ -36,11 +36,12 @@ function PageContent() {
             <input type="password" placeholder="Password" id="password" required/>
             <img src={isPasswordHidden ? showIcon : hideIcon} id="occhioIconaPassword"/>
           </div>
-          <div className="remember-forgot">
-            <label><input type="checkbox"/>Ricordami</label>
-            <a href="resetPw.html">Password dimenticata ?</a>
-          </div>
-          
+          { /*
+            <div className="remember-forgot">
+              <label><input type="checkbox"/>Ricordami</label>
+              <a href="resetPw.html">Password dimenticata ?</a>
+            </div>
+          */}
           <button type="submit" className="btn">Login</button>
           <div className="register-link">
             <p>Non hai un contratto Tynamo? <a href="./register.html"> Registrati subito.</a></p>

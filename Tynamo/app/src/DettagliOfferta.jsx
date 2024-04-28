@@ -8,7 +8,7 @@ import RegisterContrattoAPI from './api/RegisterContratto.jsx';
 import './DettagliOfferta.css'
 
 const store = createStore();
-store.setState("currentPage", "Tipo Pagamento"); 
+store.setState("currentPage", "Options"); 
 store.setState("utility", null); 
 
 function RegisterOptions() {
@@ -45,17 +45,19 @@ function RegisterContratto() {
           <h1>Registrazione Contratto</h1>
           
           <div className="input-box">
-            <input type="date" placeholder="Data Inizio" id="dataInizio" required/>
+            <p>Data Inizio: </p>
+            <input type="date" className="btnData" id="dataInizio" required/>
           </div>
           <div className="input-box">
-            <input type="date" placeholder="Data Fine" id="dataFine" required/>
+            <p>Data Fine: </p>
+            <input type="date" className="btnData" id="dataFine" required/>
           </div>
           {(utility == "GAS") ? null : <>
             <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
-              <input inputMode="numeric" type="number" placeholder="Potenza Imp" id="potenzaImp" required/>
+              <input inputMode="numeric" type="number" placeholder="Potenza Impiegata" id="potenzaImp" required/>
             </div>
             <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
-              <input inputMode="numeric" type="number" placeholder="Potenza Disp" id="potenzaDisp" required/>
+              <input inputMode="numeric" type="number" placeholder="Potenza Disponibile" id="potenzaDisp" required/>
             </div>
             <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
               <input inputMode="numeric" type="number" placeholder="Energia Anno" id="energiaAnno" required/>
@@ -109,14 +111,14 @@ function RegisterContratto() {
         </form>
       </div>
 
-      <div className="wrapper" style={{ display: (currentPage == "Tipo Pagamento") ? "block" : "none" }}>
+      <div className="wrapper" id="wrapperPagamento"style={{ display: (currentPage == "Tipo Pagamento") ? "block" : "none" }}>
         <form onSubmit={e => {e.preventDefault(); RegisterContrattoAPI(utility, searchParams.get('descrizione'));}}>
           <h1>Metodo di Pagamento</h1>
 
             <label className="labelPagamento">Scegli il tipo di Pagamento: </label>
             <br/>
-            <select id="tipoPagamento" className ="tipoPagamento">
-              <option style={{ display: "none" }} disabled selected value> Seleziona </option>
+            <select id="tipoPagamento" className ="tipoPagamento" required>
+              <option style={{ display: "none" }} value="">Seleziona</option>
               <option className="opzionePagamento" value="Carta di credito">Carta di Credito</option>
               <option className="opzionePagamento" value="Bonifico">Bonifico</option>
               <option className="opzionePagamento" value="IBAN">IBAN</option>
@@ -154,7 +156,7 @@ function PageContent() {
     async function asyncFunction() {
       const authorizationResult = await Authorize()
       if (authorizationResult == null) {
-        //window.location.href = "/login.html"
+        window.location.href = "/login.html"
       }
     }
     asyncFunction()

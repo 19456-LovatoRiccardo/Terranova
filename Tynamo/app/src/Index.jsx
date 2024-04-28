@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import croppedBG from './assets/cropped-bg.png'
 import Navbar from './components/Navbar.jsx'
-import CookiePrompt from './components/CookiePrompt.jsx'
 import './Index.css'
 
 function PageContent() {
@@ -30,6 +29,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Navbar/>
     <PageContent/>
-    <CookiePrompt/>
   </React.StrictMode>,
 )

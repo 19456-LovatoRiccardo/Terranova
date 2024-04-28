@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client'
 import NavbarAreaPersonale from './components/NavbarAreaPersonale.jsx'
-import CookiePrompt from './components/CookiePrompt.jsx'
 import GetInformazioniPersonali from './api/GetInformazioniPersonali.jsx';
 import GetContratti from './api/GetContratti.jsx';
 import './InformazioniPersonali.css'
@@ -49,6 +48,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <NavbarAreaPersonale/>
     <PageContent/>
-    <CookiePrompt/>
   </React.StrictMode>,
 )
