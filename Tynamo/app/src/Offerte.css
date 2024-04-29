@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(./assets/bg2.png);
+  background-size: cover;
+  background-position: right top;
+  background-repeat: repeat-x;
+  overflow-y: hidden;
+}
+
+div {
+  top: 18%;
+  height: 69%;
+}
+
+.riquadro1 {
+  width: 22%;
+  position: absolute;
+  left: 3%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadro2 {
+  width: 21%;
+  position: absolute;
+  left: 28%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadro3 {
+  width: 21%;
+  position: absolute;
+  right: 28%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadro4 {
+  width: 22%;
+  position: absolute;
+  right: 3%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadroTestoTitolo {
+  margin-top: 5%;
+  margin-bottom: 7%;
+  text-align: center;
+  font-family: Epilogue;
+}
+
+.riquadroElenco {
+  margin-top: -2%;
+  text-align: center;
+  color: #494949;
+  font-size: 20px;
+  font-family: Epilogue;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.sceltaOfferta {
+  display: flex;
+  width: 90%;
+  height: 10%;
+  align-items: flex-start;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  border-radius: 40px;
+  background: rgba(15, 0, 108, 0.58);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+  align-items: center;
+  text-decoration: none;
+
+}
+
+.sceltaOfferta p {
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  right: 44px;
+  font-family: Epilogue; 
+  margin-left: 50%;
+}
+

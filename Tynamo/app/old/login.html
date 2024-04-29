@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tynamo - Accesso</title>
+  <link rel="stylesheet" href="./css/baseFormStyle.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="img/tynamo.png">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Login</h1>
+    <div class="input-box">
+      <input type="text" placeholder="Mail" required>
+    </div>
+    <div class="input-box">
+      <input type="password" placeholder="Password" id="password" required>
+      <img src="img/hide-img.png" id="occhioIconaPassword">
+    </div>
+    <div class="remember-forgot">
+      <label><input type="checkbox">Ricordami</label>
+      <a href="resetPw.html">Password dimenticata ?</a>
+    </div>
+    
+    <button type="submit" class="btn" onclick="inviaRichiesta()">Login</button>
+
+    <div class="register-link">
+      <p>Non hai un contratto Tynamo? <a href="../app/registrazioni/sceltaReg.html"> Registrati subito.</a></p>
+    </div>
+  </div>
+
+
+  <div class="cookie">
+    <header>
+      <i class='bx bxs-cookie' ></i>
+      <h2>Consenso Cookies</h2>
+    </header>
+    <div class="cookieData">
+      <p>Questo sito web utilizza i cookie per aiutarti a avere un'esperienza di navigazione superiore e più pertinente sul sito. </p>
+    </div>
+    <div class="cookieBtn">
+      <button class="button" id="acceptBtn">Accept</button>
+      <button class="button" id="declineBtn">Decline</button>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
+    
+    let password = document.getElementById("password");
+
+
+
+    occhioIconaPassword.onclick = function(){
+        if(password.type == "password"){
+            password.type = "text";
+            occhioIconaPassword.src = "img/show-img.png"
+        } else {
+            password.type = "password";
+            occhioIconaPassword.src = "img/hide-img.png"
+        }
+    }
+
+const cookieBox = document.querySelector(".cookie"),
+  buttons = document.querySelectorAll(".cookieBtn");
+const executeCodes = () => {
+  if (document.cookie.includes("codinglab")) return;
+  cookieBox.classList.add("show");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      cookieBox.classList.remove("show");
+      if (button.id == "acceptBtn") {
+        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
+      }
+    });
+  });
+};
+window.addEventListener("load", executeCodes);
+    
+  function inviaRichiesta() {
+    var xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        authenticate(this)
+      }
+    }
+    xhttp.open("POST", "http://localhost:9091/api/auth/authenticate", true)
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({"email": codice.value, "password": password.value}));
+  }
+
+  function authenticate(xhttp) {
+    window.location.href = "home.html"
+  }
+
+</script>
+</body>
+</html>

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtService {
     private static final String SECRET_KEY = "qi+Et/TK2Ls84b6aqN6fHmvf9dyZe500l0wrOfevjOM+3gtIrEKBgIiXFqgxYBUc";
-    private static final long EXPIRATION_TIME = 5*60*1000; //timeout token -> 5'
+    private static final long EXPIRATION_TIME = 15*60*1000; //timeout token -> 15'
     
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -63,7 +63,7 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 

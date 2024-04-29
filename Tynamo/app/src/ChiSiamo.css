@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(./assets/bg2.png);
+  background-size: cover;
+  background-position: right top;
+  background-repeat: repeat-x;
+  overflow-y: hidden;
+}
+
+.riquadro1 {
+  width: 25%;
+  height: 70%;
+  position: absolute;
+  left: 5%;
+  top: 20%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadro2 {
+  height: 50%;
+  position: absolute;
+  left: 35%;
+  right: 35%;
+  top: 30%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadro3 {
+  width: 25%;
+  height: 70%;
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  text-align: center;
+}
+
+.riquadroTestoTitolo {
+  margin-top: 5%;
+  text-align: center;
+  font-family: Epilogue;
+}
+
+.riquadroTesto {
+  text-align: center;
+  color: #494949;
+  font-size: 22px;
+  font-family: Epilogue;
+  margin-top: 10%;
+  margin-right: 5%;
+  margin-left: 5%;
+}

@@ -14,11 +14,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+public class RegisterAziendaRequest {
     private String email;
     private String password;
-    private String cognome;
-    private String nome;
+    private String partitaIVA;
     private String ragSociale;
     private String codiceFiscale;
     private String indirizzo;

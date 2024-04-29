@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(./assets/bg2.png);
+  background-size: cover;
+  background-position: center;
+  overflow-y: hidden;
+}
+
+.containerInformazioni {
+  width: 40%;
+  position: absolute;
+  left: 5%;
+  top: 32%;
+  border-radius: 12px;
+  overflow-wrap: break-word;
+  background: rgba(0, 11, 70, 0.80);
+}
+
+.containerInformazioni i {
+  color: white;
+  height: 50px; /* This pushes the top of the container upwards */
+  font-size: 24px;
+  font-weight: 600;
+  opacity: 0.85;
+  left: 20px;
+  top: 25px;
+  position: relative;
+}
+
+.containerInformazioni h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  opacity: 0.85;
+  left: 80px;
+  top: 20px;
+  position: absolute;
+}
+
+.containerInformazioni p {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-left: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.containerContratti {
+  width: 45%;
+  height: 75%;
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  border-radius: 12px;
+  background: rgba(0, 11, 70, 0.80);
+  overflow-y: auto;
+}
+
+.containerContratti ul {
+  display: block;
+}
+
+.containerContratti ul li {
+  display: block;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+ 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(0, 11, 70);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #6a7db3; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #435074; 
+}
