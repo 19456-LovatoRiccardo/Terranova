@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -17,19 +19,19 @@ body {
 }
 
 .containerInformazioni {
-  width: 40%;
   position: absolute;
-  left: 5%;
   top: 32%;
+  left: 5%;
+  width: 33%;
+  padding-right: 2%;
   border-radius: 12px;
-  overflow-wrap: break-word;
   background: rgba(0, 11, 70, 0.80);
 }
 
-.containerInformazioni i {
+.containerInformazioni i,
+.containerContratti i {
   color: white;
   height: 50px; /* This pushes the top of the container upwards */
-  font-size: 24px;
   font-weight: 600;
   opacity: 0.85;
   left: 20px;
@@ -37,19 +39,22 @@ body {
   position: relative;
 }
 
-.containerInformazioni h1 {
+.containerInformazioni h1,
+.containerContratti h1 {
   color: white;
-  font-size: 24px;
+  font-size: 1.5em;
   font-weight: 600;
   opacity: 0.85;
   left: 80px;
   top: 20px;
   position: absolute;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .containerInformazioni p {
   color: white;
-  font-size: 22px;
+  font-size: 1.35em;
   font-weight: 600;
   opacity: 0.85;
   margin-left: 20px;
@@ -68,34 +73,33 @@ body {
   overflow-y: auto;
 }
 
-.containerContratti ul {
-  display: block;
+.containerContratti table {
+  border-collapse: collapse;
+  color: white;
+  opacity: 0.85;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 25px 15px;
 }
 
-.containerContratti ul li {
-  display: block;
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  opacity: 0.85;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  position: relative;
+.containerContratti table tr th,
+.containerContratti table tr td {
+  border: 1px solid #ddd;
+  padding: 4px 6px;
 }
- 
+
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: rgb(0, 11, 70);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: #6a7db3; 
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #435074; 
-}
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(0, 11, 70);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #6a7db3; 
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #435074; 
+  }

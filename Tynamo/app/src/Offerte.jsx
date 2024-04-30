@@ -6,34 +6,60 @@ import './Offerte.css'
 function PageContent() {
   return (
     <>
-      <div className="riquadro1">
-        <h1 className="riquadroTestoTitolo">Easy Energy</h1>
-        <h3 className="riquadroElenco">• Tariffe semplici e trasparenti senza costi nascosti.</h3> <br />
-        <h3 className="riquadroElenco">• Assistenza clienti dedicata per risolvere rapidamente qualsiasi problema.</h3>  <br />
-        <h3 className="riquadroElenco">• Opzioni flessibili di pagamento per adattarsi alle tue esigenze finanziarie.</h3>
-        <a className="sceltaOfferta" href="/dettagli-offerta.html?descrizione=Easy Energy"><p>Seleziona</p></a>
+      <div className="riquadro" id="r1">
+        <h1>Easy Energy</h1>
+        <ul>
+          <li>Tariffe semplici e trasparenti senza costi nascosti.</li>
+          <li>Assistenza clienti dedicata per risolvere rapidamente qualsiasi problema.</li>
+          <li>Opzioni flessibili di pagamento per adattarsi alle tue esigenze finanziarie.</li>
+        </ul>
+        <a href="/dettagli-offerta.html?descrizione=Easy Energy">
+          <div className="sceltaOfferta">
+            Seleziona
+          </div>
+        </a>
       </div>
 
-      <div className="riquadro2">
-        <h1 className="riquadroTestoTitolo">Family</h1>
-        <h3 className="riquadroElenco">• Sconti speciali per le famiglie per risparmiare sui costi energetici.</h3> <br />
-        <h3 className="riquadroElenco">• Consulenza energetica personalizzata per ottimizzare i consumi domestici.</h3>  <br />
-        <h3 className="riquadroElenco">• Programmi di fidelizzazione con vantaggi esclusivi per i membri della famiglia.</h3>
-      <a className="sceltaOfferta" href="/dettagli-offerta.html?descrizione=Family"><p>Seleziona</p></a>
-
+      <div className="riquadro" id="r2">
+        <h1>Family</h1>
+        <ul>
+          <li>Sconti speciali per le famiglie per risparmiare sui costi energetici.</li>
+          <li>Consulenza energetica personalizzata per ottimizzare i consumi domestici.</li>
+          <li>Programmi di fidelizzazione con vantaggi esclusivi per i membri della famiglia.</li>
+        </ul>
+        <a href="/dettagli-offerta.html?descrizione=Family">
+          <div className="sceltaOfferta">
+              Seleziona
+          </div>
+        </a>
       </div>
-        <div className="riquadro3"><h1 className="riquadroTestoTitolo">Full Power</h1>
-        <h3 className="riquadroElenco">• Energia garantita 100% proveniente da fonti rinnovabili.</h3> <br />
-        <h3 className="riquadroElenco">• Monitoraggio avanzato dei consumi per massimizzare l'efficienza energetica.</h3>  <br />
-        <h3 className="riquadroElenco">• Soluzioni tecnologiche all'avanguardia per ridurre l'impatto ambientale.</h3>
-        <a className="sceltaOfferta" href="/dettagli-offerta.html?descrizione=Full Power"><p>Seleziona</p></a>
+      
+      <div className="riquadro" id="r3">
+        <h1>Full Power</h1>
+        <ul>
+          <li>Energia garantita 100% proveniente da fonti rinnovabili.</li>
+          <li>Monitoraggio avanzato dei consumi per massimizzare l'efficienza energetica.</li>
+          <li>Soluzioni tecnologiche all'avanguardia per ridurre l'impatto ambientale.</li>
+        </ul>
+        <a href="/dettagli-offerta.html?descrizione=Full Power">
+          <div className="sceltaOfferta">
+              Seleziona
+          </div>
+        </a>
       </div>
 
-      <div className="riquadro4"><h1 className="riquadroTestoTitolo">Super Power</h1>
-        <h3 className="riquadroElenco">• Pacchetto completo con servizi premium e vantaggi esclusivi.</h3> <br />
-        <h3 className="riquadroElenco">• Analisi approfondita dei flussi energetici dell'azienda per identificare opportunità di risparmio.</h3>  <br />
-        <h3 className="riquadroElenco">• Accesso prioritario a programmi di incentivazione e incentivi governativi per l'energia sostenibile.</h3>
-        <a className="sceltaOfferta" href="/dettagli-offerta.html?descrizione=Super Power"><p>Seleziona</p></a>
+      <div className="riquadro" id="r4">
+        <h1>Super Power</h1>
+        <ul>
+          <li>Pacchetto completo con servizi premium e vantaggi esclusivi.</li>
+          <li>Analisi approfondita dei flussi energetici dell'azienda per identificare opportunità di risparmio.</li>
+          <li>Accesso prioritario a programmi di incentivazione e incentivi governativi per l'energia sostenibile.</li>
+        </ul>
+        <a href="/dettagli-offerta.html?descrizione=Super Power">
+          <div className="sceltaOfferta">
+              Seleziona
+          </div>
+        </a>
       </div>
     </>
   );

@@ -38,7 +38,21 @@ function PageContent() {
         <br/>
       </div>
       <div className="containerContratti">
-        {contratti}
+        <i className='bx bx-fw bxs-notepad bx-md'></i>
+        <h1>Contratti</h1>
+        <table>
+          <tr>
+            <th>Tipo</th>
+            <th>Offerta</th>
+            <th>Stato</th>
+            <th>Data Inizio</th>
+            <th>Data Fine</th>
+            <th>Tipo Pagamento</th>
+            <th>Energia Anno</th>
+            <th>Gas Anno</th>
+          </tr>
+          {contratti}
+        </table> 
       </div>
     </>
   );

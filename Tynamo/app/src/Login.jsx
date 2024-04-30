@@ -1,10 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client'
-import showIcon from './assets/show-img.png'
-import hideIcon from './assets/hide-img.png'
 import Navbar from './components/Navbar.jsx'
 import Login from './api/Login.jsx'
+import './Form.css'
 import './Login.css'
 
 function PageContent() {
@@ -34,7 +33,7 @@ function PageContent() {
           </div>
           <div className="input-box">
             <input type="password" placeholder="Password" id="password" required/>
-            <img src={isPasswordHidden ? showIcon : hideIcon} id="occhioIconaPassword"/>
+            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="occhioIconaPassword"/>
           </div>
           { /*
             <div className="remember-forgot">

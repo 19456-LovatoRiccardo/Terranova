@@ -2,11 +2,10 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { createStore } from 'state-pool';
 import ReactDOM from 'react-dom/client'
-import showIcon from './assets/show-img.png'
-import hideIcon from './assets/hide-img.png'
 import Navbar from './components/Navbar.jsx'
 import RegisterPrivatoAPI from './api/RegisterPrivato.jsx'
 import RegisterAziendaAPI from './api/RegisterAzienda.jsx'
+import './Form.css'
 import './Register.css'
 
 const store = createStore();
@@ -27,7 +26,7 @@ function RegisterOptions() {
                 <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Azienda")}>Azienda</button>
             </div>
 
-          <div className="register-link">
+          <div className="login-link">
             <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
           </div>
         </form>
@@ -64,7 +63,7 @@ function RegisterPrivato() {
           </div>
           <div className="input-box">
             <input type="password" placeholder="Password" id="privatoPassword" required/>
-            <img src={isPasswordHidden ? showIcon : hideIcon} className="iconButton" id="privatoPasswordIcona"/>
+            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="privatoPasswordIcona"/>
           </div>
           <div className="input-box">
             <input type="text" placeholder="Nome" id="privatoNome" required/>
@@ -83,7 +82,7 @@ function RegisterPrivato() {
           </div>
 
           <button type="submit" className="btn" id="Avanti1">Avanti</button>
-          <div className="register-link">
+          <div className="login-link">
             <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
           </div>
         </form>
@@ -115,7 +114,7 @@ function RegisterPrivato() {
           <button type="submit" className="btn">Registrati come Privato</button>
           <br></br>
           <button type="button" className="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
-          <div className="register-link">
+          <div className="login-link">
             <p>Hai gia' un account Tynamo? <a href="/login.html">Accedi qui.</a></p>
           </div>
         </form>
@@ -153,7 +152,7 @@ function RegisterAzienda() {
           </div>
           <div className="input-box">
             <input type="password" placeholder="Password" id="aziendaPassword" required/>
-            <img src={isPasswordHidden ? showIcon : hideIcon} className="iconButton" id="aziendaPasswordIcona"/>
+            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="aziendaPasswordIcona"/>
           </div>
           <div className="input-box">
             <input type="text" placeholder="Partita IVA" id="aziendaPartitaIVA" required/>
@@ -169,7 +168,7 @@ function RegisterAzienda() {
           </div>
 
           <button type="submit" className="btn" id="Avanti1">Avanti</button>
-          <div className="register-link">
+          <div className="login-link">
             <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
           </div>
         </form>
@@ -201,7 +200,7 @@ function RegisterAzienda() {
           <button type="submit" className="btn">Registrati come Azienda</button>
           <br></br>
           <button type="button" className="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
-          <div className="register-link">
+          <div className="login-link">
             <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
           </div>
         </form>

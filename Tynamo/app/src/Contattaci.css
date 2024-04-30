@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -17,52 +19,44 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro1 {
-  width: 25%;
-  height: 50%;
+.riquadro {
   position: absolute;
-  left: 5%;
   top: 27%;
+  height: 50%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
   text-align: center;
+  word-wrap: break-word;
+  overflow-y: auto;
 }
 
-.riquadro2 {
-  height: 50%;
-  position: absolute;
+#r1 {
+  width: 25%;
+  left: 5%;
+}
+
+#r2 {
   left: 35%;
   right: 35%;
-  top: 27%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
 }
 
-.riquadro2 i {
-  margin-top: 5%;
-  font-size: 35px;
-}
-
-.riquadro3 {
+#r3 {
   width: 25%;
-  height: 50%;
-  position: absolute;
   right: 5%;
-  top: 27%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
 }
 
-i {
+.riquadro i {
   margin-top: 13%;
-  font-size: 35px;
+  font-size: 2.1em;
 }
 
-p {
+#r2 i {
   margin-top: 5%;
-  font-size: 24px;
+}
+
+.riquadro p {
+  margin-top: 5%;
+  font-size: 1.5em;
   font-weight: bold;
 }
 
@@ -70,9 +64,14 @@ p {
   border: 0;
   border-radius: 27px;
   width: 90%;
-  height: 53%;
-  bottom: 20px;
-  left: 5%;
-  position: absolute;
+  height: 60%;
+  transform: translateY(12%);
 }
 
+/* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  }

@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -17,51 +19,61 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro1 {
-  width: 25%;
-  height: 70%;
+.riquadro {
   position: absolute;
-  left: 5%;
-  top: 20%;
+  height: 70%;
   border-radius: 27px;
   background: rgba(171, 220, 255, 0.80);
   text-align: center;
+  word-wrap: break-word;
+  overflow-y: auto;
 }
 
-.riquadro2 {
-  height: 50%;
-  position: absolute;
+#r1 {
+  top: 20%;
+  left: 5%;
+  width: 25%;
+}
+
+#r2 {
+  top: 30%;
   left: 35%;
   right: 35%;
-  top: 30%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
+  height: 50%;
 }
 
-.riquadro3 {
-  width: 25%;
-  height: 70%;
-  position: absolute;
-  right: 5%;
+#r3 {
   top: 20%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
+  right: 5%;
+  width: 25%;
 }
 
-.riquadroTestoTitolo {
+.riquadro h1 {
+  font-size: 2.2vmax;
   margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
   text-align: center;
   font-family: Epilogue;
 }
 
-.riquadroTesto {
-  text-align: center;
-  color: #494949;
-  font-size: 22px;
-  font-family: Epilogue;
+.riquadro p {
   margin-top: 10%;
   margin-right: 5%;
   margin-left: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  color: #494949;
+  font-size: calc(0.53em + 0.9vmax);
+  line-height: 1.2em;
+  font-family: Epilogue;
+  font-weight: bold;
 }
+
+/* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  }

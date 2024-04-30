@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client'
 import Navbar from './components/Navbar.jsx'
 import Authorize from './api/Authorize.jsx'
 import RegisterContrattoAPI from './api/RegisterContratto.jsx';
+import './Form.css'
 import './DettagliOfferta.css'
 
 const store = createStore();
@@ -45,13 +46,14 @@ function RegisterContratto() {
           <h1>Registrazione Contratto</h1>
           
           <div className="input-box">
-            <p>Data Inizio: </p>
+            <label>Data Inizio: </label>
             <input type="date" className="btnData" id="dataInizio" required/>
           </div>
           <div className="input-box">
-            <p>Data Fine: </p>
+            <label>Data Fine: </label>
             <input type="date" className="btnData" id="dataFine" required/>
           </div>
+
           {(utility == "GAS") ? null : <>
             <div className="input-box" style={{ display: (utility != "GAS") ? "block" : "none" }}>
               <input inputMode="numeric" type="number" placeholder="Potenza Impiegata" id="potenzaImp" required/>
@@ -67,15 +69,13 @@ function RegisterContratto() {
             <div className="input-box">
               <input inputMode="numeric" type="number" placeholder="Gas Anno" id="gasAnno" required/>
             </div>
-            <div className="checkBox">
-              <label><input type="checkbox" id="usoCotturaCibi"/>Uso Cottura Cibi</label>
-              <br/>
-              <label><input type="checkbox" id="produzioneAcquaCalda"/>Produzione Acqua Calda</label>
-              <br/>
-              <label><input type="checkbox" id="riscaldamentoIndividuale"/>Riscaldamento Individuale</label>
-              <br/>
-              <label><input type="checkbox" id="usoCommerciale"/>Uso Commerciale</label>
-            </div>
+            <label><input type="checkbox" id="usoCotturaCibi"/>Uso Cottura Cibi</label>
+            <br/>
+            <label><input type="checkbox" id="produzioneAcquaCalda"/>Produzione Acqua Calda</label>
+            <br/>
+            <label><input type="checkbox" id="riscaldamentoIndividuale"/>Riscaldamento Individuale</label>
+            <br/>
+            <label><input type="checkbox" id="usoCommerciale"/>Uso Commerciale</label>
           </>}
           <button type="submit" className="btn">Registra Contratto</button>
           <br></br>
@@ -119,10 +119,10 @@ function RegisterContratto() {
             <br/>
             <select id="tipoPagamento" className ="tipoPagamento" required>
               <option style={{ display: "none" }} value="">Seleziona</option>
-              <option className="opzionePagamento" value="Carta di credito">Carta di Credito</option>
-              <option className="opzionePagamento" value="Bonifico">Bonifico</option>
-              <option className="opzionePagamento" value="IBAN">IBAN</option>
-              <option className="opzionePagamento" value="Bollettino">Bollettino</option>
+              <option value="Carta di credito">Carta di Credito</option>
+              <option value="Bonifico">Bonifico</option>
+              <option value="IBAN">IBAN</option>
+              <option value="Bollettino">Bollettino</option>
             </select>
 
           <button type="submit" className="btn">Conferma metodo di Pagamento</button>

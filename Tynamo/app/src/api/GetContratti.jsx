@@ -31,27 +31,25 @@ async function GetContratti() {
         let utility = "";
         if ("energiaAnno" in contratto) {
             if ("gasAnno" in contratto) {
-                utility = "EE and GAS"
+                utility = "EE e GAS"
             } else {
                 utility = "EE"
             }
         } else {
             utility = "GAS"
         }
-        htmlContratti[i] = (<li key={contratto.id}>
-            <p>Tipo Contratto: {utility}</p>
-            <p>Descrizione: {contratto.descrizioneOfferta}</p>
-            <p>Stato: {contratto.stato}</p>
-            <p>Tipo Pagamento: {contratto.tipoPagamento}</p>
-            <p style={{display: (utility != "GAS") ? "block" : "none"}}>
-                Energia Anno: {contratto.energiaAnno} kWh
-            </p>
-            <p style={{display: (utility != "EE") ? "block" : "none"}}>
-                Gas Anno: {contratto.gasAnno} mc
-            </p>
-        </li>)
+        htmlContratti[i] = (<tr key={contratto.id}>
+            <td>{utility}</td>
+            <td>{contratto.descrizioneOfferta}</td>
+            <td>{contratto.stato}</td>
+            <td>{contratto.dataInizioValidita}</td>
+            <td>{contratto.dataFineValidita}</td>
+            <td>{contratto.tipoPagamento}</td>
+            <td style={{opacity: (utility != "GAS") ? "none" : "0.0"}}>{contratto.energiaAnno} kWh</td>
+            <td style={{opacity: (utility != "EE") ? "none" : "0.0"}}>{contratto.gasAnno} mc</td>
+        </tr>)
     }
-    return <ul>{htmlContratti}</ul>;
+    return htmlContratti;
 };
 
 export default GetContratti;

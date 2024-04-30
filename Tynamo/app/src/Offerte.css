@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -17,91 +19,81 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro1 {
+.riquadro {
+  position: absolute;
   top: 18%;
   height: 69%;
   width: 22%;
-  position: absolute;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+
+#r1 {
   left: 3%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
 }
 
-.riquadro2 {
-  top: 18%;
-  height: 69%;
-  width: 21%;
-  position: absolute;
+#r2 {
   left: 28%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
-}
-
-.riquadro3 {
-  top: 18%;
-  height: 69%;
   width: 21%;
-  position: absolute;
+}
+
+#r3 {
   right: 28%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
+  width: 21%;
 }
 
-.riquadro4 {
-  top: 18%;
-  height: 69%;
-  width: 22%;
-  position: absolute;
+#r4 {
   right: 3%;
-  border-radius: 27px;
-  background: rgba(171, 220, 255, 0.80);
-  text-align: center;
 }
 
-.riquadroTestoTitolo {
+.riquadro h1 {
   margin-top: 5%;
-  margin-bottom: 7%;
+  margin-bottom: 10%;
   text-align: center;
   font-family: Epilogue;
+  font-size: 2.2vmax;
 }
 
-.riquadroElenco {
-  margin-top: -2%;
-  text-align: center;
-  color: #494949;
-  font-size: 20px;
+.riquadro ul {
+  display: block;
+  list-style-type: disc;
+}
+
+.riquadro ul li {
+  margin-top: 2%;
+  color: #333333da;
+  font-size: calc(0.35em + 0.9vmax);
+  font-weight: bold;
   font-family: Epilogue;
   margin-right: 5%;
-  margin-left: 5%;
+  margin-left: 10%;
+  margin-bottom: 5%;
 }
 
 .sceltaOfferta {
-  display: flex;
-  width: 90%;
-  height: 10%;
-  align-items: flex-start;
   position: absolute;
   left: 5%;
   bottom: 5%;
+  width: 90%;
+  height: 10%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: Epilogue; 
+  font-size: calc(0.5em + 0.9vmax);
   border-radius: 40px;
   background: rgba(15, 0, 108, 0.58);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
-  align-items: center;
-  text-decoration: none;
-
 }
 
-.sceltaOfferta p {
-  color: white;
-  font-size: 25px;
-  text-decoration: none;
-  position: relative;
-  white-space: nowrap;
-  right: 44px;
-  font-family: Epilogue; 
-  margin-left: 50%;
-}
-
+/* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  }

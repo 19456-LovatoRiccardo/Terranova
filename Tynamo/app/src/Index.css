@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -53,6 +55,8 @@ body {
   position: absolute;
   left: 15px;
   top: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-size: 128px; 
 }
 
