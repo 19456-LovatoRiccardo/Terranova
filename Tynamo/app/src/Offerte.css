@@ -17,12 +17,9 @@ body {
   overflow-y: hidden;
 }
 
-div {
+.riquadro1 {
   top: 18%;
   height: 69%;
-}
-
-.riquadro1 {
   width: 22%;
   position: absolute;
   left: 3%;
@@ -32,6 +29,8 @@ div {
 }
 
 .riquadro2 {
+  top: 18%;
+  height: 69%;
   width: 21%;
   position: absolute;
   left: 28%;
@@ -41,6 +40,8 @@ div {
 }
 
 .riquadro3 {
+  top: 18%;
+  height: 69%;
   width: 21%;
   position: absolute;
   right: 28%;
@@ -50,6 +51,8 @@ div {
 }
 
 .riquadro4 {
+  top: 18%;
+  height: 69%;
   width: 22%;
   position: absolute;
   right: 3%;
