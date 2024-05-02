@@ -1,13 +1,6 @@
 @import 'normalize.css';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
+.page-ChiSiamo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +12,7 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro {
+.page-ChiSiamo .riquadro {
   position: absolute;
   height: 70%;
   border-radius: 27px;
@@ -29,26 +22,26 @@ body {
   overflow-y: auto;
 }
 
-#r1 {
+.page-ChiSiamo #r1 {
   top: 20%;
   left: 5%;
   width: 25%;
 }
 
-#r2 {
+.page-ChiSiamo #r2 {
   top: 30%;
   left: 35%;
   right: 35%;
   height: 50%;
 }
 
-#r3 {
+.page-ChiSiamo #r3 {
   top: 20%;
   right: 5%;
   width: 25%;
 }
 
-.riquadro h1 {
+.page-ChiSiamo .riquadro h1 {
   font-size: 2.2vmax;
   margin-top: 5%;
   margin-right: 5%;
@@ -57,7 +50,7 @@ body {
   font-family: Epilogue;
 }
 
-.riquadro p {
+.page-ChiSiamo .riquadro p {
   margin-top: 10%;
   margin-right: 5%;
   margin-left: 5%;
@@ -71,9 +64,9 @@ body {
 }
 
 /* Scrollbar */
-  ::-webkit-scrollbar {
+  .page-ChiSiamo ::-webkit-scrollbar {
     width: 10px;
   }
-  ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+  .page-ChiSiamo ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
     border-radius: 10px;
   }

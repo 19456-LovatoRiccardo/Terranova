@@ -1,6 +1,8 @@
 import axios from "axios"
 
 async function Login() {
+    let retRequestAccepted = false;
+
     const API = axios.create({
         baseURL: "http://localhost:9091/api",
     });
@@ -13,7 +15,7 @@ async function Login() {
             password,
         }).then((res) => {
             window.sessionStorage.setItem("token", "Bearer " + res.data.token);
-            window.location.href = "/index.html"
+            retRequestAccepted = true;
         });
     } catch (err) {
         if (!err?.response) {
@@ -22,6 +24,7 @@ async function Login() {
             console.log("Login failed: " + err.response.data);
         }
     }
+    return retRequestAccepted;
 };
 
 export default Login;

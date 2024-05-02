@@ -1,13 +1,6 @@
 @import 'normalize.css';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
+.page-Contattaci {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +12,7 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro {
+.page-Contattaci .riquadro {
   position: absolute;
   top: 27%;
   height: 50%;
@@ -30,37 +23,37 @@ body {
   overflow-y: auto;
 }
 
-#r1 {
+.page-Contattaci #r1 {
   width: 25%;
   left: 5%;
 }
 
-#r2 {
+.page-Contattaci #r2 {
   left: 35%;
   right: 35%;
 }
 
-#r3 {
+.page-Contattaci #r3 {
   width: 25%;
   right: 5%;
 }
 
-.riquadro i {
+.page-Contattaci .riquadro i {
   margin-top: 13%;
   font-size: 2.1em;
 }
 
-#r2 i {
+.page-Contattaci #r2 i {
   margin-top: 5%;
 }
 
-.riquadro p {
+.page-Contattaci .riquadro p {
   margin-top: 5%;
   font-size: 1.5em;
   font-weight: bold;
 }
 
-.mappa {
+.page-Contattaci .mappa {
   border: 0;
   border-radius: 27px;
   width: 90%;
@@ -69,9 +62,9 @@ body {
 }
 
 /* Scrollbar */
-  ::-webkit-scrollbar {
+  .page-Contattaci ::-webkit-scrollbar {
     width: 10px;
   }
-  ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+  .page-Contattaci ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
     border-radius: 10px;
   }

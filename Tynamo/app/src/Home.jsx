@@ -1,12 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Helmet } from "react-helmet";
 import croppedBG from './assets/cropped-bg.png'
 import Navbar from './components/Navbar.jsx'
-import './Index.css'
+import './Home.css'
 
-function PageContent() {
+export default function Home() {
   return (
-    <>
+    <div className="page-Home">
+      <Helmet>
+        <title>Tynamo - Home</title>
+        <body className="page-Home"/>
+      </Helmet>
+      <Navbar/>
+
       <img className="cropped-bg" src={croppedBG}/>
       <div className="separatore"/>
       <div className="titolo">
@@ -21,13 +27,6 @@ function PageContent() {
           tuo domani
         </p>
       </div>
-    </>
+    </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Navbar/>
-    <PageContent/>
-  </React.StrictMode>,
-)

@@ -1,13 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import ReactDOM from 'react-dom/client'
+import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
-import Login from './api/Login.jsx'
+import LoginAPI from './api/Login.jsx'
+import Background from './assets/bg.png'
 import './Form.css'
 import './Login.css'
 
-function PageContent() {
+export default function Login() {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  const navigate = useNavigate();
+
   useEffect(() => {
     let occhioIconaPassword = document.getElementById("occhioIconaPassword");
     let password = document.getElementById("password");
@@ -22,10 +26,23 @@ function PageContent() {
     }
   }, []);
 
+  const submitRequest = async () => {
+    const requestResult = await LoginAPI();
+    if (requestResult) {
+      navigate('/area-personale/informazioni-personali')
+    }
+  };
+
   return (
-    <>
+    <div className="page-Login">
+      <Helmet>
+        <title>Tynamo - Login</title>
+        <body className="page-Login"/>
+      </Helmet>
+      <Navbar/>
+
       <div className="wrapper">
-        <form onSubmit={e => {e.preventDefault(); Login();}}>
+        <form onSubmit={e => {e.preventDefault(); submitRequest();}}>
           <h1>Login</h1>
 
           <div className="input-box">
@@ -43,17 +60,10 @@ function PageContent() {
           */}
           <button type="submit" className="btn">Login</button>
           <div className="register-link">
-            <p>Non hai un contratto Tynamo? <a href="./register.html"> Registrati subito.</a></p>
+            <p>Non hai un contratto Tynamo? <Link to="/register">Registrati subito.</Link></p>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Navbar/>
-    <PageContent/>
-  </React.StrictMode>,
-)

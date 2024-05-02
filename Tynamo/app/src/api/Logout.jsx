@@ -1,8 +1,6 @@
 import axios from "axios"
 
 async function Logout() {
-    window.sessionStorage.setItem("token", null);
-
     const API = axios.create({
         baseURL: "http://localhost:9091/api",
     });
@@ -15,8 +13,8 @@ async function Logout() {
         }
     }
 
-    // Reload Page
-    window.location.reload(true)
+    window.sessionStorage.setItem("token", null);
+    return true;
 };
 
 export default Logout;

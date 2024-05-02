@@ -1,13 +1,6 @@
 @import 'normalize.css';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
+.page-Register {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,24 +12,24 @@ body {
   background-attachment: fixed;
 }
 
-.wrapper {
+.page-Register .wrapper {
   right: 15%;
   top: 20%;
   position: absolute;
 }
 
-.login-link{
+.page-Register .login-link{
   font-size: 14.5px;
   text-align: center;
   margin: 20px 0 15px;
 }
 
-.login-link p a {
+.page-Register .login-link p a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
 }
 
-.login-link p a:hover {
+.page-Register .login-link p a:hover {
   text-decoration: underline;
 }

@@ -1,11 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
 import './Offerte.css'
 
-function PageContent() {
+export default function Offerte() {
   return (
-    <>
+    <div className="page-Offerte">
+      <Helmet>
+        <title>Tynamo - Offerte</title>
+        <body className="page-Offerte"/>
+      </Helmet>
+      <Navbar/>
+
       <div className="riquadro" id="r1">
         <h1>Easy Energy</h1>
         <ul>
@@ -13,11 +20,11 @@ function PageContent() {
           <li>Assistenza clienti dedicata per risolvere rapidamente qualsiasi problema.</li>
           <li>Opzioni flessibili di pagamento per adattarsi alle tue esigenze finanziarie.</li>
         </ul>
-        <a href="/dettagli-offerta.html?descrizione=Easy Energy">
+        <Link to="/creazione-offerta?descrizione=Easy Energy">
           <div className="sceltaOfferta">
             Seleziona
           </div>
-        </a>
+        </Link>
       </div>
 
       <div className="riquadro" id="r2">
@@ -27,11 +34,11 @@ function PageContent() {
           <li>Consulenza energetica personalizzata per ottimizzare i consumi domestici.</li>
           <li>Programmi di fidelizzazione con vantaggi esclusivi per i membri della famiglia.</li>
         </ul>
-        <a href="/dettagli-offerta.html?descrizione=Family">
+        <Link to="/creazione-offerta?descrizione=Family">
           <div className="sceltaOfferta">
               Seleziona
           </div>
-        </a>
+        </Link>
       </div>
       
       <div className="riquadro" id="r3">
@@ -41,11 +48,11 @@ function PageContent() {
           <li>Monitoraggio avanzato dei consumi per massimizzare l'efficienza energetica.</li>
           <li>Soluzioni tecnologiche all'avanguardia per ridurre l'impatto ambientale.</li>
         </ul>
-        <a href="/dettagli-offerta.html?descrizione=Full Power">
+        <Link to="/creazione-offerta?descrizione=Full Power">
           <div className="sceltaOfferta">
               Seleziona
           </div>
-        </a>
+        </Link>
       </div>
 
       <div className="riquadro" id="r4">
@@ -55,19 +62,12 @@ function PageContent() {
           <li>Analisi approfondita dei flussi energetici dell'azienda per identificare opportunità di risparmio.</li>
           <li>Accesso prioritario a programmi di incentivazione e incentivi governativi per l'energia sostenibile.</li>
         </ul>
-        <a href="/dettagli-offerta.html?descrizione=Super Power">
+        <Link to="/creazione-offerta?descrizione=Super Power">
           <div className="sceltaOfferta">
               Seleziona
           </div>
-        </a>
+        </Link>
       </div>
-    </>
+    </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Navbar/>
-    <PageContent/>
-  </React.StrictMode>,
-)

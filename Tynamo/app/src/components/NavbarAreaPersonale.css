@@ -1,18 +1,11 @@
 @import 'normalize.css';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-nav {
+.component-NavbarPersonale nav {
   display: flex;
   justify-content: center; /* Centra gli elementi del nav */
 }
 
-nav ul {
+.component-NavbarPersonale nav ul {
   padding: 20px 0; /* Aggiungi del padding sopra e sotto per separare il rettangolo dalle scritte */
   margin: 0;
   list-style: none;
@@ -27,20 +20,20 @@ nav ul {
   background-color: #004483;
 }
 
-nav ul li {
+.component-NavbarPersonale nav ul li {
   opacity: 0.4;
   transition: all 0.8s ease;
 }
 
-nav ul li:hover {
+.component-NavbarPersonale nav ul li:hover {
   opacity: 0.7;
 }
 
-nav ul li:active {
+.component-NavbarPersonale nav ul li:active {
   opacity: 1;
 }
 
-nav ul li a {
+.component-NavbarPersonale nav ul li a {
   text-decoration: none;
   color: white;
   text-transform: uppercase;
@@ -51,11 +44,11 @@ nav ul li a {
   padding: 0 20px; /* Aggiunge spazio intorno ai link */
 }
 
-.logoHome {
+.component-NavbarPersonale .logoHome {
   z-index: 1;
 }
 
-.logoHomeImage {
+.component-NavbarPersonale .logoHomeImage {
   position: fixed;
   top: 3px;
   left: 20px;
@@ -64,18 +57,18 @@ nav ul li a {
 }
   
 
-ul {
-display: flex;
-list-style-type: none;
-padding: 0;
+.component-NavbarPersonale ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
 }
 
-.navbarLink {
+.component-NavbarPersonale .navbarLink {
   left: 255px;
   position: relative;
 }
 
-#iconsDiv {
+.component-NavbarPersonale #iconsDiv {
   margin-left: auto;  /* Sposta le icone a destra */
   display: flex;  /* Metti le icone in orizzontale */
   right: 25px;
@@ -83,17 +76,20 @@ padding: 0;
   font-size: 25px; /* Altezza icone */
 }
 
-#menu {
+.component-Navbar .icona {
+  margin-top: 3px;
+}
+
+.component-NavbarPersonale #menu {
   position: relative;
   cursor: pointer;
 }
 
-#logout, #logout-dropdown {
+.component-NavbarPersonale #logout, #logout-dropdown {
   cursor: pointer;
 }
 
-
-.dropdown-content {
+.component-NavbarPersonale .dropdown-content {
   display: none;
   right: -25px;
   top: 51px;
@@ -104,7 +100,7 @@ padding: 0;
   z-index: 1;
 }
 
-.dropdown-content a {
+.component-NavbarPersonale .dropdown-content a {
   text-align: right;
   color: white;
   padding: 12px 16px;
@@ -113,6 +109,6 @@ padding: 0;
   opacity: 0.4;
 }
 
-a:hover {
+.component-NavbarPersonale a:hover {
   opacity: 0.7;
 }

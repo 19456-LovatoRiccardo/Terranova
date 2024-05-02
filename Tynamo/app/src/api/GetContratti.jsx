@@ -38,15 +38,19 @@ async function GetContratti() {
         } else {
             utility = "GAS"
         }
-        htmlContratti[i] = (<tr key={contratto.id}>
+        htmlContratti[i] = (<tr key={i}>
             <td>{utility}</td>
             <td>{contratto.descrizioneOfferta}</td>
             <td>{contratto.stato}</td>
-            <td>{contratto.dataInizioValidita}</td>
-            <td>{contratto.dataFineValidita}</td>
+            <td>{contratto.dataInizioValidita.substring(0, 10)}</td>
+            <td>{contratto.dataFineValidita.substring(0, 10)}</td>
             <td>{contratto.tipoPagamento}</td>
-            <td style={{opacity: (utility != "GAS") ? "none" : "0.0"}}>{contratto.energiaAnno} kWh</td>
-            <td style={{opacity: (utility != "EE") ? "none" : "0.0"}}>{contratto.gasAnno} mc</td>
+            <td style={{opacity: (utility != "GAS") ? "none" : "0.0", "whiteSpace": "nowrap"}}>
+                {contratto.energiaAnno} kWh
+            </td>
+            <td style={{opacity: (utility != "EE") ? "none" : "0.0", "whiteSpace": "nowrap"}}>
+                {contratto.gasAnno} mc
+            </td>
         </tr>)
     }
     return htmlContratti;

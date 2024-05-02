@@ -1,11 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
 import './ChiSiamo.css'
 
-function PageContent() {
+export default function ChiSiamo() {
   return (
-    <>
+    <div className="page-ChiSiamo">
+      <Helmet>
+        <title>Tynamo - Chi Siamo</title>
+        <body className="page-ChiSiamo"/>
+      </Helmet>
+      <Navbar/>
+      
       <div className="riquadro" id="r1">
         <h1 >Chi Siamo</h1>
         <p>
@@ -33,13 +39,6 @@ function PageContent() {
           riducano l'impatto ambientale e promuovano la responsabilità sociale e ambientale.
         </p>
       </div>
-    </>
+    </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Navbar/>
-    <PageContent/>
-  </React.StrictMode>,
-)

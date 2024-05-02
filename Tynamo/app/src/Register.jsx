@@ -1,229 +1,197 @@
 import React from 'react'
-import { useState, useEffect } from "react";
-import { createStore } from 'state-pool';
-import ReactDOM from 'react-dom/client'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
-import RegisterPrivatoAPI from './api/RegisterPrivato.jsx'
-import RegisterAziendaAPI from './api/RegisterAzienda.jsx'
+import RegisterAPI from './api/Register.jsx'
 import './Form.css'
 import './Register.css'
 
-const store = createStore();
-store.setState("currentPage", "Options"); 
+export default function Register() {
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState("Options");
+  const [accountType, setAccountType] = useState("");
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  const [APIRequest, setAPIRequest] = useState({
+    email: "",
+    password: "",
+    ragSociale: "",
+    codiceFiscale: "",
+    numTelefonico: "",
+    indirizzo: "",
+    numCivico: "",
+    cap: "",
+    localita: "",
+    provincia: "",
+    nazione: "",
+    cognome: "",
+    nome: "",
+    partitaIVA: ""
+  });
+  
+  const submitRequest = async () => {
+    const requestResult = await RegisterAPI(APIRequest, accountType);
+    if (requestResult) {
+      navigate('/area-personale/informazioni-personali')
+    }
+  };
 
-function RegisterOptions() {
-  const [currentPage, setCurrentPage] = store.useState("currentPage");
+  const handleChange = (e, key) => {
+    setAPIRequest({...APIRequest, [key]: e.target.value})
+  };
 
-  return (
-    <>
-      <div className="wrapper">
-        <form>
-          <h1>Registrazione</h1>
-          <br></br>
-            <div className="radio-group">
-                <h2>Scegli il tipo di account:</h2>
-                <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Privato")}>Privato</button>
-                <button type="button" className="btn" onClick={() => setCurrentPage(currentPage => "Azienda")}>Azienda</button>
+  const Options = () => {
+    return (
+      <>
+        <div className="wrapper">
+          <form>
+            <h1>Registrazione</h1>
+            <br></br>
+              <div>
+                  <h2>Scegli il tipo di account:</h2>
+                  <button type="button" onClick={() => {setAccountType("Privato"); setCurrentPage("Account")}}>Privato</button>
+                  <button type="button" onClick={() => {setAccountType("Azienda"); setCurrentPage("Account")}}>Azienda</button>
+              </div>
+            <div className="login-link">
+              <p>Hai gia' un account Tynamo? <Link to="/login">Accedi qui.</Link></p>
+            </div>
+          </form>
+        </div>
+      </>
+    )
+  };
+
+  const Privato = () => {
+    return (
+      <>
+        <div className="wrapper">
+          <form onSubmit={e => {e.preventDefault(); setCurrentPage("Indirizzo")}}>
+            <h1>Registrazione Privato</h1>
+  
+            <div className="input-box">
+              <input type="text" placeholder="Email" value={APIRequest.email} onChange={(e) => handleChange(e, "email")} required/>
+            </div>
+            <div className="input-box">
+              <input type={isPasswordHidden ? "password" : "text"} placeholder="Password"
+                value={APIRequest.password} onChange={(e) => handleChange(e, "password")} required/>
+              <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"}
+                onClick={() => setIsPasswordHidden(isPasswordHidden => !isPasswordHidden)}/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Nome" value={APIRequest.nome} onChange={(e) => handleChange(e, "nome")}required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Cognome" value={APIRequest.cognome} onChange={(e) => handleChange(e, "cognome")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Ragione Sociale" value={APIRequest.ragSociale} onChange={(e) => handleChange(e, "ragSociale")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Codice fiscale" value={APIRequest.codiceFiscale} onChange={(e) => handleChange(e, "codiceFiscale")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Numero Telefonico" value={APIRequest.numTelefonico} onChange={(e) => handleChange(e, "numTelefonico")} required/>
+            </div>
+  
+            <button type="submit">Avanti</button>
+            <div className="login-link">
+              <p>Hai gia' un account Tynamo? <Link to="/login">Accedi qui.</Link></p>
+            </div>
+          </form>
+        </div>
+      </>
+    )
+  };
+
+  const Azienda = () => {
+    return (
+      <>
+        <div className="wrapper">
+          <form onSubmit={e => {e.preventDefault(); setCurrentPage("Indirizzo");}}>
+            <h1>Registrazione Azienda</h1>
+
+            <div className="input-box">
+              <input type="text" placeholder="Email" value={APIRequest.email} onChange={(e) => handleChange(e, "email")} required/>
+            </div>
+            <div className="input-box">
+              <input type={isPasswordHidden ? "password" : "text"} placeholder="Password"
+                value={APIRequest.password} onChange={(e) => handleChange(e, "password")} required/>
+              <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"}
+                onClick={() => setIsPasswordHidden(isPasswordHidden => !isPasswordHidden)}/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Partita IVA" value={APIRequest.partitaIVA} onChange={(e) => handleChange(e, "partitaIVA")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Ragione Sociale" value={APIRequest.ragSociale} onChange={(e) => handleChange(e, "ragSociale")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Codice fiscale" value={APIRequest.codiceFiscale} onChange={(e) => handleChange(e, "codiceFiscale")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Numero Telefonico" value={APIRequest.numTelefonico} onChange={(e) => handleChange(e, "numTelefonico")} required/>
             </div>
 
-          <div className="login-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-    </>
-  )
-}
+            <button type="submit">Avanti</button>
+            <div className="login-link">
+              <p>Hai gia' un account Tynamo? <Link to="/login">Accedi qui.</Link></p>
+            </div>
+          </form>
+        </div>
+      </>
+    )
+  };
 
-function RegisterPrivato() {
-  const [isPage1, setIsPage1] = useState(true);
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  useEffect(() => {
-    let icona = document.getElementById("privatoPasswordIcona");
-    let password = document.getElementById("privatoPassword");
-    icona.onclick = function() {
-      if (password.type == "password") {
-          password.type = "text";
-          setIsPasswordHidden(false);
-      } else {
-          password.type = "password";
-          setIsPasswordHidden(true);
-      }
-    }
-  }, []);
+  const Indirizzo = () => {
+    return (
+      <>
+        <div className="wrapper">
+          <form onSubmit={e => {e.preventDefault(); submitRequest();}}>
+            <h1>Registrazione Indirizzo</h1>
+            
+            <div className="input-box">
+              <input type="text" placeholder="Indirizzo" value={APIRequest.indirizzo} onChange={(e) => handleChange(e, "indirizzo")} required/>
+            </div>
+            <div className="input-box">
+              <input inputMode="numeric" type="number" placeholder="Numero Civico" value={APIRequest.numCivico} onChange={(e) => handleChange(e, "numCivico")} required/>
+            </div>
+            <div className="input-box">
+              <input inputMode="numeric" type="number" placeholder="CAP" value={APIRequest.cap} onChange={(e) => handleChange(e, "cap")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Localita" value={APIRequest.localita} onChange={(e) => handleChange(e, "localita")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Provincia" value={APIRequest.provincia} onChange={(e) => handleChange(e, "provincia")} required/>
+            </div>
+            <div className="input-box">
+              <input type="text" placeholder="Nazione" value={APIRequest.nazione} onChange={(e) => handleChange(e, "nazione")} required/>
+            </div>
 
-  return (
-    <>
-      <div className="wrapper" style={{ display: isPage1 ? "block" : "none" }}>
-        <form onSubmit={e => {e.preventDefault(); setIsPage1(isPage1 => false);}}>
-          <h1>Registrazione Privato</h1>
-
-          <div className="input-box">
-            <input type="mail" placeholder="Email" id="privatoEmail" required/>
-          </div>
-          <div className="input-box">
-            <input type="password" placeholder="Password" id="privatoPassword" required/>
-            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="privatoPasswordIcona"/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Nome" id="privatoNome" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Cognome" id="privatoCognome" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Ragione Sociale" id="privatoRagSociale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Codice fiscale" id="privatoCodiceFiscale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Indirizzo" id="privatoIndirizzo" required/>
-          </div>
-
-          <button type="submit" className="btn" id="Avanti1">Avanti</button>
-          <div className="login-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-
-      <div className="wrapper" style={{ display: isPage1 ? "none" : "block" }}>
-        <form onSubmit={e => {e.preventDefault(); RegisterPrivatoAPI();}}>
-          <h1>Registrazione Privato</h1>
-
-          <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="Numero Civico" id="privatoNumCivico" required/>
-          </div>
-          <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="CAP" id="privatoCap" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Localita" id="privatoLocalita" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Provincia" id="privatoProvincia" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Nazione" id="privatoNazione" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Numero Telefonico" id="privatoNumTelefonico" required/>
-          </div>
-
-          <button type="submit" className="btn">Registrati come Privato</button>
-          <br></br>
-          <button type="button" className="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
-          <div className="login-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html">Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-    </>
-  )
-}
-
-function RegisterAzienda() {
-  const [isPage1, setIsPage1] = useState(true);
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  
-  useEffect(() => {
-    let icona = document.getElementById("aziendaPasswordIcona");
-    let password = document.getElementById("aziendaPassword");
-    icona.onclick = function() {
-      if (password.type == "password") {
-          password.type = "text";
-          setIsPasswordHidden(false);
-      } else {
-          password.type = "password";
-          setIsPasswordHidden(true);
-      }
-    }
-  }, []);
+            <button type="submit">Registrati come {accountType}</button>
+            <br></br>
+            <button type="button" onClick={() => setCurrentPage("Account")}>Indietro</button>
+            <div className="login-link">
+              <p>Hai gia' un account Tynamo? <Link to="/login">Accedi qui.</Link></p>
+            </div>
+          </form>
+        </div>
+      </>
+    )
+  };
 
   return (
-    <>
-      <div className="wrapper" style={{ display: isPage1 ? "block" : "none" }}>
-        <form onSubmit={e => {e.preventDefault(); setIsPage1(isPage1 => false);}}>
-          <h1>Registrazione Azienda</h1>
-
-          <div className="input-box">
-            <input type="mail" placeholder="Email" id="aziendaEmail" required/>
-          </div>
-          <div className="input-box">
-            <input type="password" placeholder="Password" id="aziendaPassword" required/>
-            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="aziendaPasswordIcona"/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Partita IVA" id="aziendaPartitaIVA" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Ragione Sociale" id="aziendaRagSociale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Codice fiscale" id="aziendaCodiceFiscale" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Indirizzo" id="aziendaIndirizzo" required/>
-          </div>
-
-          <button type="submit" className="btn" id="Avanti1">Avanti</button>
-          <div className="login-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-
-      <div className="wrapper" style={{ display: isPage1 ? "none" : "block" }}>
-        <form onSubmit={e => {e.preventDefault(); RegisterAziendaAPI();}}>
-          <h1>Registrazione Azienda</h1>
-          
-          <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="Numero Civico" id="aziendaNumCivico" required/>
-          </div>
-          <div className="input-box">
-            <input inputMode="numeric" type="number" placeholder="CAP" id="aziendaCap" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Localita" id="aziendaLocalita" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Provincia" id="aziendaProvincia" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Nazione" id="aziendaNazione" required/>
-          </div>
-          <div className="input-box">
-            <input type="text" placeholder="Numero Telefonico" id="aziendaNumTelefonico" required/>
-          </div>
-
-          <button type="submit" className="btn">Registrati come Azienda</button>
-          <br></br>
-          <button type="button" className="btn" id="Indietro1" onClick={() => setIsPage1(isPage1 => true)}>Indietro</button>
-          <div className="login-link">
-            <p>Hai gia' un account Tynamo? <a href="/login.html"> Accedi qui.</a></p>
-          </div>
-        </form>
-      </div>
-    </>
+    <div className="page-Register">
+      <Helmet>
+        <title>Tynamo - Register</title>
+        <body className="page-Register"/>
+      </Helmet>
+      <Navbar/>
+      {(currentPage == "Options")   ? Options() : null}
+      {(currentPage == "Account")   ?
+        (accountType == "Privato")  ? Privato() : Azienda()
+        : null}
+      {(currentPage == "Indirizzo") ? Indirizzo() : null}
+    </div>
   )
 }
-
-function PageContent() {
-  const [currentPage, setCurrentPage] = store.useState("currentPage");
-
-  return (
-    <>
-      {(currentPage == "Options") ? <RegisterOptions/> : null}
-      {(currentPage == "Privato") ? <RegisterPrivato/> : null}
-      {(currentPage == "Azienda") ? <RegisterAzienda/> : null}
-    </>
-  )
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Navbar/>
-    <PageContent/>
-  </React.StrictMode>
-)

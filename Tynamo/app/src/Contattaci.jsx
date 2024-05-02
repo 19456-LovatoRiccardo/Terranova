@@ -1,11 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
 import './Contattaci.css'
 
-function PageContent() {
+export default function Contattaci() {
   return (
-    <>
+    <div className="page-Contattaci">
+      <Helmet>
+        <title>Tynamo - Contattaci</title>
+        <body className="page-Contattaci"/>
+      </Helmet>
+      <Navbar/>
+
       <div className="riquadro" id="r1">
         <i className='bx bxs-home-alt-2'/>
         <p>+39 02 12345678</p>
@@ -28,13 +34,6 @@ function PageContent() {
         <i className='bx bxs-info-circle'/>
         <p>tynamo@info.com</p>
       </div>
-    </>
+    </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Navbar/>
-    <PageContent/>
-  </React.StrictMode>,
-)

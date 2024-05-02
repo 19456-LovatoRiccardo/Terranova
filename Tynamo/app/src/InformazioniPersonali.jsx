@@ -1,15 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import ReactDOM from 'react-dom/client'
+import { Helmet } from "react-helmet";
 import NavbarAreaPersonale from './components/NavbarAreaPersonale.jsx'
 import GetInformazioniPersonali from './api/GetInformazioniPersonali.jsx';
 import GetContratti from './api/GetContratti.jsx';
 import './InformazioniPersonali.css'
 
-function PageContent() {
+export default function InformazioniPersonali() {
   const [isPrivato, setIsPrivato] = useState(true);
   const [anagrafica, setAnagrafica] = useState({});
-  const [contratti, setContratti] = useState(<></>);
+  const [contratti, setContratti] = useState(false);
 
   useEffect(() => {
     async function asyncFunction() {
@@ -23,10 +23,18 @@ function PageContent() {
   }, []);
 
   return (
-    <>
+    <div className="page-InformazioniPersonali">
+      <Helmet>
+        <title>Tynamo - Informazioni Personali</title>
+        <body className="page-InformazioniPersonali"/>
+      </Helmet>
+      <NavbarAreaPersonale/>
+
       <div className="containerInformazioni">
-        <i className='bx bx-fw bxs-user bx-md'/>
-        <h1>Informazioni Personali</h1>
+        <div className="header">
+          <i className='bx bx-fw bxs-user bx-md'/>
+          <h1>Informazioni Personali</h1>
+        </div>
         <p style={{ display: isPrivato ? "block" : "none" }}>Nome: {anagrafica.nome}</p>
         <p style={{ display: isPrivato ? "block" : "none" }}>Cognome: {anagrafica.cognome}</p>
         <p style={{ display: isPrivato ? "none" : "block" }}>Ragione Sociale: {anagrafica.ragSociale}</p>
@@ -38,10 +46,12 @@ function PageContent() {
         <br/>
       </div>
       <div className="containerContratti">
-        <i className='bx bx-fw bxs-notepad bx-md'></i>
-        <h1>Contratti</h1>
-        <table>
-          <tr>
+        <div className="header">
+          <i className='bx bx-fw bxs-notepad bx-md'></i>
+          <h1>Contratti</h1>
+        </div>
+        <table style={{display: (!contratti) ? "none" : "block"}}>
+          <thead><tr>
             <th>Tipo</th>
             <th>Offerta</th>
             <th>Stato</th>
@@ -50,17 +60,12 @@ function PageContent() {
             <th>Tipo Pagamento</th>
             <th>Energia Anno</th>
             <th>Gas Anno</th>
-          </tr>
-          {contratti}
+          </tr></thead>
+          <tbody>
+            {contratti}
+          </tbody>
         </table> 
       </div>
-    </>
+    </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <NavbarAreaPersonale/>
-    <PageContent/>
-  </React.StrictMode>,
-)

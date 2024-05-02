@@ -1,13 +1,6 @@
 @import 'normalize.css';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
+.page-Offerte {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +12,7 @@ body {
   overflow-y: hidden;
 }
 
-.riquadro {
+.page-Offerte .riquadro {
   position: absolute;
   top: 18%;
   height: 69%;
@@ -30,25 +23,25 @@ body {
   overflow-y: auto;
 }
 
-#r1 {
+.page-Offerte #r1 {
   left: 3%;
 }
 
-#r2 {
+.page-Offerte #r2 {
   left: 28%;
   width: 21%;
 }
 
-#r3 {
+.page-Offerte #r3 {
   right: 28%;
   width: 21%;
 }
 
-#r4 {
+.page-Offerte #r4 {
   right: 3%;
 }
 
-.riquadro h1 {
+.page-Offerte .riquadro h1 {
   margin-top: 5%;
   margin-bottom: 10%;
   text-align: center;
@@ -56,12 +49,12 @@ body {
   font-size: 2.2vmax;
 }
 
-.riquadro ul {
+.page-Offerte .riquadro ul {
   display: block;
   list-style-type: disc;
 }
 
-.riquadro ul li {
+.page-Offerte .riquadro ul li {
   margin-top: 2%;
   color: #333333da;
   font-size: calc(0.35em + 0.9vmax);
@@ -72,7 +65,7 @@ body {
   margin-bottom: 5%;
 }
 
-.sceltaOfferta {
+.page-Offerte .sceltaOfferta {
   position: absolute;
   left: 5%;
   bottom: 5%;
@@ -91,9 +84,9 @@ body {
 }
 
 /* Scrollbar */
-  ::-webkit-scrollbar {
+  .page-Offerte ::-webkit-scrollbar {
     width: 10px;
   }
-  ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+  .page-Offerte ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
     border-radius: 10px;
   }

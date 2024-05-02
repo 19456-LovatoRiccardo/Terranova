@@ -1,31 +1,15 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import LOGO from '../assets/LOGO.png'
 import Authorize from '../api/Authorize.jsx'
-import Logout from '../api/Logout.jsx'
+import LogoutAPI from '../api/Logout.jsx'
 import './Navbar.css'
 
-function Navbar() {
+export default function Navbar() {
   const [minimize, setMinimize] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
-
-  const handleWindowSizeChangeNotAuthenticated = () => {
-    if (window.innerWidth < 865) {
-      setMinimize(true)
-    } else {
-      setMinimize(false)
-      setShowMenu(false)
-    }
-  };
-
-  const handleWindowSizeChangeAuthenticated = () => {
-    if (window.innerWidth < 1165) {
-      setMinimize(true)
-    } else {
-      setMinimize(false)
-      setShowMenu(false)
-    }
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function asyncFunction() {
@@ -49,51 +33,74 @@ function Navbar() {
     asyncFunction()
   }, []);
 
+  const handleWindowSizeChangeNotAuthenticated = () => {
+    if (window.innerWidth < 865) {
+      setMinimize(true)
+    } else {
+      setMinimize(false)
+      setShowMenu(false)
+    }
+  };
+
+  const handleWindowSizeChangeAuthenticated = () => {
+    if (window.innerWidth < 1165) {
+      setMinimize(true)
+    } else {
+      setMinimize(false)
+      setShowMenu(false)
+    }
+  };
+
+  const logout = async () => {
+    const logoutResult = await LogoutAPI();
+    if (logoutResult) {
+      navigate(0)
+    }
+  };
+
   return (
-    <>
+    <div className="component-Navbar">
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
       <nav>
-        <a href="/index.html" className="logoHome">
+        <Link to="/" className="logoHome">
           <img src={LOGO} className="logoHomeImage" alt="LOGO"/>
-        </a>
+        </Link>
         <ul>
-          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/chi-siamo.html">Chi siamo</a></li>
-          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/offerte.html">Offerte</a></li>
-          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><a href="/contattaci.html">Contattaci</a></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><Link to="/chi-siamo">Chi siamo</Link></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><Link to="/offerte">Offerte</Link></li>
+          <li className='navbarLink' style={{ display: minimize ? "none" : "block" }}><Link to="/contattaci">Contattaci</Link></li>
           <div id='iconsDiv'>
             <div className="dropdown">
-              <li id="menu" className="dropbtn" style={{ display: minimize ? "block" : "none" }}>
+              <li id="menu" className="icona" style={{ display: minimize ? "block" : "none" }}>
                 <a onClick={() => setShowMenu(showMenu => !showMenu)} className='bx bx-fw bx-menu bx-md'/>
               </li>
               <div className="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
-                <a href="area-personale/informazioni-personali.html" style={{ display: authenticated ? "block" : "none" }}>
+                <Link to="/area-personale/informazioni-personali" style={{ display: authenticated ? "block" : "none" }}>
                   Area Personale
-                </a>
-                <a href="/chi-siamo.html">Chi siamo</a>
-                <a href="/offerte.html">Offerte</a>
-                <a href="/contattaci.html">Contattaci</a>
-                <a href="/login.html" style={{ display: authenticated ? "none" : "block" }}>
+                </Link>
+                <Link to="/chi-siamo">Chi siamo</Link>
+                <Link to="/offerte">Offerte</Link>
+                <Link to="/contattaci">Contattaci</Link>
+                <Link to="/login" style={{ display: authenticated ? "none" : "block" }}>
                   Login
-                </a>
-                <a id="logout-dropdown" onClick={() => Logout()} style={{ display: authenticated ? "block" : "none" }}>
+                </Link>
+                <a id="logout-dropdown" onClick={() => logout()} style={{ display: authenticated ? "block" : "none" }}>
                   Logout
                 </a>
               </div>
             </div>
             <li id="areaPersonale" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
-              <a href="/area-personale/informazioni-personali.html">Area Personale</a>
+              <Link to="/area-personale/informazioni-personali">Area Personale</Link>
             </li>
-            <li id="login" style={{ display: (minimize || authenticated) ? "none" : "block" }}>
-              <a href="/login.html" className='bx bx-fw bxs-user bx-md'/>
+            <li id="login" className="icona" style={{ display: (minimize || authenticated) ? "none" : "block" }}>
+              <Link to="/login" className='bx bx-fw bxs-user bx-md'/>
             </li>
-            <li id="logout" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
-              <a onClick={() => Logout()} className='bx bx-fw bx-log-out bx-md'/>
+            <li id="logout" className="icona" style={{ display: (minimize || !authenticated) ? "none" : "block" }}>
+              <a onClick={() => logout()} className='bx bx-fw bx-log-out bx-md'/>
             </li>
           </div>
         </ul>
       </nav>
-    </>
+    </div>
   )
 }
-
-export default Navbar

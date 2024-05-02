@@ -1,13 +1,6 @@
 @import 'normalize.css';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
+.page-InformazioniPersonali {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +11,7 @@ body {
   overflow-y: hidden;
 }
 
-.containerInformazioni {
+.page-InformazioniPersonali .containerInformazioni {
   position: absolute;
   top: 32%;
   left: 5%;
@@ -26,10 +19,15 @@ body {
   padding-right: 2%;
   border-radius: 12px;
   background: rgba(0, 11, 70, 0.80);
+  overflow-x: auto;
 }
 
-.containerInformazioni i,
-.containerContratti i {
+.page-InformazioniPersonali .header {
+  display: flex;
+  align-items: center;
+}
+
+.page-InformazioniPersonali .header i {
   color: white;
   height: 50px; /* This pushes the top of the container upwards */
   font-weight: 600;
@@ -39,20 +37,19 @@ body {
   position: relative;
 }
 
-.containerInformazioni h1,
-.containerContratti h1 {
+.page-InformazioniPersonali .header h1 {
   color: white;
   font-size: 1.5em;
   font-weight: 600;
   opacity: 0.85;
   left: 80px;
   top: 20px;
-  position: absolute;
-  margin-top: 0px;
+  margin-left: 30px;
+  margin-top: 20px;
   margin-bottom: 0px;
 }
 
-.containerInformazioni p {
+.page-InformazioniPersonali .containerInformazioni p {
   color: white;
   font-size: 1.35em;
   font-weight: 600;
@@ -62,7 +59,7 @@ body {
   position: relative;
 }
 
-.containerContratti {
+.page-InformazioniPersonali .containerContratti {
   width: 45%;
   height: 75%;
   position: absolute;
@@ -73,7 +70,7 @@ body {
   overflow-y: auto;
 }
 
-.containerContratti table {
+.page-InformazioniPersonali .containerContratti table {
   border-collapse: collapse;
   color: white;
   opacity: 0.85;
@@ -82,24 +79,24 @@ body {
   margin: 25px 15px;
 }
 
-.containerContratti table tr th,
-.containerContratti table tr td {
+.page-InformazioniPersonali .containerContratti table tr th,
+.page-InformazioniPersonali .containerContratti table tr td {
   border: 1px solid #ddd;
   padding: 4px 6px;
 }
 
 /* Scrollbar */
-  ::-webkit-scrollbar {
+  .page-InformazioniPersonali ::-webkit-scrollbar {
     width: 10px;
   }
-  ::-webkit-scrollbar-track {
+  .page-InformazioniPersonali ::-webkit-scrollbar-track {
     background: rgb(0, 11, 70);
     border-radius: 10px;
   }
-  ::-webkit-scrollbar-thumb {
+  .page-InformazioniPersonali ::-webkit-scrollbar-thumb {
     background: #6a7db3; 
     border-radius: 10px;
   }
-  ::-webkit-scrollbar-thumb:hover {
+  .page-InformazioniPersonali ::-webkit-scrollbar-thumb:hover {
     background: #435074; 
   }
