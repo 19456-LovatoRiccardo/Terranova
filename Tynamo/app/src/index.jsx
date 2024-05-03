@@ -1,5 +1,10 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { 
+    createBrowserRouter,
+    RouterProvider,
+    Routes,
+    Route
+} from "react-router-dom";
 
 import Home from "./Home.jsx"
 import Login from "./Login.jsx"
@@ -12,8 +17,16 @@ import InformazioniPersonali from "./InformazioniPersonali.jsx"
 
 import "./index.css"
 
+const router = createBrowserRouter([
+    { path: "*", element: <Root/> },
+]);
+
 export default function App() {
-    return (<BrowserRouter>
+    return (<RouterProvider router={router}/>)
+}
+
+function Root() {
+    return (
         <Routes>
             <Route exact path="/" Component={Home}/>
             <Route path="/login" Component={Login}/>
@@ -25,10 +38,9 @@ export default function App() {
             <Route path="/area-personale/informazioni-personali" Component={InformazioniPersonali}/>
             <Route path="*" Component={Home}/>
         </Routes>
-    </BrowserRouter>);
+    )
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    // <RouterProvider router={App()} />
     <App/>
 );
