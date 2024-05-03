@@ -1,16 +1,5 @@
 @import 'normalize.css';
 
-.page-InformazioniPersonali {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: url(./assets/bg2.png);
-  background-size: cover;
-  background-position: center;
-  overflow-y: hidden;
-}
-
 .page-InformazioniPersonali .containerInformazioni {
   position: absolute;
   top: 32%;
@@ -68,6 +57,7 @@
   border-radius: 12px;
   background: rgba(0, 11, 70, 0.80);
   overflow-y: auto;
+  z-index: -1;
 }
 
 .page-InformazioniPersonali .containerContratti table {

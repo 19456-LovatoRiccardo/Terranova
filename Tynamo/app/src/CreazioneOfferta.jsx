@@ -217,7 +217,7 @@ export default function CreazioneOfferta() {
     <div className="page-CreazioneOfferta">
       <Helmet>
         <title>Tynamo - Creazione Offerta</title>
-        <body className="page-CreazioneOfferta"/>
+        <body className="body-Form"/>
       </Helmet>
       <Navbar/>
       {(currentPage == "Options") ? Options() : null}

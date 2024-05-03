@@ -26,7 +26,7 @@ export default function InformazioniPersonali() {
     <div className="page-InformazioniPersonali">
       <Helmet>
         <title>Tynamo - Informazioni Personali</title>
-        <body className="page-InformazioniPersonali"/>
+        <body className="body-Default"/>
       </Helmet>
       <NavbarAreaPersonale/>
 

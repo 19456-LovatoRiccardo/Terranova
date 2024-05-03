@@ -1,15 +1,15 @@
 @import 'normalize.css';
 
-.page-Home {
+.body-Home {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow-y: hidden;
   background: url(./assets/bg2.png);
   background-size: cover;
   background-position: right top;
   background-repeat: repeat-x;
-  overflow-y: hidden;
 }
 
 .page-Home .cropped-bg {

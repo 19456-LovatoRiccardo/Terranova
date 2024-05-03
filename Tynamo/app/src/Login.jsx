@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
 import LoginAPI from './api/Login.jsx'
-import Background from './assets/bg.png'
 import './Form.css'
 import './Login.css'
 
@@ -37,7 +36,7 @@ export default function Login() {
     <div className="page-Login">
       <Helmet>
         <title>Tynamo - Login</title>
-        <body className="page-Login"/>
+        <body className="body-Form"/>
       </Helmet>
       <Navbar/>
 

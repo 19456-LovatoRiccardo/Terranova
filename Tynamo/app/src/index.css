@@ -1,6 +1,19 @@
+@import 'normalize.css';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+}
+
+.body-Default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: hidden;
+    background: url(./assets/bg2.png);
+    background-size: cover;
+    background-position: center;
 }

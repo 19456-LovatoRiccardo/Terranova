@@ -9,7 +9,7 @@ export default function Home() {
     <div className="page-Home">
       <Helmet>
         <title>Tynamo - Home</title>
-        <body className="page-Home"/>
+        <body className="body-Home"/>
       </Helmet>
       <Navbar/>
 

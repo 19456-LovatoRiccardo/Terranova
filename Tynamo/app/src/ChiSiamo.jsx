@@ -8,7 +8,7 @@ export default function ChiSiamo() {
     <div className="page-ChiSiamo">
       <Helmet>
         <title>Tynamo - Chi Siamo</title>
-        <body className="page-ChiSiamo"/>
+        <body className="body-Default"/>
       </Helmet>
       <Navbar/>
       
