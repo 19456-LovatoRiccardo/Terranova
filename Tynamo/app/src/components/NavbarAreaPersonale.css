@@ -76,8 +76,12 @@
   font-size: 25px; /* Altezza icone */
 }
 
-.component-Navbar .icona {
+.component-NavbarPersonale .icona {
   margin-top: 3px;
+}
+
+.component-NavbarPersonale .icona a {
+  font-weight: 400;
 }
 
 .component-NavbarPersonale #menu {
