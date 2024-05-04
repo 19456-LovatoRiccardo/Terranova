@@ -1,36 +1,29 @@
 import React from 'react'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar.jsx'
 import LoginAPI from './api/Login.jsx'
-import Background from './assets/bg.png'
 import './Form.css'
 import './Login.css'
 
 export default function Login() {
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    let occhioIconaPassword = document.getElementById("occhioIconaPassword");
-    let password = document.getElementById("password");
-    occhioIconaPassword.onclick = function() {
-      if (password.type == "password") {
-          password.type = "text";
-          setIsPasswordHidden(false);
-      } else {
-          password.type = "password";
-          setIsPasswordHidden(true);
-      }
-    }
-  }, []);
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  const [APIRequest, setAPIRequest] = useState({
+    email: "",
+    password: ""
+  });
 
   const submitRequest = async () => {
-    const requestResult = await LoginAPI();
+    const requestResult = await LoginAPI(APIRequest);
     if (requestResult) {
       navigate('/area-personale/informazioni-personali')
     }
+  };
+
+  const handleChange = (e, key) => {
+    setAPIRequest({...APIRequest, [key]: e.target.value})
   };
 
   return (
@@ -46,11 +39,13 @@ export default function Login() {
           <h1>Login</h1>
 
           <div className="input-box">
-            <input type="text" placeholder="Email" id="email" required/>
-          </div>
+              <input type="text" placeholder="Email" value={APIRequest.email} onChange={(e) => handleChange(e, "email")} required/>
+            </div>
           <div className="input-box">
-            <input type="password" placeholder="Password" id="password" className="password" required/>
-            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="occhioIconaPassword"/>
+            <input type={isPasswordHidden ? "password" : "text"} placeholder="Password" className="password"
+              value={APIRequest.password} onChange={(e) => handleChange(e, "password")} required/>
+            <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"}
+              onClick={() => setIsPasswordHidden(isPasswordHidden => !isPasswordHidden)}/>
           </div>
           { /*
             <div className="remember-forgot">
