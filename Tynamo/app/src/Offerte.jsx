@@ -9,7 +9,7 @@ export default function Offerte() {
     <div className="page-Offerte">
       <Helmet>
         <title>Tynamo - Offerte</title>
-        <body className="page-Offerte"/>
+        <body className="body-Default"/>
       </Helmet>
       <Navbar/>
 

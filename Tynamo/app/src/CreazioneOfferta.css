@@ -1,17 +1,5 @@
 @import 'normalize.css';
 
-.page-CreazioneOfferta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: url(./assets/bg.png);
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 .page-CreazioneOfferta .wrapper {
   right: 15%;
   top: 20%;

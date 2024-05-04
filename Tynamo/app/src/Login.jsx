@@ -30,7 +30,7 @@ export default function Login() {
     <div className="page-Login">
       <Helmet>
         <title>Tynamo - Login</title>
-        <body className="page-Login"/>
+        <body className="body-Form"/>
       </Helmet>
       <Navbar/>
 

@@ -77,7 +77,11 @@
 }
 
 .component-Navbar .icona {
-  margin-top: 7px;
+  margin-top: 5px;
+}
+
+.component-Navbar .icona a {
+  font-weight: 400;
 }
 
 .component-Navbar #menu {

@@ -8,7 +8,7 @@ export default function Contattaci() {
     <div className="page-Contattaci">
       <Helmet>
         <title>Tynamo - Contattaci</title>
-        <body className="page-Contattaci"/>
+        <body className="body-Default"/>
       </Helmet>
       <Navbar/>
 

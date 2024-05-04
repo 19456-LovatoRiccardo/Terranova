@@ -184,7 +184,7 @@ export default function Register() {
     <div className="page-Register">
       <Helmet>
         <title>Tynamo - Register</title>
-        <body className="page-Register"/>
+        <body className="body-Form"/>
       </Helmet>
       <Navbar/>
       {(currentPage == "Options")   ? Options() : null}
