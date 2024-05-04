@@ -49,7 +49,7 @@ export default function Login() {
             <input type="text" placeholder="Email" id="email" required/>
           </div>
           <div className="input-box">
-            <input type="password" placeholder="Password" id="password" required/>
+            <input type="password" placeholder="Password" id="password" className="password" required/>
             <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"} id="occhioIconaPassword"/>
           </div>
           { /*

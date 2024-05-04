@@ -72,7 +72,7 @@ export default function Register() {
               <input type="text" placeholder="Email" value={APIRequest.email} onChange={(e) => handleChange(e, "email")} required/>
             </div>
             <div className="input-box">
-              <input type={isPasswordHidden ? "password" : "text"} placeholder="Password"
+              <input type={isPasswordHidden ? "password" : "text"} placeholder="Password" className="password"
                 value={APIRequest.password} onChange={(e) => handleChange(e, "password")} required/>
               <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"}
                 onClick={() => setIsPasswordHidden(isPasswordHidden => !isPasswordHidden)}/>
@@ -114,7 +114,7 @@ export default function Register() {
               <input type="text" placeholder="Email" value={APIRequest.email} onChange={(e) => handleChange(e, "email")} required/>
             </div>
             <div className="input-box">
-              <input type={isPasswordHidden ? "password" : "text"} placeholder="Password"
+              <input type={isPasswordHidden ? "password" : "text"} placeholder="Password" className="password"
                 value={APIRequest.password} onChange={(e) => handleChange(e, "password")} required/>
               <i className={isPasswordHidden ? "bx bx-fw bxs-show" : "bx bx-fw bxs-hide"}
                 onClick={() => setIsPasswordHidden(isPasswordHidden => !isPasswordHidden)}/>

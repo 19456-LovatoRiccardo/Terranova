@@ -33,3 +33,7 @@
 .page-Login .register-link p a:hover {
   text-decoration: underline;
 }
+
+.page-Login .password {
+  padding-right: 62px;
+}
