@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import NavbarAreaPersonale from './components/NavbarAreaPersonale.jsx'
 import GetInformazioniPersonali from './api/GetInformazioniPersonali.jsx';
 import GetContratti from './api/GetContratti.jsx';
 import './InformazioniPersonali.css'
@@ -28,7 +27,6 @@ export default function InformazioniPersonali() {
         <title>Tynamo - Informazioni Personali</title>
         <body className="body-Default"/>
       </Helmet>
-      <NavbarAreaPersonale/>
 
       <div className="containerInformazioni">
         <div className="header">

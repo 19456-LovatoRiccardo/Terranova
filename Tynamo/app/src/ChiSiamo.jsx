@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from "react-helmet";
-import Navbar from './components/Navbar.jsx'
 import './ChiSiamo.css'
 
 export default function ChiSiamo() {
@@ -10,7 +9,6 @@ export default function ChiSiamo() {
         <title>Tynamo - Chi Siamo</title>
         <body className="body-Default"/>
       </Helmet>
-      <Navbar/>
       
       <div className="riquadro" id="r1">
         <h1 >Chi Siamo</h1>

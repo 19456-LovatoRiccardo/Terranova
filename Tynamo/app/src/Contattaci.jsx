@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from "react-helmet";
-import Navbar from './components/Navbar.jsx'
 import './Contattaci.css'
 
 export default function Contattaci() {
@@ -10,7 +9,6 @@ export default function Contattaci() {
         <title>Tynamo - Contattaci</title>
         <body className="body-Default"/>
       </Helmet>
-      <Navbar/>
 
       <div className="riquadro" id="r1">
         <i className='bx bxs-home-alt-2'/>

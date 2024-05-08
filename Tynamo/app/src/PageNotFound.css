@@ -1,0 +1,21 @@
+@import 'normalize.css';
+
+.page-NotFound .riquadro {
+  padding: 30px;
+  width: 22%;
+  border-radius: 27px;
+  background: rgba(171, 220, 255, 0.80);
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+
+.page-NotFound .riquadro h1 {
+  color: black;
+  text-align: center;
+}
+
+.page-NotFound .riquadro p {
+  color: black;
+  font-size: calc(0.8em + 0.9vmax);
+  text-align: center;
+}

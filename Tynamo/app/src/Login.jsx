@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Navbar from './components/Navbar.jsx'
 import LoginAPI from './api/Login.jsx'
 import './Form.css'
 import './Login.css'
@@ -32,7 +31,6 @@ export default function Login() {
         <title>Tynamo - Login</title>
         <body className="body-Form"/>
       </Helmet>
-      <Navbar/>
 
       <div className="wrapper">
         <form onSubmit={e => {e.preventDefault(); submitRequest();}}>

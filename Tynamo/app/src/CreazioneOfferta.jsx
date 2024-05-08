@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet";
-import Navbar from './components/Navbar.jsx'
 import Authorize from './api/Authorize.jsx'
 import RegisterContrattoAPI from './api/CreateContract.jsx';
 import './Form.css'
@@ -219,7 +218,6 @@ export default function CreazioneOfferta() {
         <title>Tynamo - Creazione Offerta</title>
         <body className="body-Form"/>
       </Helmet>
-      <Navbar/>
       {(currentPage == "Options") ? Options() : null}
       {(currentPage == "Contratto") ? Contratto() : null}
       {(currentPage == "Sede") ? Sede() : null}

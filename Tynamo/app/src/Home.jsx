@@ -1,8 +1,6 @@
 import React from 'react'
 import { Helmet } from "react-helmet";
-import { ScrollRestoration } from "react-router-dom";
 import croppedBG from './assets/cropped-bg.png'
-import Navbar from './components/Navbar.jsx'
 import './Home.css'
 
 export default function Home() {
@@ -12,8 +10,6 @@ export default function Home() {
         <title>Tynamo - Home</title>
         <body className="body-Home"/>
       </Helmet>
-      <ScrollRestoration/>
-      <Navbar/>
 
       <img className="cropped-bg" src={croppedBG}/>
       <div className="separatore"/>

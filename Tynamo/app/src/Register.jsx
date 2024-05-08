@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Navbar from './components/Navbar.jsx'
 import RegisterAPI from './api/Register.jsx'
 import './Form.css'
 import './Register.css'
@@ -186,7 +185,6 @@ export default function Register() {
         <title>Tynamo - Register</title>
         <body className="body-Form"/>
       </Helmet>
-      <Navbar/>
       {(currentPage == "Options")   ? Options() : null}
       {(currentPage == "Account")   ?
         (accountType == "Privato")  ? Privato() : Azienda()

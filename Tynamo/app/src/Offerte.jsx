@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Navbar from './components/Navbar.jsx'
 import './Offerte.css'
 
 export default function Offerte() {
@@ -11,7 +10,6 @@ export default function Offerte() {
         <title>Tynamo - Offerte</title>
         <body className="body-Default"/>
       </Helmet>
-      <Navbar/>
 
       <div className="riquadro" id="r1">
         <h1>Easy Energy</h1>

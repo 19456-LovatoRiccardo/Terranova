@@ -7,7 +7,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-.body-Default {
+.body-Default .root-Desktop {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,4 +16,12 @@
     background: url(./assets/bg2.png);
     background-size: cover;
     background-position: center;
+}
+
+.body-Default .root-Mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: hidden;
 }

@@ -14,7 +14,9 @@ import Offerte from "./Offerte.jsx"
 import CreazioneOfferta from "./CreazioneOfferta.jsx"
 import Contattaci from "./Contattaci.jsx"
 import InformazioniPersonali from "./InformazioniPersonali.jsx"
+import PageNotFound from "./PageNotFound.jsx";
 
+import Layout from "./layout.jsx";
 import "./index.css"
 
 const router = createBrowserRouter([
@@ -28,19 +30,23 @@ export default function App() {
 function Root() {
     return (
         <Routes>
-            <Route exact path="/" Component={Home}/>
-            <Route path="/login" Component={Login}/>
-            <Route path="/register" Component={Register}/>
-            <Route path="chi-siamo" Component={ChiSiamo}/>
-            <Route path="/offerte" Component={Offerte}/>
-            <Route path="/creazione-offerta" Component={CreazioneOfferta}/>
-            <Route exact path="/contattaci" Component={Contattaci}/>
-            <Route path="/area-personale/informazioni-personali" Component={InformazioniPersonali}/>
-            <Route path="*" Component={Home}/>
+            <Route path="/" element={<Layout path="/"/>}>
+                <Route index Component={Home}/>
+                <Route path="/login" Component={Login}/>
+                <Route path="/register" Component={Register}/>
+                <Route path="chi-siamo" Component={ChiSiamo}/>
+                <Route path="/offerte" Component={Offerte}/>
+                <Route path="/creazione-offerta" Component={CreazioneOfferta}/>
+                <Route path="/contattaci" Component={Contattaci}/>
+            </Route>
+
+            <Route exact path="/area-personale" Component={Layout}>
+                <Route path="informazioni-personali" Component={InformazioniPersonali}/>
+            </Route>
+
+            <Route path="*" Component={PageNotFound}/>
         </Routes>
     )
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <App/>
-);
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
