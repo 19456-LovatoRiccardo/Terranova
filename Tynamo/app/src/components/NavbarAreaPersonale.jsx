@@ -5,34 +5,30 @@ import Authorize from '../api/Authorize.jsx'
 import LogoutAPI from '../api/Logout.jsx'
 import './NavbarAreaPersonale.css'
 
-export default function NavbarAreaPersonale() {
+export default function NavbarAreaPersonale({windowWidth}) {
   const [minimize, setMinimize] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
 
-  const handleWindowSizeChange = () => {
-    if (window.innerWidth < 1030) {
+  useEffect(() => {
+    async function asyncFunction() {
+      const authorizationResult = await Authorize()
+      if (authorizationResult == null) {
+        navigate('/')
+      }
+    }
+    asyncFunction()
+  }, []);
+
+  useEffect(() => {
+    let minimumWidth = 1030
+    if (windowWidth < minimumWidth) {
       setMinimize(true)
     } else {
       setMinimize(false)
       setShowMenu(false)
     }
-  };
-
-  useEffect(() => {
-    async function asyncFunction() {
-      const authorizationResult = await Authorize()
-      if (!authorizationResult) {
-        navigate('/')
-      }
-      handleWindowSizeChange();
-      window.addEventListener('resize', handleWindowSizeChange);
-      return () => {
-        window.removeEventListener('resize', handleWindowSizeChange);
-      }
-    }
-    asyncFunction()
-  }, []);
+  }, [windowWidth]);
 
   const logout = async () => {
     const logoutResult = await LogoutAPI();
@@ -58,7 +54,7 @@ export default function NavbarAreaPersonale() {
               <li id="menu" className="icona" style={{ display: minimize ? "block" : "none" }}>
                 <a onClick={() => setShowMenu(showMenu => !showMenu)} className='bx bx-fw bx-menu bx-md'/>
               </li>
-              <div className="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
+              <div className="dropdown-content" onClick={() => (setShowMenu(false))} style={{ display: showMenu ? "block" : "none" }}>
                 <Link to="/area-personale/informazioni-personali">Informazioni Personali</Link>
                 <Link to="#">Carbon Footprint</Link>
                 <a id="logout-dropdown" onClick={() => logout()}>

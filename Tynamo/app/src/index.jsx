@@ -30,7 +30,7 @@ export default function App() {
 function Root() {
     return (
         <Routes>
-            <Route path="/" element={<Layout path="/"/>}>
+            <Route element={<Layout path="/"/>}>
                 <Route index Component={Home}/>
                 <Route path="/login" Component={Login}/>
                 <Route path="/register" Component={Register}/>
@@ -40,8 +40,8 @@ function Root() {
                 <Route path="/contattaci" Component={Contattaci}/>
             </Route>
 
-            <Route exact path="/area-personale" Component={Layout}>
-                <Route path="informazioni-personali" Component={InformazioniPersonali}/>
+            <Route element={<Layout path="/area-personale"/>}>
+                <Route path="/area-personale/informazioni-personali" Component={InformazioniPersonali}/>
             </Route>
 
             <Route path="*" Component={PageNotFound}/>

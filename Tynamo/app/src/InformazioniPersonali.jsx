@@ -12,9 +12,11 @@ export default function InformazioniPersonali() {
 
   useEffect(() => {
     async function asyncFunction() {
-      const authorizationResult = await GetInformazioniPersonali()
-      setIsPrivato(!("partitaIVA" in authorizationResult));
-      setAnagrafica(authorizationResult);
+      try {
+        const authorizationResult = await GetInformazioniPersonali()
+        setIsPrivato(!("partitaIVA" in authorizationResult));
+        setAnagrafica(authorizationResult);
+      } catch (err) { }
       const risultatoContratti = await GetContratti()
       setContratti(risultatoContratti);
     }

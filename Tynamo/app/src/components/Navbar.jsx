@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LOGO from '../assets/LOGO.png'
@@ -5,7 +6,7 @@ import Authorize from '../api/Authorize.jsx'
 import LogoutAPI from '../api/Logout.jsx'
 import './Navbar.css'
 
-export default function Navbar() {
+export default function Navbar({windowWidth}) {
   const [minimize, setMinimize] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
@@ -16,40 +17,22 @@ export default function Navbar() {
       const authorizationResult = await Authorize()
       if (authorizationResult != null) {
         setAuthenticated(true);
-        handleWindowSizeChangeAuthenticated();
-        window.addEventListener('resize', handleWindowSizeChangeAuthenticated);
-        return () => {
-          window.removeEventListener('resize', handleWindowSizeChangeAuthenticated);
-        }
       } else {
         setAuthenticated(false);
-        handleWindowSizeChangeNotAuthenticated();
-        window.addEventListener('resize', handleWindowSizeChangeNotAuthenticated);
-        return () => {
-          window.removeEventListener('resize', handleWindowSizeChangeNotAuthenticated);
-        };
       }
     }
     asyncFunction()
   }, []);
 
-  const handleWindowSizeChangeNotAuthenticated = () => {
-    if (window.innerWidth < 865) {
+  useEffect(() => {
+    let minimumWidth = (authenticated ? 1165 : 865)
+    if (windowWidth < minimumWidth) {
       setMinimize(true)
     } else {
       setMinimize(false)
       setShowMenu(false)
     }
-  };
-
-  const handleWindowSizeChangeAuthenticated = () => {
-    if (window.innerWidth < 1165) {
-      setMinimize(true)
-    } else {
-      setMinimize(false)
-      setShowMenu(false)
-    }
-  };
+  }, [windowWidth, authenticated]);
 
   const logout = async () => {
     const logoutResult = await LogoutAPI();
@@ -74,7 +57,7 @@ export default function Navbar() {
               <li id="menu" className="icona" style={{ display: minimize ? "block" : "none" }}>
                 <a onClick={() => setShowMenu(showMenu => !showMenu)} className='bx bx-fw bx-menu bx-md'/>
               </li>
-              <div className="dropdown-content" style={{ display: showMenu ? "block" : "none" }}>
+              <div className="dropdown-content" onClick={() => (setShowMenu(false))} style={{ display: showMenu ? "block" : "none" }}>
                 <Link to="/area-personale/informazioni-personali" style={{ display: authenticated ? "block" : "none" }}>
                   Area Personale
                 </Link>
