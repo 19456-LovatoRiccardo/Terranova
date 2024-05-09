@@ -1,6 +1,6 @@
 @import 'normalize.css';
 
-.page-Login .wrapper {
+.root-Desktop .page-Login .wrapper {
   right: 15%;
   top: 20%;
   position: absolute;

@@ -31,7 +31,7 @@ export default function ChiSiamo() {
       <div className="riquadro" id="r3">
         <h1>La nostra missione</h1>
         <p>
-          La nostra missione è di fornire energia affidabile, efficiente e sostenibile per soddisfare le esigenze dei nostri clienti,
+          La nostra missione è quella di fornire energia affidabile, efficiente e sostenibile per soddisfare le esigenze dei nostri clienti,
           preservando al contempo il nostro pianeta per le generazioni future.
           Ci impegniamo a offrire servizi energetici innovativi che migliorino la qualità della vita,
           riducano l'impatto ambientale e promuovano la responsabilità sociale e ambientale.

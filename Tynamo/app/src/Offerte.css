@@ -10,31 +10,44 @@
   word-wrap: break-word;
   overflow-y: auto;
 }
-
-.page-Offerte #r1 {
-  left: 3%;
+.root-Mobile .page-Offerte .riquadro {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 20px;
+  width: 80%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
 
-.page-Offerte #r2 {
+.root-Desktop .page-Offerte #r1 {
+  left: 3%;
+}
+.root-Desktop .page-Offerte #r2 {
   left: 28%;
   width: 21%;
 }
-
-.page-Offerte #r3 {
+.root-Desktop .page-Offerte #r3 {
   right: 28%;
   width: 21%;
 }
-
-.page-Offerte #r4 {
+.root-Desktop .page-Offerte #r4 {
   right: 3%;
 }
 
 .page-Offerte .riquadro h1 {
-  margin-top: 5%;
+  margin-top: 7%;
   margin-bottom: 10%;
   text-align: center;
   font-family: Epilogue;
-  font-size: 2.2vmax;
+  font-size: calc(0.9em + 1vmax);
+}
+.root-Mobile .page-Offerte .riquadro h1 {
+  flex-basis: 100%; /* Always wrap */
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .page-Offerte .riquadro ul {
@@ -53,6 +66,10 @@
   margin-bottom: 5%;
 }
 
+.page-Offerte a {
+  text-decoration: none;
+}
+
 .page-Offerte .sceltaOfferta {
   position: absolute;
   left: 5%;
@@ -63,12 +80,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
   font-family: Epilogue; 
   font-size: calc(0.5em + 0.9vmax);
   border-radius: 40px;
   background: rgba(15, 0, 108, 0.58);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+.root-Mobile .page-Offerte .sceltaOfferta {
+  position: relative;
+  flex-basis: 100%; /* Always wrap */
+  width: 62vw;
+  height: 4.5vh;
+  margin-right: 27px;
+  margin-top: 3%;
+  margin-bottom: -1%;
 }
 
 /* Scrollbar */

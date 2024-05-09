@@ -1,14 +1,17 @@
 @import 'normalize.css';
 
-.page-InformazioniPersonali .containerInformazioni {
+.page-InformazioniPersonali .containerInformazioni,
+.page-InformazioniPersonali .containerContratti {
+  background: rgba(0, 11, 70, 0.80);
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.root-Desktop .page-InformazioniPersonali .containerInformazioni {
   position: absolute;
   top: 32%;
   left: 5%;
   width: 33%;
-  padding-right: 2%;
-  border-radius: 12px;
-  background: rgba(0, 11, 70, 0.80);
-  overflow-x: auto;
 }
 
 .page-InformazioniPersonali .header {
@@ -48,16 +51,15 @@
   position: relative;
 }
 
-.page-InformazioniPersonali .containerContratti {
+.root-Desktop .page-InformazioniPersonali .containerContratti {
   width: 45%;
   height: 75%;
   position: absolute;
   left: 50%;
   top: 18%;
-  border-radius: 12px;
-  background: rgba(0, 11, 70, 0.80);
-  overflow-y: auto;
-  z-index: -1;
+}
+.root-Mobile .page-InformazioniPersonali .containerContratti {
+  margin-top: 5%;
 }
 
 .page-InformazioniPersonali .containerContratti table {
@@ -73,6 +75,10 @@
 .page-InformazioniPersonali .containerContratti table tr td {
   border: 1px solid #ddd;
   padding: 4px 6px;
+}
+.root-Mobile .page-InformazioniPersonali .containerContratti table tr th,
+.root-Mobile .page-InformazioniPersonali .containerContratti table tr td {
+  display: none;
 }
 
 /* Scrollbar */

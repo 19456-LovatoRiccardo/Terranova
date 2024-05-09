@@ -9,33 +9,46 @@
   word-wrap: break-word;
   overflow-y: auto;
 }
+.root-Mobile .page-ChiSiamo .riquadro {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 20px;
+  padding-bottom: 5%;
+  width: 80%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
 
-.page-ChiSiamo #r1 {
+.root-Desktop .page-ChiSiamo #r1 {
   top: 20%;
   left: 5%;
   width: 25%;
 }
-
-.page-ChiSiamo #r2 {
+.root-Desktop .page-ChiSiamo #r2 {
   top: 30%;
   left: 35%;
   right: 35%;
   height: 50%;
 }
-
-.page-ChiSiamo #r3 {
+.root-Desktop .page-ChiSiamo #r3 {
   top: 20%;
   right: 5%;
   width: 25%;
 }
 
 .page-ChiSiamo .riquadro h1 {
-  font-size: 2.2vmax;
+  font-size: calc(1.3em + 0.9vmax);
   margin-top: 5%;
   margin-right: 5%;
   margin-left: 5%;
   text-align: center;
   font-family: Epilogue;
+}
+.root-Mobile .page-ChiSiamo .riquadro h1 {
+  margin-bottom: 0%;
 }
 
 .page-ChiSiamo .riquadro p {

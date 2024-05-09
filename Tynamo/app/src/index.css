@@ -7,21 +7,17 @@
     font-family: "Poppins", sans-serif;
 }
 
-.body-Default .root-Desktop {
+.body-Default {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-y: hidden;
     background: url(./assets/bg2.png);
     background-size: cover;
     background-position: center;
 }
 
-.body-Default .root-Mobile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow-y: hidden;
-}
+.root-Mobile {
+    margin-top: 80px;
+    margin-bottom: 10%;
+} 
